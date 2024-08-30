@@ -32,12 +32,17 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a href="widgets.html">
+                            <a href="{{ route('applicants.applicant-upload') }}">
                                 <i class="fas fa-desktop"></i>
                                 <p>Upload Documents</p>
-
                             </a>
                         </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('applicants.personal-data-sheet') }}">
+                            <i class="fas fa-desktop"></i>
+                            <p>Personal data sheet</p>
+                        </a>
+                    </li>
 
             </ul>
         </div>

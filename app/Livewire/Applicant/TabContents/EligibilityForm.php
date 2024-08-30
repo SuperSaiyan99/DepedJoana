@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Applicant\TabContents;
 
 use Livewire\Component;
 
 class EligibilityForm extends Component
 {
-
     public $eligibilities = [];
 
 
@@ -55,6 +54,8 @@ class EligibilityForm extends Component
 
     public function render()
     {
-        return view('livewire.eligibility-form');
+        return view('livewire.applicant.tab-contents.eligibility-form');
     }
 }
+
+

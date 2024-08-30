@@ -26,6 +26,21 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('profile', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('role')->default('applicant');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('username')->nullable();
+            $table->string('password')->nullable();
+            $table->string('provider')->nullable();
+            $table->string('provider_id')->nullable();
+            $table->string('provider_token')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');

@@ -83,6 +83,12 @@
                 </div>
                 <div class="card-body">
 
+                    @if (session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
                     <!--[navigation tabs]-->
                     <ul class="nav nav-tabs nav-line nav-color-secondary" id="line-tab" role="tablist">
                         <li class="nav-item">
@@ -116,7 +122,7 @@
                             <a class="nav-link" id="line-reference-tab" data-bs-toggle="pill" href="#line-reference" role="tab" aria-controls="pills-reference" aria-selected="false">References</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="line-others2-tab" data-bs-toggle="pill" href="#line-others2" role="tab" aria-controls="pills-others2" aria-selected="false">Others2</a>
+                            <a class="nav-link" id="line-others2-tab" data-bs-toggle="pill" href="#line-declaration" role="tab" aria-controls="pills-declaration" aria-selected="false">Declaration</a>
                         </li>
                     </ul>
 
@@ -268,210 +274,17 @@
                             </form>
                         </div>
                         <div class="tab-pane fade" id="line-family" role="tabpanel" aria-labelledby="line-family-tab">
-                            <form>
-                                <div class="row g-3">
-                                    <div class="form-title">Spouse Information</div>
-                                    <div class="col-md-6">
-                                        <label for="spouseSurname" class="form-label">Surname</label>
-                                        <input type="text" class="form-control" id="spouseSurname" placeholder="">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="spouseFirstName" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="spouseFirstName" placeholder="Venz Fredrick">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="spouseMiddleName" class="form-label">Middle Name</label>
-                                        <input type="text" class="form-control" id="spouseMiddleName" placeholder="Naraga">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="spouseExtension" class="form-label">Name Extension</label>
-                                        <select class="form-select" id="spouseExtension">
-                                            <option selected>Select</option>
-                                            <option value="Jr">Jr</option>
-                                            <option value="Sr">Sr</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="occupation" class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" id="occupation" placeholder="">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="businessName" class="form-label">Employer/Business Name</label>
-                                        <input type="text" class="form-control" id="businessName" placeholder="">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="businessAddress" class="form-label">Business Address</label>
-                                        <input type="text" class="form-control" id="businessAddress" placeholder="">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="telephone" class="form-label">Telephone No.</label>
-                                        <input type="text" class="form-control" id="telephone" placeholder="">
-                                    </div>
-                                    <div class="col-md-6"></div>
-                                </div>
-                                <div class="form-header mt-5">
-                                    Parent's Information
-                                </div>
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label for="fatherSurname" class="form-label">Father's Surname</label>
-                                        <input type="text" class="form-control" id="fatherSurname" placeholder="">
-                                    </div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6">
-                                        <label for="fatherFirstName" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="fatherFirstName" placeholder="">
-                                    </div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6">
-                                        <label for="fatherMiddleName" class="form-label">Middle Name</label>
-                                        <input type="text" class="form-control" id="fatherMiddleName" placeholder="">
-                                    </div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6">
-                                        <label for="fatherExtension" class="form-label">Name Extension</label>
-                                        <select class="form-select" id="fatherExtension">
-                                            <option selected>Select</option>
-                                            <option value="Jr">Jr</option>
-                                            <option value="Sr">Sr</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6">
-                                        <label for="motherMaidenSurname" class="form-label">Mother's Maiden Name</label>
-                                        <input type="text" class="form-control" id="motherMaidenSurname" placeholder="">
-                                    </div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6">
-                                        <label for="motherFirstName" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="motherFirstName" placeholder="">
-                                    </div>
-                                    <div class="col-md-6"></div>
-                                    <div class="col-md-6">
-                                        <label for="motherMiddleName" class="form-label">Middle Name</label>
-                                        <input type="text" class="form-control" id="motherMiddleName" placeholder="">
-                                    </div>
-                                    <div class="col-md-6"></div>
-                                </div>
-                                <div class="form-header mt-5">
-                                    Children's Information
-                                </div>
-                                <div class="repeater">
-                                    <div data-repeater-list="group-a">
-                                        <div data-repeater-item class="row">
-                                            <div  class="mb-3 col-lg-2">
-                                                <label class="form-label" for="name">Full Name</label>
-                                                <input type="text" id="children_name" name="untyped-input" class="form-control"/>
-                                            </div>
 
-                                            <div  class="mb-3 col-lg-2">
-                                                <label class="form-label" for="child_dob">Date of Birth</label>
-                                                <input type="datetime" id="children_dob" class="form-control"/>
-                                            </div>
+                            @livewire('applicant.tab-contents.family-form')
 
-                                            <div class="col-lg-2 align-self-center">
-                                                <div class="d-grid">
-                                                    <input data-repeater-delete type="button" class="btn btn-primary" value="Delete"/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <input data-repeater-create type="button" class="btn btn-success mt-3 mt-lg-0" value="Add"/>
-                                </div>
-                                <div class="mt-4 d-flex justify-content-between">
-                                    <button type="button" class="btn btn-secondary">Save and Edit Later</button>
-                                    <button type="submit" class="btn btn-primary">Save Education Data</button>
-                                </div>
-                            </form>
                         </div>
                         <div class="tab-pane fade" id="line-education" role="tabpanel" aria-labelledby="line-education-tab">
-                            <h4 class="mb-4 mt-4">Educational Background</h4>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Level</th>
-                                        <th scope="col">Name of School <br>(Write in full)</th>
-                                        <th scope="col">Basic Education/Degree/Course <br>(Write in full)</th>
-                                        <th scope="col" colspan="2">Period of Attendance</th>
-                                        <th scope="col">Highest level/ Units Earned <br>(If not graduated)</th>
-                                        <th scope="col">Year Graduated</th>
-                                        <th scope="col">Scholarship/Academic Honors Received</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col"></th>
-                                        <th scope="col"></th>
-                                        <th scope="col">From</th>
-                                        <th scope="col">To</th>
-                                        <th scope="col"></th>
-                                        <th scope="col"></th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Elementary</td>
-                                        <td><input type="text" class="table-input" name="elementary_school"></td>
-                                        <td><input type="text" class="table-input" name="elementary_course"></td>
-                                        <td><input type="number" class="table-input" name="elementary_from"></td>
-                                        <td><input type="number" class="table-input" name="elementary_to"></td>
-                                        <td><input type="text" class="table-input" name="elementary_units"></td>
-                                        <td><input type="text" class="table-input" name="elementary_graduated"></td>
-                                        <td><input type="text" class="table-input" name="elementary_honors"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Secondary</td>
-                                        <td><input type="text" class="table-input" name="secondary_school"></td>
-                                        <td><input type="text" class="table-input" name="secondary_course"></td>
-                                        <td><input type="number" class="table-input" name="secondary_from"></td>
-                                        <td><input type="number" class="table-input" name="secondary_to"></td>
-                                        <td><input type="text" class="table-input" name="secondary_units"></td>
-                                        <td><input type="text" class="table-input" name="secondary_graduated"></td>
-                                        <td><input type="text" class="table-input" name="secondary_honors"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Vocational/ Trade Course</td>
-                                        <td><input type="text" class="table-input" name="vocational_school"></td>
-                                        <td><input type="text" class="table-input" name="vocational_course"></td>
-                                        <td><input type="number" class="table-input" name="vocational_from"></td>
-                                        <td><input type="number" class="table-input" name="vocational_to"></td>
-                                        <td><input type="text" class="table-input" name="vocational_units"></td>
-                                        <td><input type="text" class="table-input" name="vocational_graduated"></td>
-                                        <td><input type="text" class="table-input" name="vocational_honors"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>College</td>
-                                        <td><input type="text" class="table-input" name="college_school"></td>
-                                        <td><input type="text" class="table-input" name="college_course"></td>
-                                        <td><input type="text" class="table-input" name="college_from"></td>
-                                        <td><input type="text" class="table-input" name="college_to"></td>
-                                        <td><input type="text" class="table-input" name="college_units"></td>
-                                        <td><input type="text" class="table-input" name="college_graduated"></td>
-                                        <td><input type="text" class="table-input" name="college_honors"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Graduate Studies</td>
-                                        <td><input type="text" class="table-input" name="graduate_school"></td>
-                                        <td><input type="text" class="table-input" name="graduate_course"></td>
-                                        <td><input type="number" class="table-input" name="graduate_from"></td>
-                                        <td><input type="number" class="table-input" name="graduate_to"></td>
-                                        <td><input type="text" class="table-input" name="graduate_units"></td>
-                                        <td><input type="text" class="table-input" name="graduate_graduated"></td>
-                                        <td><input type="text" class="table-input" name="graduate_honors"></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="mt-4 d-flex justify-content-between">
-                                <button type="button" class="btn btn-secondary">Save and Edit Later</button>
-                                <button type="submit" class="btn btn-primary">Save Education Data</button>
-                            </div>
+
+                            @livewire('applicant.tab-contents.educational-background')
                         </div>
                         <div class="tab-pane fade" id="line-eligibility" role="tabpanel" aria-labelledby="line-eligibility-tab">
 
-                            @livewire('eligibility-form')
+                            @livewire('applicant.tab-contents.eligibility-form')
 
                         </div>
                         <div class="tab-pane fade" id="line-work-experience" role="tabpanel" aria-labelledby="line-work-experience-tab">
@@ -533,7 +346,7 @@
                                     <div class="text-end text-muted mt-1">0/2000</div>
                                 </div>
                                 <div class="d-grid">
-                                    <button type="button" class="btn btn-custom">Add Work Experience</button>
+                                    <button type="button" class="btn btn-success">Add Work Experience</button>
                                 </div>
                                 <div class="mt-4 d-flex justify-content-between">
                                     <button type="button" class="btn btn-secondary">Save and Edit Later</button>
@@ -576,7 +389,7 @@
                                     </div>
                                 </div>
                                 <div class="d-grid">
-                                    <button type="button" data-repeater-create class="btn btn-custom mt-3">Add Voluntary Work</button>
+                                    <button type="button" data-repeater-create class="btn btn-success mt-3">Add Voluntary Work</button>
                                 </div>
                                 <div class="mt-4 d-flex justify-content-between">
                                     <button type="button" class="btn btn-secondary">Save and Edit Later</button>
@@ -623,7 +436,7 @@
                                     </div>
                                 </div>
                                 <div class="d-grid">
-                                    <button type="button" data-repeater-create class="btn btn-custom mt-3">Add Learning & Development Program</button>
+                                    <button type="button" data-repeater-create class="btn btn-success mt-3">Add Learning & Development Program</button>
                                 </div>
                                 <div class="mt-4 d-flex justify-content-between">
                                     <button type="button" class="btn btn-secondary">Save and Edit Later</button>
@@ -656,7 +469,7 @@
                                     </div>
                                 </div>
                                 <div class="d-grid">
-                                    <button type="button" data-repeater-create class="btn btn-custom mt-3">Add Other Information</button>
+                                    <button type="button" data-repeater-create class="btn btn-success mt-3">Add Other Information</button>
                                 </div>
                                 <div class="mt-4 d-flex justify-content-between">
                                     <button type="button" class="btn btn-secondary">Save and Edit Later</button>
@@ -842,9 +655,10 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="line-others2" role="tabpanel" aria-labelledby="line-others2-tab">
+                        <div class="tab-pane fade" id="line-declaration" role="tabpanel" aria-labelledby="line-declaration-tab">
                             <h4 class="form-header">Declaration</h4>
                             <form>
+                                <!-- First Row -->
                                 <div class="row mb-4">
                                     <div class="col-md-6">
                                         <label for="govIssuedID" class="form-label">Government Issued ID</label>
@@ -854,26 +668,30 @@
                                         <label for="idNumber" class="form-label">ID/License/Passport No.</label>
                                         <input type="text" class="form-control" id="idNumber" placeholder="Please indicate ID Number">
                                     </div>
+                                </div>
+
+                                <!-- Second Row -->
+                                <div class="row mb-4">
                                     <div class="col-md-6">
                                         <label for="dateAccomplished" class="form-label">Date Accomplished</label>
                                         <input type="date" class="form-control" id="dateAccomplished">
                                     </div>
-                                </div>
-                                <div class="row mb-4">
                                     <div class="col-md-6">
                                         <label for="datePlaceIssued" class="form-label">Date/Place of Issuance</label>
                                         <input type="text" class="form-control" id="datePlaceIssued" placeholder="Enter Date and Place of Issuance">
                                     </div>
-                                    <div class="row mb-4">
-                                        <div class="col-md-6">
-                                            <label for="signatureUpload" class="form-label">Signature</label>
-                                            <div class="dropzone" id="signatureUpload">
-                                                <div class="dz-message">Drop or click to upload signature</div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
+
+                                <!-- Third Row -->
                                 <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <label for="photoUpload" class="form-label">ID Picture (4.5 cm x 3.5 cm)</label>
+                                        <div class="dropzone" id="photoUpload">
+                                            <div class="dz-message">Drop or click to upload ID picture</div>
+                                        </div>
+                                        <span class="note text-danger"><i>ID picture taken within the last 6 months. Computer-generated or photocopied picture is not acceptable.</i></span>
+                                    </div>
+
                                     <div class="col-md-6">
                                         <label for="thumbmarkUpload" class="form-label">Right Thumbmark</label>
                                         <div class="dropzone" id="thumbmarkUpload">
@@ -881,21 +699,21 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Fourth Row -->
                                 <div class="row mb-4">
                                     <div class="col-md-12">
-                                        <label for="photoUpload" class="form-label">ID Picture (4.5 cm x 3.5 cm)</label>
-                                        <div class="dropzone" id="photoUpload">
-                                            <div class="dz-message">Drop or click to upload ID picture</div>
+                                        <label for="signatureUpload" class="form-label">Signature</label>
+                                        <div class="dropzone" id="signatureUpload">
+                                            <div class="dz-message">Drop or click to upload signature</div>
                                         </div>
-                                        <span class="note">ID picture taken within the last 6 months. Computer-generated or photocopied picture is not acceptable.</span>
                                     </div>
                                 </div>
+                                <!-- Checkbox -->
                                 <div class="checkbox-container mt-4 mb-4">
                                     <input type="checkbox" id="declareOath" required>
-                                    <span for="declareOath">
-                                        I declare under oath that I have personally accomplished this Personal Data Sheet which is a true, correct and complete statement pursuant to the provisions of pertinent laws, rules and regulations of the Republic of the Philippines. I authorize the agency head/authorized representative to verify/validate the contents stated herein. I agree that any misrepresentation made in this document and its attachments shall cause the filing of administrative/criminal cases against me.
-                                    </span>
+                                    <label for="declareOath">I declare that the information given is true and correct.</label>
                                 </div>
+                                <!-- Submit Button -->
                                 <div class="d-grid">
                                     <button type="submit" class="btn btn-save">Submit</button>
                                 </div>
@@ -910,114 +728,7 @@
 
 @section('js')
     <!-- plugins -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery.repeater/jquery.repeater.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dropzone@6.0.0-beta.2/dist/dropzone-min.min.js"></script>
-
-
-    <!--[child repeater]--->
-    <script>
-        $(document).ready(function () {
-            $('.repeater').repeater({
-                initEmpty: false,
-                defaultValues: {
-                    'children_name': '',
-                    'children_dob': '',
-                },
-                show: function () {
-                    $(this).slideDown();
-                },
-                hide: function (deleteElement) {
-                    if (confirm('Are you sure you want to delete this entry?')) {
-                        $(this).slideUp(deleteElement);
-                    }
-                },
-                ready: function (setIndexes) {
-
-                }
-            });
-        });
-    </script>
-
-    <!--[eligibility repeater]--->
-    <script>
-        $(document).ready(function () {
-            $('#eligibilityRepeater').repeater({
-                initEmpty: false,
-                defaultValues: {
-                    'career_service': '',
-                    'eligibility_rating': '',
-                    'date_of_exam': '',
-                    'place_of_exam': '',
-                    'license_number': '',
-                    'date_of_validity': ''
-                },
-                show: function () {
-                    $(this).slideDown();
-                },
-                hide: function (deleteElement) {
-                    if (confirm('Are you sure you want to delete this entry?')) {
-                        $(this).slideUp(deleteElement);
-                    }
-                },
-                ready: function (setIndexes) {
-                    // Repeater is ready
-                }
-            });
-        });
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            $('#voluntaryWorkRepeater').repeater({
-                initEmpty: false,
-                defaultValues: {
-                    'organization': '',
-                    'fromDate': '',
-                    'toDate': '',
-                    'hours': '',
-                    'position': ''
-                },
-                show: function () {
-                    $(this).slideDown();
-                },
-                hide: function (deleteElement) {
-                    if (confirm('Are you sure you want to delete this entry?')) {
-                        $(this).slideUp(deleteElement);
-                    }
-                },
-                ready: function (setIndexes) {
-                    // Repeater is ready
-                }
-            });
-        });
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            $('#ldProgramsRepeater').repeater({
-                initEmpty: false,
-                defaultValues: {
-                    'programTitle': '',
-                    'fromDate': '',
-                    'toDate': '',
-                    'hours': '',
-                    'typeOfLD': '',
-                    'conductedBy': ''
-                },
-                show: function () {
-                    $(this).slideDown();
-                },
-                hide: function (deleteElement) {
-                    if (confirm('Are you sure you want to delete this entry?')) {
-                        $(this).slideUp(deleteElement);
-                    }
-                },
-                ready: function (setIndexes) {
-                    // Repeater is ready
-                }
-            });
-        });
-    </script>
 
     <script>
         // Disable auto discover for all elements
