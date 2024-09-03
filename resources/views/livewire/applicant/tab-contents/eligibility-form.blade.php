@@ -1,8 +1,9 @@
 <div>
-    <h4>Eligibility & Qualifications</h4>
+    <h4 class="form-header">Work Experience</h4>
     <form wire:submit.prevent="save">
         @foreach ($eligibilities as $index => $eligibility)
-            <div class="row mb-3" wire:key="eligibility-{{ $index }}">
+            <h5>Civil Service Eligibility #{{ $index + 1 }}</h5>
+            <div class="row m-3 border rounder p-3" wire:key="eligibility-{{ $index }}">
                 <div class="col-lg-2 mt-3">
                     <label for="career_service_{{ $index }}" class="form-label">Eligibility</label>
                     <select class="form-select" id="career_service_{{ $index }}" wire:model="eligibilities.{{ $index }}.career_service">
@@ -37,14 +38,14 @@
                 </div>
             </div>
         @endforeach
-
-        <div class="d-grid mt-3">
-            <button type="button" class="btn btn-success" wire:click="addEligibility">Add Civil Service Eligibility</button>
-        </div>
-
-        <div class="mt-4 d-flex justify-content-between">
-            <button type="button" class="btn btn-secondary">Save and Edit Later</button>
-            <button type="submit" class="btn btn-primary">Save Civil Service Data</button>
-        </div>
     </form>
+
+    <div class="d-grid mt-3">
+        <button type="button" class="btn btn-success" wire:click="addEligibility">Add Civil Service Eligibility</button>
+    </div>
+
+    <div class="mt-4 d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary">Save and Edit Later</button>
+        <button type="submit" class="btn btn-primary">Save Civil Service Data</button>
+    </div>
 </div>

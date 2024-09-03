@@ -44,9 +44,12 @@ class EligibilityForm extends Component
 
     public function save()
     {
-        // Handle saving the data
+
+        #TODO: Save data here
         foreach ($this->eligibilities as $eligibility) {
             // Save each eligibility entry to the database
+
+
         }
 
         session()->flash('message', 'Eligibility data saved successfully.');

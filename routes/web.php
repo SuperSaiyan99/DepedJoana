@@ -13,7 +13,7 @@ require __DIR__.'/auth.php';
 Route::resource('permissions', \App\Http\Controllers\PermissionController::class);
 
 
-#testview
+#testview-applicants
 Route::view('/applicant-home', 'applicants.home')->name('applicants.home');
 Route::view('/applicant-work-experience', 'applicants.work-experience-sheet')->name('applicants.work-experience-sheet');
 Route::view('/applicant-status', 'applicants.applicant-status')->name('applicants.applicant-status');
@@ -21,9 +21,20 @@ Route::view('/applicant-upload', 'applicants.upload-documents')->name('applicant
 Route::view('/applicant-pds', 'applicants.personal-data-sheet')->name('applicants.personal-data-sheet');
 
 
-Route::view('/hiring-board-testing', 'HiringBoard.home');
-Route::view('/Superadmin-testing', 'SuperAdmin.home');
-Route::view('/admin-testing', 'admin.home');
+//#testview-hiring-board
+//Route::view('/hiring-board-testing', 'HiringBoard.home');
+//Route::view('/Superadmin-testing', 'SuperAdmin.home');
+//Route::view('/admin-testing', 'admin.home');
+//
+//#testview-superadmin
+//Route::view('/hiring-board-testing', 'HiringBoard.home');
+//Route::view('/Superadmin-testing', 'SuperAdmin.home');
+//Route::view('/admin-testing', 'admin.home');
+//
+//#testview-superadmin
+//Route::view('/hiring-board-testing', 'HiringBoard.home');
+//Route::view('/Superadmin-testing', 'SuperAdmin.home');
+//Route::view('/admin-testing', 'admin.home');
 
 
 #Social Providers

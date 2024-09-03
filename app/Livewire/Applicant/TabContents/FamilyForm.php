@@ -47,7 +47,9 @@ class FamilyForm extends Component
     {
         #TODO: Save information here
 
-        // Reset the form or provide feedback to the user
+
+
+        # Message
         session()->flash('message', 'Family information saved successfully.');
     }
 

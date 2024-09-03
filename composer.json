@@ -10,6 +10,7 @@
         "laravel/socialite": "^5.15",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
+        "shergela/validation-rule": "^1.0",
         "spatie/laravel-permission": "^6.9"
     },
     "require-dev": {

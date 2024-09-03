@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Applicant\TabContents;
 
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -10,15 +9,26 @@ class DocumentUploadFiles extends Component
 {
     use WithFileUploads;
 
-    public $photos = [];
+    public $photo;
+    public $uploadProgress = 0;
 
-    #[Validate(['photos.*' => 'required|mimes:pdf|max:102400'])] // 100MB max, PDF only
     public function save()
     {
-        $this->validate();
-        $path = $this->photo->store(path: 'photos');
+        $this->validate([
+            'photo' => 'required|file|mimes:pdf|max:102400', // 100MB max, PDF only
+        ]);
+
+        $path = $this->photo->store('photos', 'public');
+
+        // Reset progress and file input after successful upload
+        $this->reset('photo', 'uploadProgress');
 
         dd($path);
+    }
+
+    public function updatedPhoto()
+    {
+        $this->uploadProgress = 0; // Reset progress when a new file is selected
     }
 
     public function render()

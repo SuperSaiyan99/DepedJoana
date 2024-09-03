@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05211a4541a59608678ba5d1210c4a3d",
+    "content-hash": "cfa75f0d2cb0c31efff09a5d94d6f828",
     "packages": [
         {
             "name": "brick/math",
@@ -3622,6 +3622,61 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "shergela/validation-rule",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SkyWalkerGhost/laravel-validation-rule.git",
+                "reference": "1fe16afd6f8363e37c8828205f80f34f9a73d34c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SkyWalkerGhost/laravel-validation-rule/zipball/1fe16afd6f8363e37c8828205f80f34f9a73d34c",
+                "reference": "1fe16afd6f8363e37c8828205f80f34f9a73d34c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0|^7.4"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^12.0",
+                "larastan/larastan": "^2.0",
+                "laravel/pint": "^1.0",
+                "nikic/php-parser": "^4.19.1",
+                "orchestra/testbench": "^7.33.0 || ^8.13.0 || ^9.0.3",
+                "squizlabs/php_codesniffer": "^3.7"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Shergela\\Validations\\ShergelaValidationsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Shergela\\Validations\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Avto Shergelashvili",
+                    "email": "avtoshergelashvili11@gmail.com"
+                }
+            ],
+            "description": "Build custom laravel validation rules easily",
+            "support": {
+                "issues": "https://github.com/SkyWalkerGhost/laravel-validation-rule/issues",
+                "source": "https://github.com/SkyWalkerGhost/laravel-validation-rule/tree/v1.0.5"
+            },
+            "time": "2024-08-30T12:42:44+00:00"
         },
         {
             "name": "spatie/laravel-permission",

@@ -90,9 +90,13 @@
                 <label for="children_dob_{{ $index }}" class="form-label">Date of Birth</label>
                 <input type="date" class="form-control" id="children_dob_{{ $index }}" wire:model="children.{{ $index }}.children_dob">
             </div>
-            <div class="col-md-4 justify-content-end mt-5">
-                <button type="button" class="btn btn-danger" wire:click.prevent="removeChildren({{ $index }})">Delete</button>
-            </div>
+
+            @if( $index > 0)
+                <div class="col-md-4 justify-content-end mt-5">
+                    <button type="button" class="btn btn-danger" wire:click.prevent="removeChildren({{ $index }})">Delete</button>
+                </div>
+              @endif
+
         </div>
     @endforeach
 

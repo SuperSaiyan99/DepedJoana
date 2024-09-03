@@ -25,7 +25,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="p-3">
-                                <h3 class="text-center">Application Process</h3>
+                                <h3 class="text-center">Unique Application Number #<strong><i>{{ 339 }}</i></strong></h3>
                                 <div id="stepper1" class="bs-stepper linear">
                                     <div class="bs-stepper-header" role="tablist">
                                         <div class="step active" data-target="#test-l-1">
@@ -81,11 +81,25 @@
 
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
+    <script src="https://www.wpromotions.eu/confetti.min.js"></script>
+
 
     <script>
+
+        let firstTime = localStorage.getItem("confetti_loaded");
+
+        //TODO: If Backend is developed, make a
         document.addEventListener('DOMContentLoaded', function () {
             var stepper = new Stepper(document.querySelector('.bs-stepper'))
+            if (firstTime != 'yes') {
+                // first time loaded!
+                localStorage.setItem("confetti_loaded", "yes");
+                confetti.start()
+                setTimeout(function(){confetti.stop();},3000)
+            }
         })
+
+
     </script>
 @endsection
 

@@ -25,7 +25,7 @@
                     <h4 class="card-title">Document File Upload</h4>
                 </div>
 
-                @livewire('applicant.document-upload-files')
+                @livewire('applicant.tab-contents.document-upload-files')
 
             </div>
         </div>
