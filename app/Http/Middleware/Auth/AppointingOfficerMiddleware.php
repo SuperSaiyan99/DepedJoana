@@ -4,22 +4,26 @@ namespace App\Http\Middleware\Auth;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class AppointingOfficerMiddleware
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
+     *
      */
+
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->role != 'admin') {
-            return redirect()->route('login');
+        if (!auth()->check() || auth()->user()->role !== 'appointing_officer') {
+
+            return redirect()->route('index');
+
         }
 
         return $next($request);
     }
+
 }

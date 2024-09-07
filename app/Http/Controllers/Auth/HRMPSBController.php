@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class HRMPSBController extends Controller
 {
-    public function redirectToAdminHome()
+    public function redirectToHRMPSBHome()
     {
-        return view('admin.home');
+        return view('HRMPSB.home');
     }
 }

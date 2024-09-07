@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,13 +12,20 @@ return new class extends Migration
     {
         Schema::create('applicants', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id')->references('id')->on('users');
+
+            #foreign key for Users table
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
 
         Schema::create('applicant_personal_information', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id')->constrained('applicants')->onDelete('cascade');
+
+            #foreign key for applicants table
+            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+
+
             $table->string('surname');
             $table->string('first_name');
             $table->string('middle_name')->nullable();
@@ -45,7 +51,11 @@ return new class extends Migration
 
         Schema::create('applicant_residential_address', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
+
+            #foreign key for applicants table
+            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+
+
             $table->string('house_number')->nullable();
             $table->string('street');
             $table->string('village');
@@ -58,7 +68,11 @@ return new class extends Migration
 
         Schema::create('applicant_permanent_address', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
+
+            #foreign key for applicants table
+            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+
+
             $table->string('house_number')->nullable();
             $table->string('street');
             $table->string('village');
@@ -71,7 +85,11 @@ return new class extends Migration
 
         Schema::create('applicant_contact_information', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
+
+            #foreign key for applicants table
+            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+
+            
             $table->string('telephone_no')->nullable();
             $table->string('mobile_no')->nullable();
             $table->string('email_address')->nullable();

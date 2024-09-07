@@ -1,4 +1,4 @@
-@extends('HiringBoard.layouts.app')
+@extends('HRMPSB.layouts.app')
 
 @section('content')
     <div class="container">

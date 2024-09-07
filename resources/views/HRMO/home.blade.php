@@ -1,17 +1,17 @@
-@extends('admin.layouts.app')
+@extends('HRMO.layouts.app')
 
 @section('title', 'Dashboard')
 
 @section('header')
-    @include('admin.partials.header')
+    @include('HRMO.partials.header')
 @endsection
 
 @section('sidebar')
-    @include('admin.partials.sidebar')
+    @include('HRMO.partials.sidebar')
 @endsection
 
 @section('left-sidebar')
-    @include('admin.partials.left-sidebar')
+    @include('HRMO.partials.left-sidebar')
 @endsection
 
 

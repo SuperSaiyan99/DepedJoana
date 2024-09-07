@@ -28,21 +28,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if ($request->user()->role == 'superadmin'){
+        if ($request->user()->role == 'superadmin') {
             return redirect('super-admin/home');
-        }
-        else if ($request->user()->role == 'admin'){
-            return redirect('hiring-board/home');
-        }
-        else if ($request->user()->role == 'hiring_board'){
-            return redirect('hiring-board/home');
-        }
-        else if ($request->user()->role == 'applicant'){
+        } else if ($request->user()->role == 'hrmo') {
+            return redirect('management-officer/home');
+        } else if ($request->user()->role == 'hrmpsb') {
+            return redirect('selection-board/home');
+        } else if ($request->user()->role == 'appointing_officer') {
+            return redirect('appointing-officer/home');
+        } else if ($request->user()->role == 'applicant') {
             return redirect('applicant/home');
         }
 
-
-        return redirect()->intended(route('login'));
+        return redirect()->intended(route('/'));
     }
 
     /**

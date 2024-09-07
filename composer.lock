@@ -3625,16 +3625,16 @@
         },
         {
             "name": "shergela/validation-rule",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SkyWalkerGhost/laravel-validation-rule.git",
-                "reference": "1fe16afd6f8363e37c8828205f80f34f9a73d34c"
+                "reference": "7933938c510ff8d6af31e16afe928f4a1106ccc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SkyWalkerGhost/laravel-validation-rule/zipball/1fe16afd6f8363e37c8828205f80f34f9a73d34c",
-                "reference": "1fe16afd6f8363e37c8828205f80f34f9a73d34c",
+                "url": "https://api.github.com/repos/SkyWalkerGhost/laravel-validation-rule/zipball/7933938c510ff8d6af31e16afe928f4a1106ccc6",
+                "reference": "7933938c510ff8d6af31e16afe928f4a1106ccc6",
                 "shasum": ""
             },
             "require": {
@@ -3674,9 +3674,9 @@
             "description": "Build custom laravel validation rules easily",
             "support": {
                 "issues": "https://github.com/SkyWalkerGhost/laravel-validation-rule/issues",
-                "source": "https://github.com/SkyWalkerGhost/laravel-validation-rule/tree/v1.0.5"
+                "source": "https://github.com/SkyWalkerGhost/laravel-validation-rule/tree/v1.0.6"
             },
-            "time": "2024-08-30T12:42:44+00:00"
+            "time": "2024-09-06T10:22:53+00:00"
         },
         {
             "name": "spatie/laravel-permission",

@@ -43,12 +43,6 @@
         <link href="{{ asset('assets2/css/main.css') }}" rel="stylesheet">
     @endif
 
-
-
-
-
-
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>

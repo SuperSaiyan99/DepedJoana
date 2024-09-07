@@ -1,17 +1,17 @@
-@extends('admin.layouts.app')
+@extends('HRMO.layouts.app')
 
 @section('title', 'Manage Users')
 
 @section('header')
-    @include('admin.partials.header')
+    @include('HRMO.partials.header')
 @endsection
 
 @section('sidebar')
-    @include('admin.partials.sidebar')
+    @include('HRMO.partials.sidebar')
 @endsection
 
 @section('left-sidebar')
-    @include('admin.partials.left-sidebar')
+    @include('HRMO.partials.left-sidebar')
 @endsection
 
 @section('css')
@@ -32,12 +32,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0">Manage Applications</h4>
+                        <h4 class="mb-0">Review Application</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Applications</a></li>
-                                <li class="breadcrumb-item active">Manage Applications</li>
+                                <li class="breadcrumb-item active">Review Application</li>
                             </ol>
                         </div>
 

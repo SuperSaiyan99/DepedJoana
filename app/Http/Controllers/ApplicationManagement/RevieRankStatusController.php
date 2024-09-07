@@ -12,11 +12,11 @@ class RevieRankStatusController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role === 'superadmin') {
-            return view('SuperAdmin.review-rank-status');
+        if (auth()->user()->role === 'hrmo') {
+            return view('hrmo.review-rank-status');
         }
 
-        return view('admin.review-rank-status');
+        return view('hrmo.review-rank-status');
     }
 
     /**

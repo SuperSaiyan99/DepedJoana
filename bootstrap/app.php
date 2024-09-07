@@ -15,8 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'applicant' => App\Http\Middleware\Auth\ApplicantMiddleware::class,
             'superadmin' => App\Http\Middleware\Auth\SuperAdminMiddleware::class,
-            'hiring_board' => App\Http\Middleware\Auth\HiringBoardMiddleware::class,
-            'admin' => App\Http\Middleware\Auth\AdminMiddleware::class,
+            'hrmpsb' => App\Http\Middleware\Auth\HRMPSBMiddleware::class,
+            'hrmo' => App\Http\Middleware\Auth\HRMOMiddleware::class,
+            'appointing_officer' => App\Http\Middleware\Auth\AppointingOfficerMiddleware::class,
+
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

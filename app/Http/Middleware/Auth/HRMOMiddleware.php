@@ -4,22 +4,23 @@ namespace App\Http\Middleware\Auth;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class HiringBoardMiddleware
+class HRMOMiddleware
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->role != 'hiring_board') {
-            return redirect()->route('login');
+        if (!auth()->check() || auth()->user()->role !== 'hrmo') {
+
+            return redirect()->route('index');
         }
 
         return $next($request);
     }
+
 }

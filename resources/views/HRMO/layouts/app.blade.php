@@ -13,11 +13,16 @@
     <title>@yield('title')</title>
 
     <!-- Bootstrap Css -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css"/>
+    <link href="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/css/bootstrap.min.css" id="bootstrap-style"
+          rel="stylesheet" type="text/css"/>
+
+    <!-- App Css-->
+    <link href="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/css/app.min.css" id="app-style" rel="stylesheet"
+          type="text/css"/>
+
     <!-- Icons Css -->
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
-    <!-- App Css-->
-    <link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css"/>
+
 
     @hasSection('css')
         @yield('css')

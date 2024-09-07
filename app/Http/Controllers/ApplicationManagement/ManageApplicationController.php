@@ -12,11 +12,12 @@ class ManageApplicationController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role == 'superadmin') {
-            return view('Superadmin.manage-users');
+
+        if (auth()->user()->role == 'hrmo') {
+            return view('hrmo.manage-users');
         }
 
-        return view('admin.manage-users');
+        return view('hrmo.manage-users');
     }
 
     /**

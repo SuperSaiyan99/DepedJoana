@@ -78,7 +78,7 @@
                 <div class="card-header">
                     <h4 class="card-title">Personal Data Sheet</h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body shadow p-3 rounded">
 
                     @if (session()->has('message'))
                         <div class="alert alert-success">
@@ -117,9 +117,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="line-reference-tab" data-bs-toggle="pill" href="#line-reference" role="tab" aria-controls="pills-reference" aria-selected="false">References</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="line-documents-tab" data-bs-toggle="pill" href="#line-documents" role="tab" aria-controls="pills-documents" aria-selected="false">Documents</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="line-others2-tab" data-bs-toggle="pill" href="#line-declaration" role="tab" aria-controls="pills-declaration" aria-selected="false">Declaration</a>
@@ -171,21 +168,16 @@
                                 @livewire('applicant.tab-contents.questions-information-form')
 
                         </div>
+
                         <div class="tab-pane fade" id="line-reference" role="tabpanel" aria-labelledby="line-reference-tab">
 
                                 @livewire('applicant.tab-contents.references-information-form')
 
                         </div>
 
-                        <div class="tab-pane fade" id="line-documents" role="tabpanel" aria-labelledby="line-documents-tab">
-
-                            @livewire('applicant.tab-contents.document-upload-files')
-
-                        </div>
-
                         <div class="tab-pane fade" id="line-declaration" role="tabpanel" aria-labelledby="line-declaration-tab">
 
-                                @livewire('applicant.tab-contents.declare-information-form')
+                            @livewire('applicant.tab-contents.declare-information-form')
 
                         </div>
                     </div>

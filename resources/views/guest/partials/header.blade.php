@@ -22,9 +22,10 @@
             @php
                 $roleRoutes = [
                     'applicant' => 'applicant/home',
-                    'admin' => 'admin/home',
                     'superadmin' => 'super-admin/home',
-                    'hiring_board' => 'hiring-board/home',
+                    'hrmpsb' => 'selection-board/home',
+                    'hrmo' => 'management-officer/home',
+                    'appointing_officer' => 'appointing-officer/home',
                   ];
             @endphp
 

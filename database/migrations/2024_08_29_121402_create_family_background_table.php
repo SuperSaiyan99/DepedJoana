@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,7 +14,7 @@ return new class extends Migration
             $table->id();
 
             #foreign key for Applicants table
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
 
             # Spouse Information
             $table->string('spouse_surname')->nullable();
@@ -46,6 +45,9 @@ return new class extends Migration
 
         Schema::create('applicant_children', function (Blueprint $table) {
             $table->id();
+
+            #foreign key for Applicants table
+            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
 
             # Children Information
             $table->json('children')->nullable(); // Store children's names and birthdates as JSON

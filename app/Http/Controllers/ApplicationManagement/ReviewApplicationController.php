@@ -12,11 +12,12 @@ class ReviewApplicationController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role === 'superadmin') {
-            return view('Superadmin.review-application');
+
+        if (auth()->user()->role === 'hrmo') {
+            return view('hrmo.review-application');
         }
 
-        return view('admin.review-application');
+        return view('hrmo.review-application');
     }
 
     /**

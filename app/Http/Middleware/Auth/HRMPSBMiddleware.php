@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ApplicantMiddleware
+class HRMPSBMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,12 +15,10 @@ class ApplicantMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-
-        if (!auth()->check() || auth()->user()->role !== 'applicant') {
+        if (!auth()->check() || auth()->user()->role !== 'hrmpsb') {
             return redirect()->route('index');
         }
 
         return $next($request);
-
     }
 }
