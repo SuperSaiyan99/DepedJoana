@@ -21,7 +21,7 @@
           type="text/css"/>
 
     <!-- Icons Css -->
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ secure_asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
 
 
     @hasSection('css')
@@ -53,20 +53,20 @@
 <!-- end of wrapper-->
 
 <!-- JS -->
-<script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
-<script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-<script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
-<script src="{{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
-<script src="{{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+<script src="{{ secure_asset('assets/libs/jquery/jquery.min.js') }}"></script>
+<script src="{{ secure_asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ secure_asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
+<script src="{{ secure_asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+<script src="{{ secure_asset('assets/libs/node-waves/waves.min.js') }}"></script>
+<script src="{{ secure_asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+<script src="{{ secure_asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
 
 <!-- apexcharts -->
-<script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
+<script src="{{ secure_asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ secure_asset('assets/js/pages/dashboard.init.js') }}"></script>
 
 <!-- App js -->
-<script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ secure_asset('assets/js/app.js') }}"></script>
 
 
 @hasSection('js')

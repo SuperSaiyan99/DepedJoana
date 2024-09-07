@@ -94,7 +94,10 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
             'search_path' => 'public',
-            'sslmode' => 'require',
+            'sslmode' => 'prefer', // or you can set this to 'require' or 'disable' for testing purposes
+            'options' => [
+                PDO::ATTR_EMULATE_PREPARES => true, // Optional, but useful to prevent issues with SSL modes
+            ],
         ],
 
         'sqlsrv' => [
