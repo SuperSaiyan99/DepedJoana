@@ -23,7 +23,6 @@ services:
             - sail
         depends_on:
             - redis
-            - pgsql
     #    mysql:
     #        image: 'mysql/mysql-server:8.0'
     #        ports:
@@ -63,38 +62,41 @@ services:
                 - ping
             retries: 3
             timeout: 5s
-    pgsql:
-        image: 'postgres:15'
-        ports:
-            - '${FORWARD_DB_PORT:-5432}:5432'
-        environment:
-            PGPASSWORD: '${DB_PASSWORD:-secret}'
-            POSTGRES_DB: '${DB_DATABASE}'
-            POSTGRES_USER: '${DB_USERNAME}'
-            POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
-        volumes:
-            - 'sail-pgsql:/var/lib/postgresql/data'
-            - './vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
-        networks:
-            - sail
-        healthcheck:
-            test:
-                - CMD
-                - pg_isready
-                - '-q'
-                - '-d'
-                - '${DB_DATABASE}'
-                - '-U'
-                - '${DB_USERNAME}'
-            retries: 3
-            timeout: 5s
+#    pgsql:
+#        image: 'postgres:15'
+#        ports:
+#            - '${FORWARD_DB_PORT:-5432}:5432'
+#        environment:
+#            PGPASSWORD: '${DB_PASSWORD:-secret}'
+#            POSTGRES_DB: '${DB_DATABASE}'
+#            POSTGRES_USER: '${DB_USERNAME}'
+#            POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+#        volumes:
+#            - 'sail-pgsql:/var/lib/postgresql/data'
+#            - './vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
+#        networks:
+#            - sail
+#        healthcheck:
+#            test:
+#                - CMD
+#                - pg_isready
+#                - '-q'
+#                - '-d'
+#                - '${DB_DATABASE}'
+#                - '-U'
+#                - '${DB_USERNAME}'
+#            retries: 3
+#            timeout: 5s
 networks:
+    default:
+        external: true
     sail:
         driver: bridge
 volumes:
-    sail-mysql:
-        driver: local
+    #    sail-mysql:
+    #        driver: local
     sail-redis:
         driver: local
     sail-pgsql:
         driver: local
+
