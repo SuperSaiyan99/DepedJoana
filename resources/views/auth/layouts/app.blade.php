@@ -12,10 +12,12 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ secure_asset('build/assets/app-BvbiR_Ed.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('build/assets/app-DqUO9DwA.css') }}">
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
+
     @include('auth.layouts.navigation')
 
     <!-- Page Heading -->
@@ -31,6 +33,9 @@
     <main>
         {{ $slot }}
     </main>
+
+
+    <script src="{{ secure_asset('build/assets/app-un4xLOL4.js') }}"></script>
 </div>
 </body>
 </html>
