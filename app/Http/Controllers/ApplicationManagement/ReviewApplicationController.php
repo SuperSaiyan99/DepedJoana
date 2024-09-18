@@ -17,7 +17,7 @@ class ReviewApplicationController extends Controller
             return view('hrmo.review-application');
         }
 
-        return view('hrmo.review-application');
+        return redirect()->route('/');
     }
 
     /**

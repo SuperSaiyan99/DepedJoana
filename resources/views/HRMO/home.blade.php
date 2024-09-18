@@ -6,12 +6,40 @@
     @include('HRMO.partials.header')
 @endsection
 
-@section('sidebar')
-    @include('HRMO.partials.sidebar')
-@endsection
-
 @section('left-sidebar')
     @include('HRMO.partials.left-sidebar')
+@endsection
+
+@section('css')
+    <style>
+        .card {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .text-muted {
+            font-size: 0.9rem;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
 @endsection
 
 
@@ -41,6 +69,8 @@
             </div>
             <!-- end page title -->
 
+
+            <!-- end page title -->
             <div class="row">
                 <div class="col-md-6 col-xl-3">
                     <div class="card">
@@ -49,15 +79,15 @@
                                 <div id="total-revenue-chart"></div>
                             </div>
                             <div>
-                                <h4 class="mb-1 mt-1">$<span data-plugin="counterup">34,152</span></h4>
-                                <p class="text-muted mb-0">Total Revenue</p>
+                                <h4 class="mb-1 mt-1"><span>{{ 6969 }}</span></h4>
+                                <p class="text-muted mb-0">Total Candidates</p>
                             </div>
                             <p class="text-muted mt-3 mb-0"><span class="text-success me-1"><i
-                                        class="mdi mdi-arrow-up-bold me-1"></i>2.65%</span> since last week
-                            </p>
+                                        class="mdi mdi-arrow-up-bold me-1"></i>2.65%</span> since last week </p>
                         </div>
                     </div>
-                </div> <!-- end col-->
+                </div>
+                <!-- end col-->
 
                 <div class="col-md-6 col-xl-3">
                     <div class="card">
@@ -66,15 +96,15 @@
                                 <div id="orders-chart"></div>
                             </div>
                             <div>
-                                <h4 class="mb-1 mt-1"><span data-plugin="counterup">5,643</span></h4>
-                                <p class="text-muted mb-0">Orders</p>
+                                <h4 class="mb-1 mt-1"><span>5,643</span></h4>
+                                <p class="text-muted mb-0">Position Open</p>
                             </div>
                             <p class="text-muted mt-3 mb-0"><span class="text-danger me-1"><i
-                                        class="mdi mdi-arrow-down-bold me-1"></i>0.82%</span> since last week
-                            </p>
+                                        class="mdi mdi-arrow-down-bold me-1"></i>0.82%</span> since last week </p>
                         </div>
                     </div>
-                </div> <!-- end col-->
+                </div>
+                <!-- end col-->
 
                 <div class="col-md-6 col-xl-3">
                     <div class="card">
@@ -83,612 +113,248 @@
                                 <div id="customers-chart"></div>
                             </div>
                             <div>
-                                <h4 class="mb-1 mt-1"><span data-plugin="counterup">45,254</span></h4>
+                                <h4 class="mb-1 mt-1"><span>45,254</span></h4>
                                 <p class="text-muted mb-0">Customers</p>
                             </div>
                             <p class="text-muted mt-3 mb-0"><span class="text-danger me-1"><i
-                                        class="mdi mdi-arrow-down-bold me-1"></i>6.24%</span> since last week
-                            </p>
+                                        class="mdi mdi-arrow-down-bold me-1"></i>6.24%</span> since last week </p>
                         </div>
                     </div>
-                </div> <!-- end col-->
-
+                </div>
+                <!-- end col-->
                 <div class="col-md-6 col-xl-3">
-
                     <div class="card">
                         <div class="card-body">
                             <div class="float-end mt-2">
                                 <div id="growth-chart"></div>
                             </div>
                             <div>
-                                <h4 class="mb-1 mt-1">+ <span data-plugin="counterup">12.58</span>%</h4>
+                                <h4 class="mb-1 mt-1">+ <span>12.58</span>%</h4>
                                 <p class="text-muted mb-0">Growth</p>
                             </div>
                             <p class="text-muted mt-3 mb-0"><span class="text-success me-1"><i
-                                        class="mdi mdi-arrow-up-bold me-1"></i>10.51%</span> since last week
-                            </p>
+                                        class="mdi mdi-arrow-up-bold me-1"></i>10.51%</span> since last week </p>
                         </div>
                     </div>
-                </div> <!-- end col-->
-            </div> <!-- end row-->
+                </div>
+                <!-- end col-->
+            </div>
 
             <div class="row">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end">
-                            <div class="dropdown">
-                                <a class="dropdown-toggle text-reset" href="#" id="dropdownMenuButton5"
-                                   data-bs-toggle="dropdown" aria-haspopup="true"
-                                   aria-expanded="false">
-                                    <span class="fw-semibold">Sort By:</span> <span class="text-muted">Yearly<i
-                                            class="mdi mdi-chevron-down ms-1"></i></span>
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-end"
-                                     aria-labelledby="dropdownMenuButton5">
-                                    <a class="dropdown-item" href="#">Monthly</a>
-                                    <a class="dropdown-item" href="#">Yearly</a>
-                                    <a class="dropdown-item" href="#">Weekly</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="card-title mb-4">Sales Analytics</h4>
-
-                        <div class="mt-1">
-                            <ul class="list-inline main-chart mb-0">
-                                <li class="list-inline-item chart-border-left me-0 border-0">
-                                    <h3 class="text-primary">$<span data-plugin="counterup">2,371</span><span
-                                            class="text-muted d-inline-block font-size-15 ms-3">Income</span>
-                                    </h3>
-                                </li>
-                                <li class="list-inline-item chart-border-left me-0">
-                                    <h3><span data-plugin="counterup">258</span><span
-                                            class="text-muted d-inline-block font-size-15 ms-3">Sales</span>
-                                    </h3>
-                                </li>
-                                <li class="list-inline-item chart-border-left me-0">
-                                    <h3><span data-plugin="counterup">3.6</span>%<span
-                                            class="text-muted d-inline-block font-size-15 ms-3">Conversation Ratio</span>
-                                    </h3>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="mt-3">
-                            <div id="sales-analytics-chart" class="apex-charts" dir="ltr"></div>
-                        </div>
-                    </div> <!-- end card-body-->
-                </div> <!-- end card-->
+                <div class="col-xl-7">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Digos City Map</h4>
+                            <p class="card-title-dsec">Candidates Location</p>
+                            <div id="map" style="width: auto; height: 31.25rem"></div>
+                        </div> <!-- end card-body-->
+                    </div> <!-- end card-->
+                </div>
                 <!-- end col-->
 
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end">
-                            <div class="dropdown">
-                                <a class="dropdown-toggle text-reset" href="#" id="dropdownMenuButton1"
-                                   data-bs-toggle="dropdown" aria-haspopup="true"
-                                   aria-expanded="false">
-                                    <span class="fw-semibold">Sort By:</span> <span class="text-muted">Yearly<i
-                                            class="mdi mdi-chevron-down ms-1"></i></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end"
-                                     aria-labelledby="dropdownMenuButton1">
-                                    <a class="dropdown-item" href="#">Monthly</a>
-                                    <a class="dropdown-item" href="#">Yearly</a>
-                                    <a class="dropdown-item" href="#">Weekly</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h4 class="card-title mb-4">Top Selling Products</h4>
-
-
-                        <div class="row align-items-center g-0 mt-3">
-                            <div class="col-sm-3">
-                                <p class="text-truncate mt-1 mb-0"><i
-                                        class="mdi mdi-circle-medium text-primary me-2"></i> Desktops </p>
-                            </div>
-
-                            <div class="col-sm-9">
-                                <div class="progress mt-1" style="height: 6px;">
-                                    <div class="progress-bar progress-bar bg-primary" role="progressbar"
-                                         style="width: 52%" aria-valuenow="52" aria-valuemin="0"
-                                         aria-valuemax="52">
+                <div class="col-xl-5">
+                    <div class="card h-auto">
+                        <div class="card-body">
+                            <div class="float-end">
+                                <div class="dropdown">
+                                    <a class=" dropdown-toggle" href="#" id="dropdownMenuButton2"
+                                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="text-muted">
+                                            All Members
+                                            <i class="mdi mdi-chevron-down ms-1"></i>
+                                        </span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
+                                        <a class="dropdown-item" href="#">
+                                            Locations
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            Revenue
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            Join Date
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
-                        </div> <!-- end row-->
 
-                        <div class="row align-items-center g-0 mt-3">
-                            <div class="col-sm-3">
-                                <p class="text-truncate mt-1 mb-0"><i
-                                        class="mdi mdi-circle-medium text-info me-2"></i> iPhones </p>
                             </div>
-                            <div class="col-sm-9">
-                                <div class="progress mt-1" style="height: 6px;">
-                                    <div class="progress-bar progress-bar bg-info" role="progressbar"
-                                         style="width: 45%" aria-valuenow="45" aria-valuemin="0"
-                                         aria-valuemax="45">
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-
-                        <div class="row align-items-center g-0 mt-3">
-                            <div class="col-sm-3">
-                                <p class="text-truncate mt-1 mb-0"><i
-                                        class="mdi mdi-circle-medium text-success me-2"></i> Android </p>
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="progress mt-1" style="height: 6px;">
-                                    <div class="progress-bar progress-bar bg-success" role="progressbar"
-                                         style="width: 48%" aria-valuenow="48" aria-valuemin="0"
-                                         aria-valuemax="48">
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-
-                        <div class="row align-items-center g-0 mt-3">
-                            <div class="col-sm-3">
-                                <p class="text-truncate mt-1 mb-0"><i
-                                        class="mdi mdi-circle-medium text-warning me-2"></i> Tablets </p>
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="progress mt-1" style="height: 6px;">
-                                    <div class="progress-bar progress-bar bg-warning" role="progressbar"
-                                         style="width: 78%" aria-valuenow="78" aria-valuemin="0"
-                                         aria-valuemax="78">
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-
-                        <div class="row align-items-center g-0 mt-3">
-                            <div class="col-sm-3">
-                                <p class="text-truncate mt-1 mb-0"><i
-                                        class="mdi mdi-circle-medium text-purple me-2"></i> Cables </p>
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="progress mt-1" style="height: 6px;">
-                                    <div class="progress-bar progress-bar bg-purple" role="progressbar"
-                                         style="width: 63%" aria-valuenow="63" aria-valuemin="0"
-                                         aria-valuemax="63">
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-
-                    </div> <!-- end card-body-->
-                </div> <!-- end card-->
-            </div> <!-- end Col -->
-        </div> <!-- end row-->
-
-        <div class="row">
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end">
-                            <div class="dropdown">
-                                <a class=" dropdown-toggle" href="#" id="dropdownMenuButton2"
-                                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="text-muted">All Members<i
-                                                    class="mdi mdi-chevron-down ms-1"></i></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end"
-                                     aria-labelledby="dropdownMenuButton2">
-                                    <a class="dropdown-item" href="#">Locations</a>
-                                    <a class="dropdown-item" href="#">Revenue</a>
-                                    <a class="dropdown-item" href="#">Join Date</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="card-title mb-4">Top Users</h4>
-
-                        <div data-simplebar style="max-height: 336px;">
+                            <h4 class="card-title mb-4">Top Candidates</h4>
                             <div class="table-responsive">
                                 <table class="table table-borderless table-centered table-nowrap">
                                     <tbody>
                                     <tr>
-                                        <td style="width: 20px;"><img src="assets/images/users/avatar-4.jpg"
-                                                                      class="avatar-xs rounded-circle "
-                                                                      alt="..."></td>
-                                        <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Glenn Holden</h6>
-                                            <p class="text-muted font-size-13 mb-0"><i
-                                                    class="mdi mdi-map-marker"></i> Nevada</p>
+                                        <td style="width: 20px;"><img
+                                                src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg"
+                                                class="avatar-xs rounded-circle " alt="...">
                                         </td>
-                                        <td><span class="badge bg-soft-danger font-size-12">Cancel</span></td>
-                                        <td class="text-muted fw-semibold text-end"><i
-                                                class="icon-xs icon me-2 text-success"
-                                                data-feather="trending-up"></i>$250.00
+                                        <td>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
+                                            <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
+                                                Kidapawan City</p>
+                                        </td>
+                                        <td class="font-size-15 mb-1 fw-normal">January 15, 1999</td>
+
+                                        <td><span class="badge bg-soft-danger font-size-12">Senior Developer</span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><img src="assets/images/users/avatar-5.jpg"
-                                                 class="avatar-xs rounded-circle " alt="..."></td>
-                                        <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Lolita Hamill</h6>
-                                            <p class="text-muted font-size-13 mb-0"><i
-                                                    class="mdi mdi-map-marker"></i> Texas</p>
+                                        <td style="width: 20px;"><img
+                                                src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg"
+                                                class="avatar-xs rounded-circle " alt="...">
                                         </td>
-                                        <td><span class="badge bg-soft-success font-size-12">Success</span></td>
-                                        <td class="text-muted fw-semibold text-end"><i
-                                                class="icon-xs icon me-2 text-danger"
-                                                data-feather="trending-down"></i>$110.00
+                                        <td>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
+                                            <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
+                                                Kidapawan City</p>
+                                        </td>
+                                        <td class="font-size-15 mb-1 fw-normal">January 15, 1999</td>
+
+                                        <td><span class="badge bg-soft-danger font-size-12">Senior Developer</span>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20px;"><img
+                                                src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg"
+                                                class="avatar-xs rounded-circle " alt="...">
+                                        </td>
+                                        <td>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
+                                            <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
+                                                Kidapawan City</p>
+                                        </td>
+                                        <td class="font-size-15 mb-1 fw-normal">January 15, 1999</td>
+
+                                        <td><span class="badge bg-soft-danger font-size-12">Senior Developer</span>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20px;"><img
+                                                src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg"
+                                                class="avatar-xs rounded-circle " alt="...">
+                                        </td>
+                                        <td>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
+                                            <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
+                                                Kidapawan City</p>
+                                        </td>
+                                        <td class="font-size-15 mb-1 fw-normal">January 15, 1999</td>
+
+                                        <td><span class="badge bg-soft-danger font-size-12">Senior Developer</span>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20px;"><img
+                                                src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg"
+                                                class="avatar-xs rounded-circle " alt="...">
+                                        </td>
+                                        <td>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
+                                            <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
+                                                Kidapawan City</p>
+                                        </td>
+                                        <td class="font-size-15 mb-1 fw-normal">January 15, 1999</td>
+
+                                        <td><span class="badge bg-soft-danger font-size-12">Senior Developer</span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><img src="assets/images/users/avatar-6.jpg"
-                                                 class="avatar-xs rounded-circle " alt="..."></td>
+                                        <td style="width: 20px;"><img
+                                                src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg"
+                                                class="avatar-xs rounded-circle " alt="...">
+                                        </td>
                                         <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Robert Mercer</h6>
-                                            <p class="text-muted font-size-13 mb-0"><i
-                                                    class="mdi mdi-map-marker"></i> California</p>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
+                                            <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
+                                                Kidapawan City</p>
                                         </td>
-                                        <td><span class="badge bg-soft-info font-size-12">Active</span></td>
-                                        <td class="text-muted fw-semibold text-end"><i
-                                                class="icon-xs icon me-2 text-success"
-                                                data-feather="trending-up"></i>$420.00
+                                        <td class="font-size-15 mb-1 fw-normal">January 15, 1999</td>
+
+                                        <td><span class="badge bg-soft-danger font-size-12">Senior Developer</span>
                                         </td>
+
                                     </tr>
                                     <tr>
-                                        <td><img src="assets/images/users/avatar-7.jpg"
-                                                 class="avatar-xs rounded-circle " alt="..."></td>
+                                        <td style="width: 20px;"><img
+                                                src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg"
+                                                class="avatar-xs rounded-circle " alt="...">
+                                        </td>
                                         <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Marie Kim</h6>
-                                            <p class="text-muted font-size-13 mb-0"><i
-                                                    class="mdi mdi-map-marker"></i> Montana</p>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
+                                            <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
+                                                Kidapawan City</p>
                                         </td>
-                                        <td><span class="badge bg-soft-warning font-size-12">Pending</span></td>
-                                        <td class="text-muted fw-semibold text-end"><i
-                                                class="icon-xs icon me-2 text-danger"
-                                                data-feather="trending-down"></i>$120.00
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="assets/images/users/avatar-8.jpg"
-                                                 class="avatar-xs rounded-circle " alt="..."></td>
-                                        <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Sonya Henshaw</h6>
-                                            <p class="text-muted font-size-13 mb-0"><i
-                                                    class="mdi mdi-map-marker"></i> Colorado</p>
-                                        </td>
-                                        <td><span class="badge bg-soft-info font-size-12">Active</span></td>
-                                        <td class="text-muted fw-semibold text-end"><i
-                                                class="icon-xs icon me-2 text-success"
-                                                data-feather="trending-up"></i>$112.00
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="assets/images/users/avatar-2.jpg"
-                                                 class="avatar-xs rounded-circle " alt="..."></td>
-                                        <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Marie Kim</h6>
-                                            <p class="text-muted font-size-13 mb-0"><i
-                                                    class="mdi mdi-map-marker"></i> Australia</p>
-                                        </td>
-                                        <td><span class="badge bg-soft-success font-size-12">Success</span></td>
-                                        <td class="text-muted fw-semibold text-end"><i
-                                                class="icon-xs icon me-2 text-danger"
-                                                data-feather="trending-down"></i>$120.00
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="assets/images/users/avatar-1.jpg"
-                                                 class="avatar-xs rounded-circle " alt="..."></td>
-                                        <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Sonya Henshaw</h6>
-                                            <p class="text-muted font-size-13 mb-0"><i
-                                                    class="mdi mdi-map-marker"></i> India</p>
-                                        </td>
-                                        <td><span class="badge bg-soft-danger font-size-12">Cancel</span></td>
-                                        <td class="text-muted fw-semibold text-end"><i
-                                                class="icon-xs icon me-2 text-success"
-                                                data-feather="trending-up"></i>$112.00
+                                        <td class="font-size-15 mb-1 fw-normal">January 15, 1999</td>
+
+                                        <td><span class="badge bg-soft-danger font-size-12">Senior Developer</span>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
-                            </div> <!-- enbd table-responsive-->
-                        </div> <!-- data-sidebar-->
-                    </div><!-- end card-body-->
-                </div> <!-- end card-->
-            </div><!-- end col -->
-
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end">
-                            <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" id="dropdownMenuButton3"
-                                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="text-muted">Recent<i
-                                                    class="mdi mdi-chevron-down ms-1"></i></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end"
-                                     aria-labelledby="dropdownMenuButton3">
-                                    <a class="dropdown-item" href="#">Recent</a>
-                                    <a class="dropdown-item" href="#">By Users</a>
-                                </div>
                             </div>
+                            <!-- data-sidebar-->
                         </div>
-
-                        <h4 class="card-title mb-4">Recent Activity</h4>
-
-                        <ol class="activity-feed mb-0 ps-2" data-simplebar style="max-height: 336px;">
-                            <li class="feed-item">
-                                <div class="feed-item-list">
-                                    <p class="text-muted mb-1 font-size-13">Today<small
-                                            class="d-inline-block ms-1">12:20 pm</small></p>
-                                    <p class="mb-0">Andrei Coman magna sed porta finibus, risus
-                                        posted a new article: <span class="text-primary">Forget UX
-                                                            Rowland</span></p>
-                                </div>
-                            </li>
-                            <li class="feed-item">
-                                <p class="text-muted mb-1 font-size-13">22 Jul, 2020 <small
-                                        class="d-inline-block ms-1">12:36 pm</small></p>
-                                <p class="mb-0">Andrei Coman posted a new article: <span
-                                        class="text-primary">Designer Alex</span></p>
-                            </li>
-                            <li class="feed-item">
-                                <p class="text-muted mb-1 font-size-13">18 Jul, 2020 <small
-                                        class="d-inline-block ms-1">07:56 am</small></p>
-                                <p class="mb-0">Zack Wetass, sed porta finibus, risus Chris Wallace
-                                    Commented <span class="text-primary"> Developer Moreno</span></p>
-                            </li>
-                            <li class="feed-item">
-                                <p class="text-muted mb-1 font-size-13">10 Jul, 2020 <small
-                                        class="d-inline-block ms-1">08:42 pm</small></p>
-                                <p class="mb-0">Zack Wetass, Chris combined Commented <span
-                                        class="text-primary">UX Murphy</span></p>
-                            </li>
-
-                            <li class="feed-item">
-                                <p class="text-muted mb-1 font-size-13">23 Jun, 2020 <small
-                                        class="d-inline-block ms-1">12:22 am</small></p>
-                                <p class="mb-0">Zack Wetass, sed porta finibus, risus Chris Wallace
-                                    Commented <span class="text-primary"> Developer Moreno</span></p>
-                            </li>
-                            <li class="feed-item pb-1">
-                                <p class="text-muted mb-1 font-size-13">20 Jun, 2020 <small
-                                        class="d-inline-block ms-1">09:48 pm</small></p>
-                                <p class="mb-0">Zack Wetass, Chris combined Commented <span
-                                        class="text-primary">UX Murphy</span></p>
-                            </li>
-
-                        </ol>
-
+                        <!-- end card-body-->
                     </div>
+                    <!-- end card-->
                 </div>
+
+
             </div>
+        </div> <!-- container-fluid -->
+        <!-- End Page-content -->
 
-        </div>
-        <!-- end row -->
+        @endsection
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Latest Transaction</h4>
-                        <div class="table-responsive">
-                            <table class="table table-centered table-nowrap mb-0">
-                                <thead class="table-light">
-                                <tr>
-                                    <th style="width: 20px;">
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="customCheck1">
-                                            <label class="form-check-label" for="customCheck1">&nbsp;</label>
-                                        </div>
-                                    </th>
-                                    <th>Order ID</th>
-                                    <th>Billing Name</th>
-                                    <th>Date</th>
-                                    <th>Total</th>
-                                    <th>Payment Status</th>
-                                    <th>Payment Method</th>
-                                    <th>View Details</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                                            <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                        </div>
-                                    </td>
-                                    <td><a href="javascript: void(0);" class="text-body fw-bold">#MB2540</a>
-                                    </td>
-                                    <td>Neal Matthews</td>
-                                    <td>
-                                        07 Oct, 2019
-                                    </td>
-                                    <td>
-                                        $400
-                                    </td>
-                                    <td>
-                                                <span
-                                                    class="badge rounded-pill bg-soft-success font-size-12">Paid</span>
-                                    </td>
-                                    <td>
-                                        <i class="fab fa-cc-mastercard me-1"></i> Mastercard
-                                    </td>
-                                    <td>
-                                        <button type="button"
-                                                class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
-                                            View Details
-                                        </button>
-                                    </td>
-                                </tr>
+        @section('js')
+            <script>
 
-                                <tr>
-                                    <td>
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="customCheck3">
-                                            <label class="form-check-label" for="customCheck3">&nbsp;</label>
-                                        </div>
-                                    </td>
-                                    <td><a href="javascript: void(0);" class="text-body fw-bold">#MB2541</a>
-                                    </td>
-                                    <td>Jamal Burnett</td>
-                                    <td>
-                                        07 Oct, 2019
-                                    </td>
-                                    <td>
-                                        $380
-                                    </td>
-                                    <td>
-                                                <span
-                                                    class="badge rounded-pill bg-soft-danger font-size-12">Chargeback</span>
-                                    </td>
-                                    <td>
-                                        <i class="fab fa-cc-visa me-1"></i> Visa
-                                    </td>
-                                    <td>
-                                        <button type="button"
-                                                class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
-                                            View Details
-                                        </button>
-                                    </td>
-                                </tr>
+                // Initialize the map and set view to Digos City
+                var map = L.map('map').setView([6.8022, 125.3573], 12);  // 13 is a zoom level that will show city-level detail
 
-                                <tr>
-                                    <td>
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="customCheck4">
-                                            <label class="form-check-label" for="customCheck4">&nbsp;</label>
-                                        </div>
-                                    </td>
-                                    <td><a href="javascript: void(0);" class="text-body fw-bold">#MB2542</a>
-                                    </td>
-                                    <td>Juan Mitchell</td>
-                                    <td>
-                                        06 Oct, 2019
-                                    </td>
-                                    <td>
-                                        $384
-                                    </td>
-                                    <td>
-                                                <span
-                                                    class="badge rounded-pill bg-soft-success font-size-12">Paid</span>
-                                    </td>
-                                    <td>
-                                        <i class="fab fa-cc-paypal me-1"></i> Paypal
-                                    </td>
-                                    <td>
-                                        <button type="button"
-                                                class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
-                                            View Details
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="customCheck5">
-                                            <label class="form-check-label" for="customCheck5">&nbsp;</label>
-                                        </div>
-                                    </td>
-                                    <td><a href="javascript: void(0);" class="text-body fw-bold">#MB2543</a>
-                                    </td>
-                                    <td>Barry Dick</td>
-                                    <td>
-                                        05 Oct, 2019
-                                    </td>
-                                    <td>
-                                        $412
-                                    </td>
-                                    <td>
-                                                <span
-                                                    class="badge rounded-pill bg-soft-success font-size-12">Paid</span>
-                                    </td>
-                                    <td>
-                                        <i class="fab fa-cc-mastercard me-1"></i> Mastercard
-                                    </td>
-                                    <td>
-                                        <button type="button"
-                                                class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
-                                            View Details
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="customCheck6">
-                                            <label class="form-check-label" for="customCheck6">&nbsp;</label>
-                                        </div>
-                                    </td>
-                                    <td><a href="javascript: void(0);" class="text-body fw-bold">#MB2544</a>
-                                    </td>
-                                    <td>Ronald Taylor</td>
-                                    <td>
-                                        04 Oct, 2019
-                                    </td>
-                                    <td>
-                                        $404
-                                    </td>
-                                    <td>
-                                                <span
-                                                    class="badge rounded-pill bg-soft-warning font-size-12">Refund</span>
-                                    </td>
-                                    <td>
-                                        <i class="fab fa-cc-visa me-1"></i> Visa
-                                    </td>
-                                    <td>
-                                        <button type="button"
-                                                class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
-                                            View Details
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="customCheck7">
-                                            <label class="form-check-label" for="customCheck7">&nbsp;</label>
-                                        </div>
-                                    </td>
-                                    <td><a href="javascript: void(0);" class="text-body fw-bold">#MB2545</a>
-                                    </td>
-                                    <td>Jacob Hunter</td>
-                                    <td>
-                                        04 Oct, 2019
-                                    </td>
-                                    <td>
-                                        $392
-                                    </td>
-                                    <td>
-                                                <span
-                                                    class="badge rounded-pill bg-soft-success font-size-12">Paid</span>
-                                    </td>
-                                    <td>
-                                        <i class="fab fa-cc-paypal me-1"></i> Paypal
-                                    </td>
-                                    <td>
-                                        <button type="button"
-                                                class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
-                                            View Details
-                                        </button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- end table-responsive -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end row -->
+                // Add OpenStreetMap tiles
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
 
-    </div> <!-- container-fluid -->
-    </div>
-    <!-- End Page-content -->
+                var barangays = [
+                    {name: "Aplaya", latLng: [6.73587, 125.37752]}, //
+                    {name: "Balabag", latLng: [6.81326, 125.27761]},//
+                    {name: "San Jose (Balutakay)", latLng: [6.7333747, 125.3549172]}, //
+                    {name: "Binaton", latLng: [6.83721, 125.35237]},//
+                    {name: "Cogon", latLng: [6.7598834, 125.3707074]},//
+                    {name: "Colorado", latLng: [6.7600511, 125.2932735]},//
+                    {name: "Dawis", latLng: [6.7293250, 125.3641502]},//
+                    {name: "Dulangan", latLng: [6.8005714, 125.3100492]},//
+                    {name: "Goma", latLng: [6.81275, 125.28671]},//
+                    {name: "Igpit", latLng: [6.7338200, 125.3284400]},
+                    {name: "Kiagot", latLng: [6.7729952, 125.3641772]},
+                    {name: "Lungag", latLng: [6.7915786, 125.2762655]},
+                    {name: "Mahayahay", latLng: [6.7993183, 125.2908848]},
+                    {name: "Matti", latLng: [6.7677750, 125.3061960]},
+                    {name: "Kapatagan (Rizal)", latLng: [6.9281, 125.3430]},
+                    {name: "Ruparan", latLng: [6.7796847, 125.3305705]},
+                    {name: "San Agustin", latLng: [6.7684372, 125.3209376]},
+                    {name: "San Miguel (Odaca)", latLng: [6.73545, 125.34585]},
+                    {name: "San Roque", latLng: [6.79877, 125.34722]},
+                    {name: "Sinawilan", latLng: [6.7699344, 125.3827357]},
+                    {name: "Soong", latLng: [6.8135786, 125.3550978]},
+                    {name: "Tiguman", latLng: [6.7577423, 125.3221418]},
+                    {name: "Tres De Mayo", latLng: [6.7648775, 125.3334187]},
+                    {name: "Zone 1 (Pob.)", latLng: [6.7581506, 125.3561389]},
+                    {name: "Zone 2 (Pob.)", latLng: [6.7512212, 125.3557393]},
+                    {name: "Zone 3", latLng: [6.7448059, 125.3555475]}
+                ];
 
+
+                // TODO: FOREACH PHP DATA HERE INSTEAD OF JS FOREACH
+                barangays.forEach(function (barangay) {
+                    L.marker(barangay.latLng).addTo(map)
+                        .bindPopup('Total applicants of ' + barangay.name + ' : 9000');
+                });
+
+            </script>
 @endsection

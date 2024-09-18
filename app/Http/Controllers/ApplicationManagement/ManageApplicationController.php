@@ -14,10 +14,10 @@ class ManageApplicationController extends Controller
     {
 
         if (auth()->user()->role == 'hrmo') {
-            return view('hrmo.manage-users');
+            return view('hrmo.manage-application');
         }
 
-        return view('hrmo.manage-users');
+        return redirect()->route('/');
     }
 
     /**

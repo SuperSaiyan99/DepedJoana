@@ -12,11 +12,11 @@ class ApplicantTrackingController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role === 'superadmin') {
-            return view('Superadmin.applicant-tracking');
+        if (auth()->user()->role === 'hrmo') {
+            return view('HRMO.applicant-tracking');
         }
 
-        return view('admin.applicant-tracking');
+        return redirect()->route('/');
     }
 
     /**

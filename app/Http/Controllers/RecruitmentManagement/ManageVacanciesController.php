@@ -12,11 +12,11 @@ class ManageVacanciesController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role === 'superadmin') {
-            return view('Superadmin.manage-vacancies');
+        if (auth()->user()->role === 'hrmo') {
+            return view('hrmo.manage-vacancies');
         }
 
-        return view('admin.manage-vacancies');
+        return redirect()->route('/');
     }
 
     /**

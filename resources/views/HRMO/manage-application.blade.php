@@ -6,21 +6,12 @@
     @include('HRMO.partials.header')
 @endsection
 
-@section('sidebar')
-    @include('HRMO.partials.sidebar')
-@endsection
-
 @section('left-sidebar')
     @include('HRMO.partials.left-sidebar')
 @endsection
 
 @section('css')
-    <link href="{{ secure_asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{ secure_asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{ secure_asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
-          rel="stylesheet" type="text/css"/>
+
 @endsection
 
 
@@ -35,98 +26,134 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0">Manage Applications</h4>
-
-                        <div class="page-title-right">
+                        <h4 class="mb-0">Review Candidates</h4>
+                        <div class="page-title-right d-flex align-items-center">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Applications</a></li>
-                                <li class="breadcrumb-item active">Manage Applications</li>
+                                <li class="breadcrumb-item active">Review Application</li>
                             </ol>
                         </div>
-
+                    </div>
+                    <div class="d-flex align-items-end">
+                        <button class="btn btn-primary ml-3">Add Job Posting</button>
                     </div>
                 </div>
             </div>
             <!-- end page title -->
 
+            <div class="col-12">
+                <!-- Add Button -->
+
+                <!-- Filter and Sort by section -->
+                <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-search m-2"></i>
+                        <label for="filter" class="m-2">Filter by</label>
+                        <select id="filter" class="form-select form-select-sm" style="width: auto;">
+                            <option selected>All (19)</option>
+                            <option value="1">Active</option>
+                            <option value="2">Closed</option>
+                            <option value="3">Pending</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort by section -->
+                    <div class="d-flex align-items-center">
+                        <label for="sort" class="me-2">Sort by</label>
+                        <select id="sort" class="form-select form-select-sm" style="width: auto;">
+                            <option selected>Latest published</option>
+                            <option value="1">Oldest published</option>
+                            <option value="2">A-Z</option>
+                            <option value="3">Z-A</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--[contents here]-->
             <div class="row">
-                <div class="col-12">
-                    <div class="card">
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <img src="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/images/kinder.png"
+                             class="card-img-top" alt="green iguana"/>
                         <div class="card-body">
-                            <div class="justify-content-start">
-                                <button type="button" class="btn btn-primary waves-effect waves-light"><i
-                                        class="mdi mdi-account-edit"></i> Add Roles
-                                </button>
-                                <button type="button" class="btn btn-info waves-effect waves-light"><i
-                                        class="mdi mdi-account-edit"></i> Add Permissions
-                                </button>
+                            <h4>Teacher 1 - Kindergarten</h4>
+                            <p class="card-text">
+                            <p>hey sould sister</p>
+                            <div>
+                                <button class="btn btn-primary w-100" type="button">Share</button>
                             </div>
-                            <br>
-                            <table id="datatable" class="table table-striped table-bordered dt-responsive "
-                                   style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Roles</th>
-                                    <th>Permissions</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Admin</td>
-                                    <td>Create, Read, Update, Delete</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger waves-effect waves-light"><i
-                                                class="mdi mdi-trash-can-outline"></i></button>
-                                        <button type="button" class="btn btn-info waves-effect waves-light"><i
-                                                class="mdi mdi-account-edit"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>SuperAdmin</td>
-                                    <td>Create, Read, Update, Delete</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger waves-effect waves-light"><i
-                                                class="mdi mdi-trash-can-outline"></i></button>
-                                        <button type="button" class="btn btn-info waves-effect waves-light"><i
-                                                class="mdi mdi-account-edit"></i></button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
-                </div> <!-- end col -->
-            </div> <!-- end row -->
+                </div>
 
-        </div> <!-- container-fluid -->
-    </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/images/kinder.png"
+                             class="card-img-top" alt="green iguana"/>
+                        <div class="card-body">
+                            <h4>Teacher 1 - Kindergarten</h4>
+                            <p class="card-text">
+                            <p>hey sould sister</p>
+                            <div>
+                                <button class="btn btn-primary w-100" type="button">Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/images/kinder.png"
+                             class="card-img-top" alt="green iguana"/>
+                        <div class="card-body">
+                            <h4>Teacher 1 - Kindergarten</h4>
+                            <p class="card-text">
+                            <p>hey sould sister</p>
+                            <div>
+                                <button class="btn btn-primary w-100" type="button">Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/images/kinder.png"
+                             class="card-img-top" alt="green iguana"/>
+                        <div class="card-body">
+                            <h4>Teacher 1 - Kindergarten</h4>
+                            <p class="card-text">
+                            <p>hey sould sister</p>
+                            <div>
+                                <button class="btn btn-primary w-100" type="button">Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/images/kinder.png"
+                             class="card-img-top" alt="green iguana"/>
+                        <div class="card-body">
+                            <h4>Teacher 1 - Kindergarten</h4>
+                            <p class="card-text">
+                            <p>hey sould sister</p>
+                            <div>
+                                <button class="btn btn-primary w-100" type="button">Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
 @endsection
 
 
 @section('js')
-    <!-- Required datatable js -->
-    <script src="{{ secure_asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <!-- Buttons examples -->
-    <script src="{{ secure_asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/jszip/jszip.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
 
-    <!-- Responsive examples -->
-    <script src="{{ secure_asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script
-        src="{{ secure_asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
-
-    <!-- Datatable init js -->
-    <script src="{{ secure_asset('assets/js/pages/datatables.init.js') }}"></script>
 @endsection

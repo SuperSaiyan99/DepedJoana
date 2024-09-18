@@ -6,21 +6,22 @@
     @include('HRMO.partials.header')
 @endsection
 
-@section('sidebar')
-    @include('HRMO.partials.sidebar')
-@endsection
-
 @section('left-sidebar')
     @include('HRMO.partials.left-sidebar')
 @endsection
 
 @section('css')
-    <link href="{{ secure_asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{ secure_asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{ secure_asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
-          rel="stylesheet" type="text/css"/>
+    <style>
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: black; /* Change the icon background to black */
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            filter: invert(1); /* Invert the icon color if needed */
+        }
+    </style>
 @endsection
 
 
@@ -35,98 +36,278 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0">Review Application</h4>
-
+                        <h4 class="mb-0">Review Candidates</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Applications</a></li>
                                 <li class="breadcrumb-item active">Review Application</li>
                             </ol>
                         </div>
-
                     </div>
                 </div>
             </div>
             <!-- end page title -->
 
+            <div class="col-12">
+                <!-- Filter and Sort by section -->
+                <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+                    <!-- Filter by section -->
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-search m-2"></i>
+                        <label for="filter" class="m-2">Filter by</label>
+                        <select id="filter" class="form-select form-select-sm" style="width: auto;">
+                            <option selected>All (19)</option>
+                            <option value="1">Active</option>
+                            <option value="2">Closed</option>
+                            <option value="3">Pending</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort by section -->
+                    <div class="d-flex align-items-center">
+                        <label for="sort" class="me-2">Sort by</label>
+                        <select id="sort" class="form-select form-select-sm" style="width: auto;">
+                            <option selected>Latest published</option>
+                            <option value="1">Oldest published</option>
+                            <option value="2">A-Z</option>
+                            <option value="3">Z-A</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--[contents here]-->
             <div class="row">
-                <div class="col-12">
+                <!-- Sidebar for candidates -->
+                <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <div class="justify-content-start">
-                                <button type="button" class="btn btn-primary waves-effect waves-light"><i
-                                        class="mdi mdi-account-edit"></i> Add Roles
-                                </button>
-                                <button type="button" class="btn btn-info waves-effect waves-light"><i
-                                        class="mdi mdi-account-edit"></i> Add Permissions
-                                </button>
+                            <ul class="nav nav-tabs nav-line nav-color-secondary" id="line-tab" role="tablist">
+                                <li class="nav-item submenu" role="presentation">
+                                    <a class="nav-link active" id="" data-bs-toggle="pill"
+                                       href="" role="tab" aria-controls="pills-home"
+                                       aria-selected="true">Qualified</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content mt-3 mb-3" id="line-tabContent">
+                                <div class="tab-pane fade active show" id="" role="tabpanel"
+                                     aria-labelledby="line-home-tab">
+                                    <div class="list-group">
+
+                                        <!--[TODO: CHANGE INTO FOREACH]--->
+                                        @for($x = 0; $x <= 5; $x++)
+                                            <!-- item -->
+                                            <div
+                                                class="list-group-item list-group-item-action d-flex align-items-center mb-2">
+                                                <input class="form-check-input me-2" type="checkbox">
+                                                <img src="https://via.placeholder.com/60" alt="Jenny Wilson">
+                                                <div class="ms-3">
+                                                    <h6 class="mb-0">Jenny Wilson</h6>
+                                                    <small>Senior Design Lead at IDEO</small>
+                                                    <div class="tags mt-1">
+                                                        <span>media</span>
+                                                        <span>creative</span>
+                                                        <span>agency</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endfor
+                                    </div>
+
+                                </div>
+
                             </div>
-                            <br>
-                            <table id="datatable" class="table table-striped table-bordered dt-responsive "
-                                   style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Roles</th>
-                                    <th>Permissions</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Admin</td>
-                                    <td>Create, Read, Update, Delete</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger waves-effect waves-light"><i
-                                                class="mdi mdi-trash-can-outline"></i></button>
-                                        <button type="button" class="btn btn-info waves-effect waves-light"><i
-                                                class="mdi mdi-account-edit"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>SuperAdmin</td>
-                                    <td>Create, Read, Update, Delete</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger waves-effect waves-light"><i
-                                                class="mdi mdi-trash-can-outline"></i></button>
-                                        <button type="button" class="btn btn-info waves-effect waves-light"><i
-                                                class="mdi mdi-account-edit"></i></button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+
                         </div>
                     </div>
-                </div> <!-- end col -->
-            </div> <!-- end row -->
+                </div>
 
-        </div> <!-- container-fluid -->
+                <!-- Main profile section -->
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body" style="height: 70vh; overflow-y: auto;">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h1>Applicant #69</h1>
+                                <div class="p-2">
+                                    <div class="btn btn-success mr-2"><i class="fa fa-check"></i> Qualified</div>
+                                    <div class="btn btn-danger"><i class="fa fa-ban"></i> Disqualified</div>
+                                </div>
+
+                            </div>
+                            <hr>
+                            <div class="d-flex align-items-center">
+                                <img src="https://picsum.photos/id/64/80" alt="Jenny Wilson">
+                                <div class="ms-3">
+                                    <h4 class="mb-0">Osama bin Laden</h4>
+                                    <p class="mb-0">Leader at Al-Qaeda</p>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <h5>About</h5>
+                            <p>
+                                My work lies at the intersection of design thinking and social impact. I am driven
+                                by my desire to help communities lead healthy, fulfilling lives.
+                                I leverage design research to unearth best practices, reveal hidden patterns, and
+                                uncover untold stories.
+                            </p>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5>Personal Data Sheet</h5>
+                            </div>
+                            <div class="timeline-item mt-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="row">
+                                        <div class="mb-3">
+                                            <ul class="nav nav-tabs nav-line nav-color-secondary" id="line-tab"
+                                                role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="line-home-tab" data-bs-toggle="pill"
+                                                       href="#line-home" role="tab" aria-controls="pills-home"
+                                                       aria-selected="true">Personal</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="line-family-tab" data-bs-toggle="pill"
+                                                       href="#line-family" role="tab" aria-controls="pills-family"
+                                                       aria-selected="false">Family</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="line-education-tab" data-bs-toggle="pill"
+                                                       href="#line-education" role="tab" aria-controls="pills-education"
+                                                       aria-selected="false">Education</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="line-eligibility-tab" data-bs-toggle="pill"
+                                                       href="#line-eligibility" role="tab"
+                                                       aria-controls="pills-eligibility" aria-selected="false">Eligibility/Qualification</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="line-work-experience-tab"
+                                                       data-bs-toggle="pill" href="#line-work-experience" role="tab"
+                                                       aria-controls="pills-work-experience" aria-selected="false">Work
+                                                        Experience</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="line-volunteer-tab" data-bs-toggle="pill"
+                                                       href="#line-volunteer" role="tab" aria-controls="pills-volunteer"
+                                                       aria-selected="false">Volunteer</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="line-training-tab" data-bs-toggle="pill"
+                                                       href="#line-training" role="tab" aria-controls="pills-training"
+                                                       aria-selected="false">Training</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="line-others-tab" data-bs-toggle="pill"
+                                                       href="#line-others" role="tab" aria-controls="pills-others"
+                                                       aria-selected="false">Others</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="line-questions-tab" data-bs-toggle="pill"
+                                                       href="#line-questions" role="tab" aria-controls="pills-questions"
+                                                       aria-selected="false">Questions</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="line-reference-tab" data-bs-toggle="pill"
+                                                       href="#line-reference" role="tab" aria-controls="pills-reference"
+                                                       aria-selected="false">References</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="line-others2-tab" data-bs-toggle="pill"
+                                                       href="#line-declaration" role="tab"
+                                                       aria-controls="pills-declaration" aria-selected="false">Declaration</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-7 col-md-8">
+                                            <div class="tab-content mt-3 mb-3" id="line-tabContent">
+                                                <div class="tab-pane fade show active" id="line-home" role="tabpanel"
+                                                     aria-labelledby="line-home-tab">
+
+                                                    <p>soon here</p>
+                                                </div>
+                                                <div class="tab-pane fade" id="line-family" role="tabpanel"
+                                                     aria-labelledby="line-family-tab">
+
+                                                    <p>soon here</p>
+                                                </div>
+                                                <div class="tab-pane fade" id="line-education" role="tabpanel"
+                                                     aria-labelledby="line-education-tab">
+
+                                                    <p>soon here</p>
+                                                </div>
+                                                <div class="tab-pane fade" id="line-eligibility" role="tabpanel"
+                                                     aria-labelledby="line-eligibility-tab">
+
+                                                    <p>soon here</p>
+                                                </div>
+                                                <div class="tab-pane fade" id="line-work-experience" role="tabpanel"
+                                                     aria-labelledby="line-work-experience-tab">
+
+                                                    <p>soon here</p>
+                                                </div>
+                                                <div class="tab-pane fade" id="line-volunteer" role="tabpanel"
+                                                     aria-labelledby="line-volunteer-tab">
+
+                                                    <p>soon here</p>
+                                                </div>
+                                                <div class="tab-pane fade" id="line-training" role="tabpanel"
+                                                     aria-labelledby="line-training-tab">
+
+                                                    <p>soon here</p>
+                                                </div>
+                                                <div class="tab-pane fade" id="line-others" role="tabpanel"
+                                                     aria-labelledby="line-others-tab">
+
+                                                    <p>soon here</p>
+                                                </div>
+                                                <div class="tab-pane fade" id="line-questions" role="tabpanel"
+                                                     aria-labelledby="line-questions-tab">
+
+                                                    <p>soon here</p>
+                                                </div>
+
+                                                <div class="tab-pane fade" id="line-reference" role="tabpanel"
+                                                     aria-labelledby="line-reference-tab">
+
+                                                    <p>soon here</p>
+                                                </div>
+
+                                                <div class="tab-pane fade" id="line-declaration" role="tabpanel"
+                                                     aria-labelledby="line-declaration-tab">
+
+                                                    <p>soon here</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+
+                            
+                            <!-- TODO: ADD MORE ITEMS-->
+                            <h5>Uploaded Documents</h5>
+
+                            @livewire('management-office.pdf-carousel')
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
     </div>
 
 @endsection
 
 
 @section('js')
-    <!-- Required datatable js -->
-    <script src="{{ secure_asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <!-- Buttons examples -->
-    <script src="{{ secure_asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/jszip/jszip.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ secure_asset('assets/libs/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
 
-    <!-- Responsive examples -->
-    <script src="{{ secure_asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script
-        src="{{ secure_asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
 
-    <!-- Datatable init js -->
-    <script src="{{ secure_asset('assets/js/pages/datatables.init.js') }}"></script>
 @endsection

@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     return view('guest.welcome');
@@ -43,15 +45,37 @@ Route::group(['middleware' => ['auth', 'hrmpsb'], 'prefix' => 'selection-board']
 Route::group(['middleware' => ['auth', 'hrmo'], 'prefix' => 'management-officer'], function () {
 
     #Middleware Redirect Controller
-    Route::get('/home', [App\Http\Controllers\Auth\HRMOController::class, 'redirectToHRMOHome'])->name('home');
+    Route::get('/home', [App\Http\Controllers\Auth\HRMOController::class, 'redirectToHRMOHome'])->name('hrmo.home');
 
     # Resources
     Route::resources([
+        #UserManagement
         'manage-users' => \App\Http\Controllers\UserManagement\ManageUserController::class,
+        #ApplicationManagement
         'manage-application' => \App\Http\Controllers\ApplicationManagement\ManageApplicationController::class,
         'review-application' => \App\Http\Controllers\ApplicationManagement\ReviewApplicationController::class,
         'review-rank-status' => \App\Http\Controllers\ApplicationManagement\RevieRankStatusController::class,
+        #RecruitmentManagement
+        'manage-vacancies' => App\Http\Controllers\RecruitmentManagement\ManageVacanciesController::class,
+        'applicant-tracking' => App\Http\Controllers\RecruitmentManagement\ApplicantTrackingController::class,
     ]);
+
+    Route::get('/image/{filename}', function ($filename) {
+        // Path to the file in storage
+        $path = storage_path('app/public/pdf-images/' . $filename);
+
+        // Check if the file exists
+        if (!Storage::exists('public/pdf-images/' . $filename) || !file_exists($path)) {
+            abort(404);
+        }
+
+        // Get file content and MIME type
+        $file = file_get_contents($path);
+        $type = mime_content_type($path);
+
+        return Response::make($file, 200)->header('Content-Type', $type);
+    })->name('image');
+
 
 });
 
@@ -69,18 +93,6 @@ Route::group(['middleware' => ['auth', 'superadmin'], 'prefix' => 'super-admin']
     #Middleware Redirect Controller
     Route::get('/home', [App\Http\Controllers\Auth\SuperAdminController::class, 'redirectToSuperAdminHome'])->name('home');
 
-    # Resources
-    Route::resources([
-        #UserManagement
-        'manage-users' => \App\Http\Controllers\UserManagement\ManageUserController::class,
-        #ApplicationManagement
-        'manage-application' => \App\Http\Controllers\ApplicationManagement\ManageApplicationController::class,
-        'review-application' => \App\Http\Controllers\ApplicationManagement\ReviewApplicationController::class,
-        'review-rank-status' => \App\Http\Controllers\ApplicationManagement\RevieRankStatusController::class,
-        #RecruitmentManagement
-        'manage-vacancies' => App\Http\Controllers\RecruitmentManagement\ManageVacanciesController::class,
-        'applicant-tracking' => App\Http\Controllers\RecruitmentManagement\ApplicantTrackingController::class,
-    ]);
 
 });
 

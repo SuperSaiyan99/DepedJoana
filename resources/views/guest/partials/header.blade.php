@@ -30,8 +30,11 @@
             @endphp
 
             @if(isset($roleRoutes[Auth::user()->role]))
-                <a class="btn-getstarted" href="{{ __($roleRoutes[Auth::user()->role]) }}">Dashboard</a>
+                <a class="btn-getstarted" href="{{ __($roleRoutes[Auth::user()->role]) }}">
+                    Dashboard
+                </a>
             @endif
+
         @endguest
 
 

@@ -16,7 +16,7 @@ class RevieRankStatusController extends Controller
             return view('hrmo.review-rank-status');
         }
 
-        return view('hrmo.review-rank-status');
+        return redirect()->route('/');
     }
 
     /**

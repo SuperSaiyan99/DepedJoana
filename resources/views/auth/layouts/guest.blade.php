@@ -12,8 +12,8 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
 
     <!-- Scripts -->
-    <link rel="stylesheet" href="{{ secure_asset('build/assets/app-BvbiR_Ed.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('build/assets/app-DqUO9DwA.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-BvbiR_Ed.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DqUO9DwA.css') }}">
 
 </head>
 <body class="font-sans text-gray-900 antialiased">
@@ -29,6 +29,6 @@
     </div>
 </div>
 
-<script src="{{ secure_asset('build/assets/app-un4xLOL4.js') }}"></script>
+<script src="{{ asset('build/assets/app-un4xLOL4.js') }}"></script>
 </body>
 </html>
