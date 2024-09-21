@@ -15,7 +15,6 @@ class PdfCarousel extends Component
     public function mount()
     {
         // TODO: ADD APPLICANTS ID FOR PDF STORAGE
-        //Ghostscript::setGsPath("C:\Program Files\gs\gs9.24\bin\gswin64c.exe");
         $this->pdfFile = 'J:\laravel-projects\DepedJoana\public\storage\isko.pdf';  // example file path
         $this->convertPdfToImages();
     }

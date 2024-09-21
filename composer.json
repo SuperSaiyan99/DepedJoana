@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "ext-fileinfo": "*",
         "barryvdh/laravel-dompdf": "^3.0",
         "laravel/framework": "^11.9",
         "laravel/socialite": "^5.15",
@@ -17,8 +18,7 @@
         "org_heigl/ghostscript": "^2.4",
         "shergela/validation-rule": "^1.0",
         "spatie/laravel-permission": "^6.9",
-        "spatie/pdf-to-image": "^1.2",
-        "ext-fileinfo": "*"
+        "spatie/pdf-to-image": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",

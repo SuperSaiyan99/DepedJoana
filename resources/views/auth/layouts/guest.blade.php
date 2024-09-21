@@ -12,8 +12,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
 
     <!-- Scripts -->
-    <link rel="stylesheet" href="{{ asset('build/assets/app-BvbiR_Ed.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DqUO9DwA.css') }}">
+    @vite(['resources/js/app.js', 'resources/css/app.css', 'resources/scss/app.scss'])
 
 </head>
 <body class="font-sans text-gray-900 antialiased">
@@ -29,6 +28,5 @@
     </div>
 </div>
 
-<script src="{{ asset('build/assets/app-un4xLOL4.js') }}"></script>
 </body>
 </html>

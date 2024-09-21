@@ -153,9 +153,13 @@
                                 uncover untold stories.
                             </p>
                             <hr>
+
+
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h5>Personal Data Sheet</h5>
                             </div>
+
+
                             <div class="timeline-item mt-3">
                                 <div class="d-flex align-items-center">
                                     <div class="row">
@@ -220,6 +224,8 @@
                                                 </li>
                                             </ul>
                                         </div>
+
+
                                         <div class="col-7 col-md-8">
                                             <div class="tab-content mt-3 mb-3" id="line-tabContent">
                                                 <div class="tab-pane fade show active" id="line-home" role="tabpanel"
@@ -278,19 +284,31 @@
                                                      aria-labelledby="line-declaration-tab">
 
                                                     <p>soon here</p>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <hr>
 
-                            
-                            <!-- TODO: ADD MORE ITEMS-->
-                            <h5>Uploaded Documents</h5>
+                            <div>
+                                <!-- TODO: ADD MORE ITEMS-->
+                                <h5>Uploaded Documents</h5>
 
-                            @livewire('management-office.pdf-carousel')
+                                <p>work experience here</p>
+                                <hr>
+                            </div>
+
+
+                            <div>
+                                <!-- TODO: ADD MORE ITEMS-->
+                                <h5>Uploaded Documents</h5>
+
+                                @livewire('management-office.pdf-carousel')
+                            </div>
 
                         </div>
                     </div>

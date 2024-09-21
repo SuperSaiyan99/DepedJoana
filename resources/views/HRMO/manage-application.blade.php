@@ -57,6 +57,7 @@
                         </select>
                     </div>
 
+
                     <!-- Sort by section -->
                     <div class="d-flex align-items-center">
                         <label for="sort" class="me-2">Sort by</label>
@@ -72,84 +73,11 @@
 
 
             <!--[contents here]-->
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card shadow">
-                        <img src="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/images/kinder.png"
-                             class="card-img-top" alt="green iguana"/>
-                        <div class="card-body">
-                            <h4>Teacher 1 - Kindergarten</h4>
-                            <p class="card-text">
-                            <p>hey sould sister</p>
-                            <div>
-                                <button class="btn btn-primary w-100" type="button">Share</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            @livewire('management-office.job-posting-cards')
 
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/images/kinder.png"
-                             class="card-img-top" alt="green iguana"/>
-                        <div class="card-body">
-                            <h4>Teacher 1 - Kindergarten</h4>
-                            <p class="card-text">
-                            <p>hey sould sister</p>
-                            <div>
-                                <button class="btn btn-primary w-100" type="button">Share</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/images/kinder.png"
-                             class="card-img-top" alt="green iguana"/>
-                        <div class="card-body">
-                            <h4>Teacher 1 - Kindergarten</h4>
-                            <p class="card-text">
-                            <p>hey sould sister</p>
-                            <div>
-                                <button class="btn btn-primary w-100" type="button">Share</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/images/kinder.png"
-                             class="card-img-top" alt="green iguana"/>
-                        <div class="card-body">
-                            <h4>Teacher 1 - Kindergarten</h4>
-                            <p class="card-text">
-                            <p>hey sould sister</p>
-                            <div>
-                                <button class="btn btn-primary w-100" type="button">Share</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/images/kinder.png"
-                             class="card-img-top" alt="green iguana"/>
-                        <div class="card-body">
-                            <h4>Teacher 1 - Kindergarten</h4>
-                            <p class="card-text">
-                            <p>hey sould sister</p>
-                            <div>
-                                <button class="btn btn-primary w-100" type="button">Share</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            
         </div>
+    </div>
 
 @endsection
 

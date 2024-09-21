@@ -19,6 +19,15 @@ return new class extends Migration {
             $table->timestamps();
         });
 
+        Schema::create('applicant_status', function (Blueprint $table) {
+            $table->id();
+
+            #foreign key for Users table
+            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+            $table->enum('status', ['reviewed', 'initial_qualified', 'approved', 'rejected'])->default('reviewed');
+            $table->timestamps();
+        });
+
         Schema::create('applicant_personal_information', function (Blueprint $table) {
             $table->id();
 
@@ -89,7 +98,7 @@ return new class extends Migration {
             #foreign key for applicants table
             $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
 
-            
+
             $table->string('telephone_no')->nullable();
             $table->string('mobile_no')->nullable();
             $table->string('email_address')->nullable();
