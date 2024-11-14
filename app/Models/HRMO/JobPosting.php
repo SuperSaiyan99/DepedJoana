@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models\Manage;
+namespace App\Models\HRMO\Manage;
 
+use Database\Factories\JobPostingFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,5 +28,11 @@ class JobPosting extends Model
         'strand',
         'place_of_assignment', // JSON
         'job_summary',
+        'status'
     ];
+
+    protected static function factory()
+    {
+        return JobPostingFactory::new();
+    }
 }

@@ -109,7 +109,7 @@
                         <a href="" class="text-reset notification-item">
                             <div class="d-flex align-items-start">
                                 <div class="flex-shrink-0 me-3">
-                                    <img src="{{ secure_asset('assets/images/users/avatar-4.jpg') }}"
+                                    <img src="{{ asset('assets/images/users/avatar-4.jpg') }}"
                                          class="rounded-circle avatar-xs"
                                          alt="user-pic">
                                 </div>
@@ -144,7 +144,7 @@
                         <a href="" class="text-reset notification-item">
                             <div class="d-flex align-items-start">
                                 <div class="flex-shrink-0 me-3">
-                                    <img src="{{ secure_asset('assets/images/users/avatar-4.jpg') }}"
+                                    <img src="{{ asset('assets/images/users/avatar-4.jpg') }}"
                                          class="rounded-circle avatar-xs"
                                          alt="user-pic">
                                 </div>
@@ -172,7 +172,7 @@
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user"
-                         src="{{ secure_asset('assets/images/users/avatar-4.jpg') }}"
+                         src="{{ asset('assets/images/users/avatar-4.jpg') }}"
                          alt="Header Avatar">
                     <span class="d-none d-xl-inline-block ms-1 fw-medium font-size-15">Marcus</span>
                     <i class="uil-angle-down d-none d-xl-inline-block font-size-15"></i>
