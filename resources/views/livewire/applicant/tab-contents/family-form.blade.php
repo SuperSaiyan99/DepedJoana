@@ -1,6 +1,8 @@
 <form wire:submit.prevent="save">
     <div class="row g-3">
-        <div class="form-title">Spouse Information</div>
+        <div class="form-header">
+            Spouse's Information
+        </div>
         <div class="col-md-6">
             <label for="spouseSurname" class="form-label">Surname</label>
             <input type="text" class="form-control" id="spouseSurname" wire:model="spouseSurname">
@@ -40,11 +42,11 @@
     </div>
 
     <div class="form-header mt-5">
-        Parent's Information
+        Father's Information
     </div>
     <div class="row g-3">
         <div class="col-md-6">
-            <label for="fatherSurname" class="form-label">Father's Surname</label>
+            <label for="fatherSurname" class="form-label">Surname</label>
             <input type="text" class="form-control" id="fatherSurname" wire:model="fatherSurname">
         </div>
         <div class="col-md-6">
@@ -63,8 +65,11 @@
                 <option value="Sr">Sr</option>
             </select>
         </div>
+        <div class="form-header mt-5">
+            Mother's Information
+        </div>
         <div class="col-md-6">
-            <label for="motherMaidenSurname" class="form-label">Mother's Maiden Name</label>
+            <label for="motherMaidenSurname" class="form-label">Surname</label>
             <input type="text" class="form-control" id="motherMaidenSurname" wire:model="motherMaidenSurname">
         </div>
         <div class="col-md-6">
@@ -84,18 +89,22 @@
         <div class="row g-3" wire:key="child-{{ $index }}">
             <div class="col-md-4">
                 <label for="children_name_{{ $index }}" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="children_name_{{ $index }}" wire:model="children.{{ $index }}.children_name">
+                <input type="text" class="form-control" id="children_name_{{ $index }}"
+                       wire:model="children.{{ $index }}.children_name">
             </div>
             <div class="col-md-4">
                 <label for="children_dob_{{ $index }}" class="form-label">Date of Birth</label>
-                <input type="date" class="form-control" id="children_dob_{{ $index }}" wire:model="children.{{ $index }}.children_dob">
+                <input type="date" class="form-control" id="children_dob_{{ $index }}"
+                       wire:model="children.{{ $index }}.children_dob">
             </div>
 
             @if( $index > 0)
                 <div class="col-md-4 justify-content-end mt-5">
-                    <button type="button" class="btn btn-danger" wire:click.prevent="removeChildren({{ $index }})">Delete</button>
+                    <button type="button" class="btn btn-danger" wire:click.prevent="removeChildren({{ $index }})">
+                        Delete
+                    </button>
                 </div>
-              @endif
+            @endif
 
         </div>
     @endforeach

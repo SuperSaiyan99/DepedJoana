@@ -6,10 +6,6 @@
     @include('SuperAdmin.partials.header')
 @endsection
 
-@section('sidebar')
-    @include('SuperAdmin.partials.sidebar')
-@endsection
-
 @section('left-sidebar')
     @include('SuperAdmin.partials.left-sidebar')
 @endsection
@@ -27,12 +23,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0">Dark Sidebar</h4>
+                        <h4 class="mb-0">Dashboard</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Vertical</a></li>
-                                <li class="breadcrumb-item active">Dark Sidebar</li>
+                                <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                         </div>
 

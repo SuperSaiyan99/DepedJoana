@@ -4,39 +4,69 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <meta content="Joana, Your Portal for a DepEd Job!" name="description"/>
+    <meta content="venzthegreathd" name="author"/>
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link href="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/css/bootstrap.min.css" id="bootstrap-style"
+          rel="stylesheet" type="text/css"/>
 
-    <!-- Scripts -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Icons Css -->
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
 
+    <!-- App Css-->
+    <link href="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/css/app.min.css" id="app-style" rel="stylesheet"
+          type="text/css"/>
+
+
+    @hasSection('css')
+        @yield('css')
+    @endif
 
 </head>
-<body>
-<div id="app">
+<body data-sidebar="dark">
 
-    <main>
+
+<!-- start of wrapper-->
+<div class="layout-wrapper">
+
+    @include('HRMPSB.partials.header')
+
+    @include('HRMPSB.partials.left-sidebar')
+
+
+    <div class="main-content">
         @yield('content')
-    </main>
+    </div>
 
 
 </div>
+<!-- end of wrapper-->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
+<!-- JS -->
+<script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
+<script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+<script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
+<script src="{{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+
+<!-- apexcharts -->
+<script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
+
+<!-- App js -->
+<script src="{{ asset('assets/js/app.js') }}"></script>
+
+
+@hasSection('js')
+    @yield('js')
+@endif
 </body>
 </html>

@@ -36,6 +36,28 @@ return [
     */
 
     'guards' => [
+        'guards' => [
+            'applicant' => [
+                'driver' => 'session',
+                'provider' => 'users',
+            ],
+            'hrmo' => [
+                'driver' => 'session',
+                'provider' => 'users',
+            ],
+            'hrmpsb' => [
+                'driver' => 'session',
+                'provider' => 'users',
+            ],
+            'appointing_officer' => [
+                'driver' => 'session',
+                'provider' => 'users',
+            ],
+            'superadmin' => [
+                'driver' => 'session',
+                'provider' => 'users',
+            ],
+        ],
         'web' => [
             'driver' => 'session',
             'provider' => 'users',

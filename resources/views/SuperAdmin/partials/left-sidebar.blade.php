@@ -13,7 +13,7 @@
                                 </span>
         </a>
 
-        <a href="{{ route('super-admin.home') }}" class="logo logo-light">
+        <a href="" class="logo logo-light">
                                 <span class="logo-sm">
                                     <img src="assets/images/logo-sm.png" alt="" height="22">
                                 </span>
@@ -36,95 +36,26 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="{{ route('super-admin.home') }}">
+                    <a href="">
                         <i class="mdi mdi-home-circle"></i><span class="badge rounded-pill bg-primary float-end">01</span>
                         <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('super-admin.pulse') }}" class="waves-effect">
+                        <i class="mdi mdi-monitor-dashboard"></i>
+                        <span>Monitor Application Performance</span>
                     </a>
                 </li>
 
                 <li class="menu-title">Management</li>
 
                 <li>
-                    <a href="{{ route('super-admin.manage-users.index') }}" class="waves-effect">
+                    <a href="" class="waves-effect">
                         <i class="mdi mdi-account-group"></i>
                         <span>Manage Users</span>
                     </a>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-account-circle"></i>
-                        <span>Applications</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('super-admin.manage-application.index') }}">Manage Applications</a></li>
-                        <li><a href="{{ route('super-admin.review-application.index') }}">Review Applications</a></li>
-                        <li><a href="{{ route('super-admin.review-rank-status.index') }}">Review Ranking Status</a></li>
-                    </ul>
-                </li>
-
-{{--                <li class="menu-title">Recruitment Management</li>--}}
-
-{{--                <li>--}}
-{{--                    <a href="javascript: void(0);" class="has-arrow waves-effect">--}}
-{{--                        <i class="mdi mdi-account-tie"></i>--}}
-{{--                        <span>Vacancy Posting</span>--}}
-{{--                    </a>--}}
-{{--                    <ul class="sub-menu" aria-expanded="false">--}}
-{{--                        <li><a href="{{ route('super-admin.manage-vacancies.index') }}">Manage Vacancies</a></li>--}}
-{{--                        <li><a href="{{ route('super-admin.applicant-tracking.index') }}">Applicant Tracking</a></li>--}}
-
-{{--                    </ul>--}}
-{{--                </li>--}}
-
-{{--                <li class="menu-title">Selection Process:</li>--}}
-
-{{--                <li>--}}
-{{--                    <a href="javascript: void(0);" class="has-arrow waves-effect">--}}
-{{--                        <i class="mdi mdi-account-tie"></i>--}}
-{{--                        <span>Initial Evaluation</span>--}}
-{{--                    </a>--}}
-{{--                    <ul class="sub-menu" aria-expanded="false">--}}
-{{--                        <li><a href="ui-alerts.html">Review Initial Evaluation Results</a></li>--}}
-{{--                        <li><a href="ui-alerts.html">Manage Qualified/Disqualified Applicants</a></li>--}}
-
-{{--                    </ul>--}}
-{{--                </li>--}}
-
-{{--                <li>--}}
-{{--                    <a href="javascript: void(0);" class="has-arrow waves-effect">--}}
-{{--                        <i class="mdi mdi-account-tie"></i>--}}
-{{--                        <span>Comparative Assessment</span>--}}
-{{--                    </a>--}}
-{{--                    <ul class="sub-menu" aria-expanded="false">--}}
-{{--                        <li><a href="ui-alerts.html">Monitor HRMPSB Deliberations</a></li>--}}
-{{--                        <li><a href="ui-alerts.html">Review Comparative Assessment Results</a></li>--}}
-{{--                        <li><a href="ui-alerts.html">Generate CAR/CAR-RQA Reports</a></li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
-
-{{--                <li class="menu-title">Appointment & Placement:</li>--}}
-
-{{--                <li>--}}
-{{--                    <a href="javascript: void(0);" class="has-arrow waves-effect">--}}
-{{--                        <i class="mdi mdi-account-tie"></i>--}}
-{{--                        <span>Placement</span>--}}
-{{--                    </a>--}}
-{{--                    <ul class="sub-menu" aria-expanded="false">--}}
-{{--                        <li><a href="ui-alerts.html">Assign Positions</a></li>--}}
-{{--                        <li><a href="ui-alerts.html">Track Placement History</a></li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-account-tie"></i>
-                        <span>Appointment Approval</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="ui-alerts.html">Review Appointment Recommendations</a></li>
-                        <li><a href="ui-alerts.html">Approve/Reject Appointments</a></li>
-                    </ul>
                 </li>
 
                 <li class="menu-title">Ranking System</li>
@@ -137,7 +68,6 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="ui-alerts.html">Configure Criteria</a></li>
                         <li><a href="ui-alerts.html">Review Ranking Processes</a></li>
-
                     </ul>
                 </li>
 

@@ -1,5 +1,5 @@
 <div>
-    <h4 class="form-header">Work Experience</h4>
+    <h4 class="form-header">Civil Service </h4>
     <form wire:submit.prevent="save">
         @foreach ($eligibilities as $index => $eligibility)
             <h5>Civil Service Eligibility #{{ $index + 1 }}</h5>

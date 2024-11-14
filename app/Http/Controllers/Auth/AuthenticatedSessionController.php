@@ -30,13 +30,17 @@ class AuthenticatedSessionController extends Controller
 
         if ($request->user()->role == 'superadmin') {
             return redirect('super-admin/home');
-        } else if ($request->user()->role == 'hrmo') {
+        }
+        else if ($request->user()->role == 'hrmo') {
             return redirect('management-officer/home');
-        } else if ($request->user()->role == 'hrmpsb') {
+        }
+        else if ($request->user()->role == 'hrmpsb') {
             return redirect('selection-board/home');
-        } else if ($request->user()->role == 'appointing_officer') {
+        }
+        else if ($request->user()->role == 'appointing_officer') {
             return redirect('appointing-officer/home');
-        } else if ($request->user()->role == 'applicant') {
+        }
+        else if ($request->user()->role == 'applicant') {
             return redirect('applicant/home');
         }
 

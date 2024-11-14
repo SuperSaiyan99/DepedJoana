@@ -10,9 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('job_vacancies', function (Blueprint $table) {
+        Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
-            #$table->foreignId('id')->references('id')->on('user')->onDelete('cascade');
+            $table->enum('vacancy_type', ['teaching', 'non-teaching']);
+            $table->enum('school_level', ['kindergarten', 'elementary', 'junior_high_school', 'senior_high_school']);
             $table->string('position_title');
             $table->string('education');
             $table->string('training');
@@ -21,13 +22,24 @@ return new class extends Migration {
             $table->json('plantilla_number');
             $table->string('salary_grade');
             $table->string('monthly_salary');
-            $table->string('number_of_vacancy');
+            $table->integer('number_of_vacancy');
             $table->boolean('is_vacancy_shs');
             $table->json('subject');
             $table->string('track');
             $table->string('strand');
             $table->json('place_of_assignment');
-            $table->string('job_summary');
+            $table->longText('job_summary');
+            $table->enum('status', ['Active', 'Inactive'])->default('active');
+            $table->dateTime('close_date')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('increments_table', function (Blueprint $table) {
+            $table->id();
+            $table->integer('level_increments')->nullable(false);
+            $table->string('from_description')->nullable(false);
+            $table->string('to_description')->nullable(false);
+            $table->enum('increments_type', ['education', 'training', 'experience']);
             $table->timestamps();
         });
     }
@@ -37,6 +49,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_vacancies');
+        Schema::dropIfExists('vacancies');
+        Schema::dropIfExists('increments_table');
+
     }
 };

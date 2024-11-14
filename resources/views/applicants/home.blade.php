@@ -22,7 +22,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Welcome, Joana!</h4>
+                    <h4 class="card-title">Welcome, {{ Auth::user()->name }}!</h4>
                 </div>
 
                 <div class="card-body">

@@ -10,9 +10,9 @@
                 <ul class="nav nav-secondary">
 
                         <li class="nav-item active">
-                            <a href="{{ route('applicants.home') }}">
+                            <a href="{{ route('applicants.applicant-status') }}">
                                 <i class="fas fa-desktop"></i>
-                                <p>Applicant Documents</p>
+                                <p>Applicant Status</p>
                             </a>
                         </li>
                         <li class="nav-section">

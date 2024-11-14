@@ -39,35 +39,4 @@
 @section('js')
     <script src="assets2/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script src="assets2/libs/@chenfengyuan/datepicker/datepicker.min.js"></script>
-
-    <script type="importmap">
-        {
-            "imports": {
-                "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.js",
-                "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.0.0/"
-            }
-        }
-    </script>
-
-    <script type="module">
-        import {
-            ClassicEditor,
-            Essentials,
-            Bold,
-            Italic,
-            Font,
-            Paragraph,
-            Autoformat
-        } from 'ckeditor5';
-
-        ClassicEditor
-            .create( document.querySelector( '#editor' ), {
-                plugins: [ Essentials, Bold, Italic, Font, Paragraph, Autoformat],
-                toolbar: [
-                    'undo', 'redo', '|', 'bold', 'italic', '|',
-                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
-                    'numberedList', 'bulletedList' // No need for the extra `items` property here
-                ]
-            } )
-    </script>
 @endsection

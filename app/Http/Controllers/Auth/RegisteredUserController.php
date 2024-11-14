@@ -27,6 +27,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
@@ -42,10 +43,16 @@ class RegisteredUserController extends Controller
             'provider' => 'website'
         ]);
 
+
+        #Auto add Applicant code and User Id
+        $applicantService = new \App\Services\Applicant\ApplicantService();
+        $applicantService->createApplicantWithCode($user->id);
+
+
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('applicants.home'));
+        return redirect()->route('applicants.home');
     }
 }

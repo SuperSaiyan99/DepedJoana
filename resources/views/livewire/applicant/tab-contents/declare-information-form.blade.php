@@ -1,16 +1,21 @@
 <div>
     <h4 class="form-header">Declaration</h4>
     <form wire:submit.prevent="submit">
+
+        @csrf
+
         <!-- First Row -->
         <div class="row mb-4">
             <div class="col-md-6">
                 <label for="govIssuedID" class="form-label">Government Issued ID</label>
-                <input type="text" class="form-control" id="govIssuedID" wire:model="govIssuedID" placeholder="e.g., Passport, GSIS, SSS, PRC, Driver's License">
+                <input type="text" class="form-control" id="govIssuedID" wire:model="govIssuedID"
+                       placeholder="e.g., Passport, GSIS, SSS, PRC, Driver's License">
                 @error('govIssuedID') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="col-md-6">
                 <label for="idNumber" class="form-label">ID/License/Passport No.</label>
-                <input type="text" class="form-control" id="idNumber" wire:model="idNumber" placeholder="Please indicate ID Number">
+                <input type="text" class="form-control" id="idNumber" wire:model="idNumber"
+                       placeholder="Please indicate ID Number">
                 @error('idNumber') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
         </div>
@@ -24,7 +29,8 @@
             </div>
             <div class="col-md-6">
                 <label for="datePlaceIssued" class="form-label">Date/Place of Issuance</label>
-                <input type="text" class="form-control" id="datePlaceIssued" wire:model="datePlaceIssued" placeholder="Enter Date and Place of Issuance">
+                <input type="text" class="form-control" id="datePlaceIssued" wire:model="datePlaceIssued"
+                       placeholder="Enter Date and Place of Issuance">
                 @error('datePlaceIssued') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
         </div>
@@ -63,7 +69,7 @@
 
         <!-- Submit Button -->
         <div class="d-grid">
-            <button type="submit" class="btn btn-save">Submit</button>
+            <button type="submit" class="btn btn-secondary">Submit</button>
         </div>
     </form>
 

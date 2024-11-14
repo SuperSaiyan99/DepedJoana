@@ -13,6 +13,9 @@
 
     <!-- Scripts -->
     @vite(['resources/js/app.js', 'resources/css/app.css', 'resources/scss/app.scss'])
+    <!-- Scripts -->
+    <link rel="stylesheet" href="{{ asset('build/assets/app-CdFBoCpS.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DqUO9DwA.css') }}">
 
 </head>
 <body class="font-sans text-gray-900 antialiased">
@@ -27,6 +30,8 @@
         {{ $slot }}
     </div>
 </div>
+
+<script>{{ asset('build/assets/app-un4xLOL4.js') }}</script>
 
 </body>
 </html>

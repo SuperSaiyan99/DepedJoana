@@ -2,14 +2,6 @@
 
 @section('title', 'Dashboard')
 
-@section('header')
-    @include('HRMO.partials.header')
-@endsection
-
-@section('left-sidebar')
-    @include('HRMO.partials.left-sidebar')
-@endsection
-
 @section('css')
     <style>
         .card {
@@ -55,12 +47,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0">Dark Sidebar</h4>
+                        <h4 class="mb-0">Dashboard</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Vertical</a></li>
-                                <li class="breadcrumb-item active">Dark Sidebar</li>
+                                <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                         </div>
 
@@ -179,7 +171,7 @@
                                 </div>
 
                             </div>
-                            <h4 class="card-title mb-4">Top Candidates</h4>
+                            <h4 class="card-title mb-4">Hiring Activitiy</h4>
                             <div class="table-responsive">
                                 <table class="table table-borderless table-centered table-nowrap">
                                     <tbody>
@@ -189,7 +181,7 @@
                                                 class="avatar-xs rounded-circle " alt="...">
                                         </td>
                                         <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Juan Makatigbas</h6>
                                             <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
                                                 Kidapawan City</p>
                                         </td>
@@ -204,23 +196,7 @@
                                                 class="avatar-xs rounded-circle " alt="...">
                                         </td>
                                         <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
-                                            <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
-                                                Kidapawan City</p>
-                                        </td>
-                                        <td class="font-size-15 mb-1 fw-normal">January 15, 1999</td>
-
-                                        <td><span class="badge bg-soft-danger font-size-12">Senior Developer</span>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 20px;"><img
-                                                src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg"
-                                                class="avatar-xs rounded-circle " alt="...">
-                                        </td>
-                                        <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Juan Makatigbas</h6>
                                             <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
                                                 Kidapawan City</p>
                                         </td>
@@ -236,7 +212,7 @@
                                                 class="avatar-xs rounded-circle " alt="...">
                                         </td>
                                         <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Juan Makatigbas</h6>
                                             <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
                                                 Kidapawan City</p>
                                         </td>
@@ -252,22 +228,7 @@
                                                 class="avatar-xs rounded-circle " alt="...">
                                         </td>
                                         <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
-                                            <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
-                                                Kidapawan City</p>
-                                        </td>
-                                        <td class="font-size-15 mb-1 fw-normal">January 15, 1999</td>
-
-                                        <td><span class="badge bg-soft-danger font-size-12">Senior Developer</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 20px;"><img
-                                                src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg"
-                                                class="avatar-xs rounded-circle " alt="...">
-                                        </td>
-                                        <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Juan Makatigbas</h6>
                                             <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
                                                 Kidapawan City</p>
                                         </td>
@@ -283,7 +244,38 @@
                                                 class="avatar-xs rounded-circle " alt="...">
                                         </td>
                                         <td>
-                                            <h6 class="font-size-15 mb-1 fw-normal">Joana Dianne S. Olarte</h6>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Juan Makatigbas</h6>
+                                            <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
+                                                Kidapawan City</p>
+                                        </td>
+                                        <td class="font-size-15 mb-1 fw-normal">January 15, 1999</td>
+
+                                        <td><span class="badge bg-soft-danger font-size-12">Senior Developer</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20px;"><img
+                                                src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg"
+                                                class="avatar-xs rounded-circle " alt="...">
+                                        </td>
+                                        <td>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Juan Makatigbas</h6>
+                                            <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
+                                                Kidapawan City</p>
+                                        </td>
+                                        <td class="font-size-15 mb-1 fw-normal">January 15, 1999</td>
+
+                                        <td><span class="badge bg-soft-danger font-size-12">Senior Developer</span>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20px;"><img
+                                                src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small_2x/user-profile-icon-free-vector.jpg"
+                                                class="avatar-xs rounded-circle " alt="...">
+                                        </td>
+                                        <td>
+                                            <h6 class="font-size-15 mb-1 fw-normal">Juan Makatigbas</h6>
                                             <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i>
                                                 Kidapawan City</p>
                                         </td>

@@ -14,29 +14,32 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('role')->default('applicant');
+            $table->enum('role', ['applicant', 'hrmo', 'hrmpsb', 'appointing_officer', 'superadmin'])->default('applicant');
             $table->timestamp('email_verified_at')->nullable();
-            $table->timestamp('username')->nullable();
             $table->string('password')->nullable();
-            $table->string('provider')->nullable();
+            $table->string('provider')->default('website');
             $table->string('provider_id')->nullable();
             $table->string('provider_token')->nullable();
+            $table->enum('status', ['Active', 'Inactive'])->default('Active');
             $table->rememberToken();
             $table->timestamps();
         });
 
-        Schema::create('profile', function (Blueprint $table) {
+        Schema::create('user_profile', function (Blueprint $table) {
+
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('role')->default('applicant');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->timestamp('username')->nullable();
-            $table->string('password')->nullable();
-            $table->string('provider')->nullable();
-            $table->string('provider_id')->nullable();
-            $table->string('provider_token')->nullable();
-            $table->rememberToken();
+
+            // Foreign key constraint
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('middle_name')->nullable();
+            $table->string('role');
+            $table->string('assigned_position')->nullable();
+            $table->string('assigned_department')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('profile_photo')->nullable();
             $table->timestamps();
         });
 

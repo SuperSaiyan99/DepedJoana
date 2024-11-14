@@ -6,128 +6,90 @@ class PersonalInformationValidator
     public static function rules()
     {
         return [
-            'surname' => 'required|string|max:255',
-            'firstname' => 'required|string|max:255',
-            'middlename' => 'nullable|string|max:255',
-            'dob' => 'required|date',
-            'extension' => 'nullable|string|max:10',
-            'birthplace' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
-            'region' => 'required|string',
-            'province' => 'required|string',
-            'municipality' => 'required|string',
-            'zip' => 'required|string|max:10',
-            'telephone' => 'nullable|string|max:15',
-            'cellphone' => 'required|string|max:15',
-            'citizenship' => 'required|string|max:255',
-            'languages' => 'nullable|array',
-            'height' => 'nullable|numeric',
-            'weight' => 'nullable|numeric',
-            'bloodtype' => 'nullable|string|max:3',
-            'email' => 'required|email|max:255',
-            'sex' => 'required|string',
-            'civilstatus' => 'required|string',
-            'religion' => 'nullable|string|max:255',
-            'gsis' => 'nullable|string|max:20',
-            'pagibig' => 'nullable|string|max:20',
-            'philhealth' => 'nullable|string|max:20',
-            'sss' => 'nullable|string|max:20',
-            'employee' => 'nullable|string|max:20',
-            'tin' => 'nullable|string|max:20',
+            'personalInformation.surname' => 'required|string|max:255',
+            'personalInformation.first_name' => 'required|string|max:255',
+            'personalInformation.middle_name' => 'nullable|string|max:255',
+            'personalInformation.name_extension' => 'nullable|string|max:255',
+            'personalInformation.date_of_birth' => 'required|date',
+            'personalInformation.place_of_birth' => 'required|string|max:255',
+            'personalInformation.sex' => 'required|in:Male,Female',
+            'personalInformation.civil_status' => 'required|in:Single,Married,Widowed,Separated,Other',
+            'personalInformation.height' => 'nullable|numeric',
+            'personalInformation.weight' => 'nullable|numeric',
+            'personalInformation.blood_type' => 'nullable|string|max:3',
+            'personalInformation.gsis_id_no' => 'nullable|string|max:255',
+            'personalInformation.pag_ibig_id_no' => 'nullable|string|max:255',
+            'personalInformation.philhealth_no' => 'nullable|string|max:255',
+            'personalInformation.sss_no' => 'nullable|string|max:255',
+            'personalInformation.tin_no' => 'nullable|string|max:255',
+            'personalInformation.agency_employee_no' => 'nullable|string|max:255',
+            'personalInformation.citizenship' => 'nullable|in:Filipino,Dual Citizenship',
+            'personalInformation.citizenship_type' => 'nullable|in:by birth,by naturalization', // Required if 'citizenship' is 'Dual Citizenship'
+            'personalInformation.country_if_dual_citizenship' => 'nullable|string|max:255', // Required if 'citizenship' is 'Dual Citizenship'
         ];
     }
 
     public static function messages(): array
     {
         return [
-            'surname.required' => 'Surname is required.',
-            'surname.string' => 'Surname must be a valid text.',
-            'surname.max' => 'Surname cannot exceed 255 characters.',
+            'personalInformation.surname.required' => 'Surname is required.',
+            'personalInformation.surname.string' => 'Surname must be a valid text.',
+            'personalInformation.surname.max' => 'Surname cannot exceed 255 characters.',
 
-            'firstname.required' => 'First Name is required.',
-            'firstname.string' => 'First Name must be a valid text.',
-            'firstname.max' => 'First Name cannot exceed 255 characters.',
+            'personalInformation.first_name.required' => 'First Name is required.',
+            'personalInformation.first_name.string' => 'First Name must be a valid text.',
+            'personalInformation.first_name.max' => 'First Name cannot exceed 255 characters.',
 
-            'middlename.string' => 'Middle Name must be a valid text.',
-            'middlename.max' => 'Middle Name cannot exceed 255 characters.',
+            'personalInformation.middle_name.string' => 'Middle Name must be a valid text.',
+            'personalInformation.middle_name.max' => 'Middle Name cannot exceed 255 characters.',
 
-            'dob.required' => 'Date of Birth is required.',
-            'dob.date' => 'Date of Birth must be a valid date.',
+            'personalInformation.name_extension.string' => 'Name Extension must be a valid text.',
+            'personalInformation.name_extension.max' => 'Name Extension cannot exceed 255 characters.',
 
-            'extension.string' => 'Extension must be a valid text.',
-            'extension.max' => 'Extension cannot exceed 10 characters.',
+            'personalInformation.date_of_birth.required' => 'Date of Birth is required.',
+            'personalInformation.date_of_birth.date' => 'Date of Birth must be a valid date.',
 
-            'birthplace.required' => 'Birthplace is required.',
-            'birthplace.string' => 'Birthplace must be a valid text.',
-            'birthplace.max' => 'Birthplace cannot exceed 255 characters.',
+            'personalInformation.place_of_birth.required' => 'Place of Birth is required.',
+            'personalInformation.place_of_birth.string' => 'Place of Birth must be a valid text.',
+            'personalInformation.place_of_birth.max' => 'Place of Birth cannot exceed 255 characters.',
 
-            'address.required' => 'Address is required.',
-            'address.string' => 'Address must be a valid text.',
-            'address.max' => 'Address cannot exceed 255 characters.',
+            'personalInformation.sex.required' => 'Sex is required.',
+            'personalInformation.sex.in' => 'Sex must be either Male or Female.',
 
-            'region.required' => 'Region is required.',
-            'region.string' => 'Region must be a valid text.',
+            'personalInformation.civil_status.required' => 'Civil Status is required.',
+            'personalInformation.civil_status.in' => 'Civil Status must be one of the following: Single, Married, Widowed, Separated, Other.',
 
-            'province.required' => 'Province is required.',
-            'province.string' => 'Province must be a valid text.',
+            'personalInformation.height.numeric' => 'Height must be a number.',
 
-            'municipality.required' => 'Municipality is required.',
-            'municipality.string' => 'Municipality must be a valid text.',
+            'personalInformation.weight.numeric' => 'Weight must be a number.',
 
-            'zip.required' => 'Zip Code is required.',
-            'zip.string' => 'Zip Code must be a valid text.',
-            'zip.max' => 'Zip Code cannot exceed 10 characters.',
+            'personalInformation.blood_type.string' => 'Blood Type must be a valid text.',
+            'blood_type.max' => 'Blood Type cannot exceed 3 characters.',
 
-            'telephone.string' => 'Telephone Number must be a valid text.',
-            'telephone.max' => 'Telephone Number cannot exceed 15 characters.',
+            'personalInformation.gsis_id_no.string' => 'GSIS ID Number must be a valid text.',
+            'personalInformation.gsis_id_no.max' => 'GSIS ID Number cannot exceed 255 characters.',
 
-            'cellphone.required' => 'Cellphone Number is required.',
-            'cellphone.string' => 'Cellphone Number must be a valid text.',
-            'cellphone.max' => 'Cellphone Number cannot exceed 15 characters.',
+            'personalInformation.pag_ibig_id_no.string' => 'Pag-IBIG ID Number must be a valid text.',
+            'personalInformation.pag_ibig_id_no.max' => 'Pag-IBIG ID Number cannot exceed 255 characters.',
 
-            'citizenship.required' => 'Citizenship is required.',
-            'citizenship.string' => 'Citizenship must be a valid text.',
-            'citizenship.max' => 'Citizenship cannot exceed 255 characters.',
+            'personalInformation.philhealth_no.string' => 'PhilHealth Number must be a valid text.',
+            'personalInformation.philhealth_no.max' => 'PhilHealth Number cannot exceed 255 characters.',
 
-            'languages.array' => 'Languages must be a list of values.',
+            'personalInformation.sss_no.string' => 'SSS Number must be a valid text.',
+            'personalInformation.sss_no.max' => 'SSS Number cannot exceed 255 characters.',
 
-            'height.numeric' => 'Height must be a number.',
+            'personalInformation.tin_no.string' => 'TIN Number must be a valid text.',
+            'personalInformation.tin_no.max' => 'TIN Number cannot exceed 255 characters.',
 
-            'weight.numeric' => 'Weight must be a number.',
+            'personalInformation.agency_employee_no.string' => 'Agency Employee Number must be a valid text.',
+            'personalInformation.agency_employee_no.max' => 'Agency Employee Number cannot exceed 255 characters.',
 
-            'bloodtype.string' => 'Blood Type must be a valid text.',
-            'bloodtype.max' => 'Blood Type cannot exceed 3 characters.',
+            'personalInformation.citizenship.in' => 'Citizenship must be either Filipino or Dual Citizenship.',
 
-            'email.required' => 'Email Address is required.',
-            'email.email' => 'Email Address must be a valid email format.',
-            'email.max' => 'Email Address cannot exceed 255 characters.',
+            'personalInformation.citizenship_type.in' => 'Citizenship Type must be either by birth or by naturalization.',
 
-            'sex.required' => 'Sex is required.',
-            'sex.string' => 'Sex must be a valid text.',
-
-            'civilstatus.required' => 'Civil Status is required.',
-            'civilstatus.string' => 'Civil Status must be a valid text.',
-
-            'religion.string' => 'Religion must be a valid text.',
-            'religion.max' => 'Religion cannot exceed 255 characters.',
-
-            'gsis.string' => 'GSIS Number must be a valid text.',
-            'gsis.max' => 'GSIS Number cannot exceed 20 characters.',
-
-            'pagibig.string' => 'Pag-IBIG Number must be a valid text.',
-            'pagibig.max' => 'Pag-IBIG Number cannot exceed 20 characters.',
-
-            'philhealth.string' => 'PhilHealth Number must be a valid text.',
-            'philhealth.max' => 'PhilHealth Number cannot exceed 20 characters.',
-
-            'sss.string' => 'SSS Number must be a valid text.',
-            'sss.max' => 'SSS Number cannot exceed 20 characters.',
-
-            'employee.string' => 'Employee Number must be a valid text.',
-            'employee.max' => 'Employee Number cannot exceed 20 characters.',
-
-            'tin.string' => 'TIN Number must be a valid text.',
-            'tin.max' => 'TIN Number cannot exceed 20 characters.',
+            'personalInformation.country_if_dual_citizenship.string' => 'Country (if Dual Citizenship) must be a valid text.',
+            'personalInformation.country_if_dual_citizenship.max' => 'Country (if Dual Citizenship) cannot exceed 255 characters.',
         ];
     }
 }

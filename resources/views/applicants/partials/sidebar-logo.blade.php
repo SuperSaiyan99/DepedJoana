@@ -2,9 +2,9 @@
     <!-- Logo Header -->
     <div class="logo-header" data-background-color="dark">
 
-        <a href="index.html" class="logo">
-            <img src="{{ secure_asset('assets3/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand"
-                 height="20">
+        <a href="{{ route('applicants.home') }}" class="logo">
+            <img src="{{ asset('assets3/img/kaiadmin/2-removebg-preview.png') }}" alt="navbar brand"
+                 class="navbar-brand w-100">
         </a>
         <div class="nav-toggle">
             <button class="btn btn-toggle toggle-sidebar">

@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
-use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
-{
-    use HasFactory, Notifiable, HasRoles, \Illuminate\Auth\MustVerifyEmail;
+#use Spatie\Permission\Traits\HasRoles;
+
+#implements MustVerifyEmail
+
+class User extends Authenticatable {
+
+    
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +23,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role',
         'password',
         'username',
         'provider',
@@ -51,18 +54,9 @@ class User extends Authenticatable
         ];
     }
 
-
-    public static function generateUsername($username): String
+    public function applicants()
     {
-        if (is_null($username)){
-            $username = Str::lower(Str::random(8));
-        }
-        if (User::where('username', $username)->exists()) {
-            $newUsername = $username.Str::lower(Str::random(8));
-            $username = self::generateUsername($newUsername);
-        }
-
-        return $username;
+        return $this->hasMany(Applicant::class);
     }
 
 }

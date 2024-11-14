@@ -17,7 +17,7 @@
           rel="stylesheet" type="text/css"/>
 
     <!-- Icons Css -->
-    <link href="{{ secure_asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
 
     <!-- App Css-->
     <link href="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/css/app.min.css" id="app-style" rel="stylesheet"
@@ -49,19 +49,20 @@
 <!-- end of wrapper-->
 
 <!-- JS -->
-<script src="{{ secure_asset('assets/libs/jquery/jquery.min.js') }}"></script>
-<script src="{{ secure_asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-{{--<script src="https://cdn.jsdelivr.net/npm/metismenujs"></script>--}}
-{{--<script src="https://cdn.jsdelivr.net/npm/simplebar@6.2.7/dist/simplebar.min.js"></script>--}}
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/waypoints@4.0.1/lib/jquery.waypoints.min.js"></script>
+<script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
+<script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+<script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
+<script src="{{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
 
 <!-- apexcharts -->
-{{--<script src="{{ secure_asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>--}}
-{{--<script src="{{ secure_asset('assets/js/pages/dashboard.init.js') }}"></script>--}}
+<script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
 
 <!-- App js -->
-{{--<script src="{{ secure_asset('assets/js/app.js') }}"></script>--}}
+<script src="{{ asset('assets/js/app.js') }}"></script>
 
 
 @hasSection('js')

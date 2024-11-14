@@ -2,14 +2,6 @@
 
 @section('title', 'Manage Users')
 
-@section('header')
-    @include('HRMO.partials.header')
-@endsection
-
-@section('left-sidebar')
-    @include('HRMO.partials.left-sidebar')
-@endsection
-
 @section('css')
 
 @endsection
@@ -35,7 +27,7 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-end">
-                        <button class="btn btn-primary ml-3">Add Job Posting</button>
+                        <button class="btn btn-primary m-1">Add Job Posting</button>
                     </div>
                 </div>
             </div>
@@ -75,7 +67,7 @@
             <!--[contents here]-->
             @livewire('management-office.job-posting-cards')
 
-            
+
         </div>
     </div>
 

@@ -8,8 +8,8 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="jobTitle_{{ $index }}" class="form-label">Job Title</label>
-                            <input type="text" class="form-control" id="jobTitle_{{ $index }}" wire:model="experiences.{{ $index }}.job_title">
-                            @error('experiences.' . $index . '.job_title') <small class="text-danger">{{ $message }}</small> @enderror
+                            <input type="text" class="form-control" id="jobTitle_{{ $index }}" wire:model="experiences.{{ $index }}.job_titles">
+                            @error('experiences.' . $index . '.job_titles') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Government Service</label>

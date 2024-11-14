@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
@@ -15,9 +16,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        $this->call(JobPostingSeeder::class);
+        $this->call([
+                IncrementsTableSeeder::class,
+                EvaluationCriteriaSeeder::class,
+                QuestionSeeder::class,
+                JobtitleTableSeeder::class,
+                JobPostingSeeder::class
+            ]);
 
-        
+
 //        User::factory()->create([
 //            'name' => 'Test User',
 //            'email' => 'test@example.com',

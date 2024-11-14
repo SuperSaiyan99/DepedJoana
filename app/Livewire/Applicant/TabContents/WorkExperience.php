@@ -17,7 +17,7 @@ class WorkExperience extends Component
     public function emptyExperience()
     {
         return [
-            'job_title' => '',
+            'job_titles' => '',
             'company' => '',
             'government_service' => '',
             'salary_grade' => '',

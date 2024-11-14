@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\HRMO\Manage;
+namespace App\Models\HRMO;
 
 use Database\Factories\JobPostingFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,7 +10,7 @@ class JobPosting extends Model
 {
     use HasFactory;
 
-    protected $table = 'job_vacancies';
+    protected $table = 'vacancies';
 
     protected $fillable = [
         'position_title',
@@ -29,6 +29,10 @@ class JobPosting extends Model
         'place_of_assignment', // JSON
         'job_summary',
         'status'
+    ];
+
+    protected $casts = [
+        'is_vacancy_shs' => 'bool',
     ];
 
     protected static function factory()

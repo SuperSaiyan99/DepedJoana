@@ -1,10 +1,12 @@
 <?php
 
+
 namespace App\Livewire\ManagementOffice;
 
 use Livewire\Component;
 use Org_Heigl\Ghostscript\Ghostscript;
 use Spatie\PdfToImage\Pdf;
+
 
 class PdfCarousel extends Component
 {
@@ -27,19 +29,19 @@ class PdfCarousel extends Component
 
         $totalPages = $pdf->getNumberOfPages();
         for ($page = 1; $page <= $totalPages; $page++) {
+
             $pdf->setPage($page);
 
             #TODO: Change image name into format NAME-TIME-PAGE-FORMAT
-            $imageName = time() . '-page-' . $page . '.jpg';
+            $imageName = uuid_create() . '-page-' . $page . '.jpg';
             $imagePath = 'app/public/pdf-images/' . $imageName;
             $pdf->saveImage(storage_path($imagePath));
 
             // Store the URLs for the carousel display
-            $this->images[] = route('image', ['filename' => $imageName]);
+            $this->images[] = route('management-officer.image', ['filename' => $imageName]);
         }
     }
-
-
+    
     public function render()
     {
         return view('livewire.management-office.pdf-carousel', [

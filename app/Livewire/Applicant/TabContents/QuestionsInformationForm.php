@@ -50,8 +50,6 @@ class QuestionsInformationForm extends Component
             'q40cDetails' => '',
         ];
 
-
-
     public function save()
     {
         $validatedData = $this->validate(

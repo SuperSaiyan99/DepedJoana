@@ -1,9 +1,11 @@
 <div>
     <form wire:submit.prevent="save">
 
-     <!-- Question 34 -->
+        <!-- Question 34 -->
         <div class="mb-4 border rounded p-3">
-            <label class="form-label m-3">34) Are you related by consanguinity or affinity to the appointing or recommending chief of bureau or office or to the person who has immediate supervision over you in the Bureau or Department where you will be appointed:</label>
+            <label class="form-label m-3">34) Are you related by consanguinity or affinity to the appointing or
+                recommending chief of bureau or office or to the person who has immediate supervision over you in the
+                Bureau or Department where you will be appointed:</label>
             <div class="ms-3">
                 <label class="form-label m-3"><i>a. within the third degree?</i></label>
                 <div class="form-check-inline">
@@ -11,7 +13,8 @@
                     <label class="form-check-label" for="q34aYes">Yes</label>
                 </div>
                 <div class="form-check-inline">
-                    <input class="form-check-input ms-3" type="radio" name="q34a" wire:model="q34a" id="q34aNo" value="No">
+                    <input class="form-check-input ms-3" type="radio" name="q34a" wire:model="q34a" id="q34aNo"
+                           value="No">
                     <label class="form-check-label" for="q34aNo">No</label>
                 </div>
                 @error('q34a') <span class="text-danger">{{ $message }}</span> @enderror
@@ -28,7 +31,8 @@
             </div>
 
             <div class="ms-3 mt-3">
-                <label class="form-label m-3"><i>b. within the fourth degree (for Local Government Unit - Career Employees)?</i></label>
+                <label class="form-label m-3"><i>b. within the fourth degree (for Local Government Unit - Career
+                        Employees)?</i></label>
                 <div class="form-check-inline">
                     <input class="form-check-input" type="radio" wire:model="q34b" id="q34bYes" value="Yes">
                     <label class="form-check-label" for="q34bYes">Yes</label>
@@ -78,7 +82,8 @@
                     <label class="form-check-label" for="q35bYes">Yes</label>
                 </div>
                 <div class="form-check-inline">
-                    <input class="form-check-input ms-3" type="radio" name="q35b" wire:model="q35b" id="q35bNo" value="No">
+                    <input class="form-check-input ms-3" type="radio" name="q35b" wire:model="q35b" id="q35bNo"
+                           value="No">
                     <label class="form-check-label" for="q35bNo">No</label>
                 </div>
                 @error('q35b') <span class="text-danger">{{ $message }}</span> @enderror
@@ -114,7 +119,8 @@
 
         <!-- Question 36 -->
         <div class="mb-4 border rounded p-3">
-            <label class="form-label m-3">36) Have you ever been convicted of any crime or violation of any law, decree, ordinance or regulation by any court or tribunal?</label>
+            <label class="form-label m-3">36) Have you ever been convicted of any crime or violation of any law, decree,
+                ordinance or regulation by any court or tribunal?</label>
             <div class="form-check-inline">
                 <input class="form-check-input" type="radio" name="q36" wire:model="q36" id="q36Yes" value="Yes">
                 <label class="form-check-label" for="q36Yes">Yes</label>
@@ -136,7 +142,8 @@
 
         <!-- Question 37 -->
         <div class="mb-4 border rounded p-3">
-            <label class="form-label m-3">37) Have you ever left a job in the public or private sector, whether through resignation, retirement, dismissal, contract completion, or any other reason?</label>
+            <label class="form-label m-3">37) Have you ever left a job in the public or private sector, whether through
+                resignation, retirement, dismissal, contract completion, or any other reason?</label>
             <div class="form-check-inline">
                 <input class="form-check-input" type="radio" name="q37" wire:model="q37" id="q37Yes" value="Yes">
                 <label class="form-check-label" for="q37Yes">Yes</label>
@@ -158,7 +165,8 @@
 
         <!-- Question 38 -->
         <div class="mb-4 border rounded p-3">
-            <label class="form-label m-3">38) a. Have you ever been a candidate in a national or local election held within the last year (except Barangay election)?</label>
+            <label class="form-label m-3">38) a. Have you ever been a candidate in a national or local election held
+                within the last year (except Barangay election)?</label>
             <div class="form-check-inline">
                 <input class="form-check-input" type="radio" name="q38a" wire:model="q38a" id="q38aYes" value="Yes">
                 <label class="form-check-label" for="q38aYes">Yes</label>
@@ -178,13 +186,16 @@
             @error('q38aDetails') <span class="text-danger">{{ $message }}</span> @enderror
 
             <div class="mt-3">
-                <label class="form-label m-3">b. Have you resigned from the government service during the three (3)-month period before the last election to promote/actively campaign for a national or local candidate?</label>
+                <label class="form-label m-3">b. Have you resigned from the government service during the three
+                    (3)-month period before the last election to promote/actively campaign for a national or local
+                    candidate?</label>
                 <div class="form-check-inline">
                     <input class="form-check-input" type="radio" name="q38b" wire:model="q38b" id="q38bYes" value="Yes">
                     <label class="form-check-label" for="q38bYes">Yes</label>
                 </div>
                 <div class="form-check-inline">
-                    <input class="form-check-input ms-3" type="radio" name="q38b" wire:model="q38b" id="q38bNo" value="No">
+                    <input class="form-check-input ms-3" type="radio" name="q38b" wire:model="q38b" id="q38bNo"
+                           value="No">
                     <label class="form-check-label" for="q38bNo">No</label>
                 </div>
                 @error('q38b') <span class="text-danger">{{ $message }}</span> @enderror
@@ -201,7 +212,8 @@
 
         <!-- Question 39 -->
         <div class="mb-4 border rounded p-3">
-            <label class="form-label m-3">39) Have you acquired the status of an immigrant or permanent resident of another country?</label>
+            <label class="form-label m-3">39) Have you acquired the status of an immigrant or permanent resident of
+                another country?</label>
             <div class="form-check-inline">
                 <input class="form-check-input" type="radio" name="q39" wire:model="q39" id="q39Yes" value="Yes">
                 <label class="form-check-label" for="q39Yes">Yes</label>
@@ -223,7 +235,8 @@
 
         <!-- Question 40 -->
         <div class="mb-4 border rounded p-3">
-            <label class="form-label m-3">40) Pursuant to: (a) Indigenous People's Act (RA 8371); (b) Magna Carta for Disabled Persons (RA 7277); and (c) Solo Parents Welfare Act of 2000 (RA 8972):</label>
+            <label class="form-label m-3">40) Pursuant to: (a) Indigenous People's Act (RA 8371); (b) Magna Carta for
+                Disabled Persons (RA 7277); and (c) Solo Parents Welfare Act of 2000 (RA 8972):</label>
             <div class="ms-3">
                 <label class="form-label m-3">a. Are you a member of any indigenous group?</label>
                 <div class="form-check-inline">
@@ -231,7 +244,8 @@
                     <label class="form-check-label" for="q40aYes"> Yes</label>
                 </div>
                 <div class="form-check-inline">
-                    <input class="form-check-input ms-3" type="radio" name="q40a" wire:model="q40a" id="q40aNo" value="No">
+                    <input class="form-check-input ms-3" type="radio" name="q40a" wire:model="q40a" id="q40aNo"
+                           value="No">
                     <label class="form-check-label" for="q40aNo">No</label>
                 </div>
                 @error('q40a') <span class="text-danger">{{ $message }}</span> @enderror
@@ -252,7 +266,8 @@
                     <label class="form-check-label" for="q40bYes">Yes</label>
                 </div>
                 <div class="form-check-inline">
-                    <input class="form-check-input ms-3" type="radio" name="q40b" wire:model="q40b" id="q40bNo" value="No">
+                    <input class="form-check-input ms-3" type="radio" name="q40b" wire:model="q40b" id="q40bNo"
+                           value="No">
                     <label class="form-check-label" for="q40bNo">No</label>
                 </div>
                 @error('q40b') <span class="text-danger">{{ $message }}</span> @enderror
@@ -273,7 +288,8 @@
                     <label class="form-check-label" for="q40cYes">Yes</label>
                 </div>
                 <div class="form-check-inline">
-                    <input class="form-check-input ms-3" type="radio" name="q40c" wire:model="q40c" id="q40cNo" value="No">
+                    <input class="form-check-input ms-3" type="radio" name="q40c" wire:model="q40c" id="q40cNo"
+                           value="No">
                     <label class="form-check-label" for="q40cNo">No</label>
                 </div>
                 @error('q40c') <span class="text-danger">{{ $message }}</span> @enderror
@@ -289,9 +305,8 @@
         </div>
 
 
-
         <div class="d-grid">
-            <button type="submit" class="btn btn-save">Save Questionnaire</button>
+            <button type="submit" class="btn btn-secondary">Save Questionnaire</button>
         </div>
     </form>
 </div>

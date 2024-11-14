@@ -2,14 +2,6 @@
 
 @section('title', 'Manage Users')
 
-@section('header')
-    @include('HRMO.partials.header')
-@endsection
-
-@section('left-sidebar')
-    @include('HRMO.partials.left-sidebar')
-@endsection
-
 @section('css')
     <style>
         .carousel-control-prev-icon,
@@ -22,6 +14,72 @@
             filter: invert(1); /* Invert the icon color if needed */
         }
     </style>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .form-header {
+            border-bottom: 2px solid #6c757d;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            color: #6c757d;
+            font-weight: bold;
+        }
+
+        .form-title {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            color: #6c757d;
+            font-weight: bold;
+        }
+
+        .form-label {
+            color: #495057;
+            font-weight: bold;
+        }
+
+        .btn-save {
+            background-color: #6f42c1;
+            color: white;
+        }
+
+        .table {
+            border: 3px solid #000; /* Thick border around the table */
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+            text-align: center;
+            border: 3px solid #000; /* Thick border for table cells */
+        }
+
+        .table-input {
+            border: none;
+            text-align: center;
+            width: 100%;
+        }
+
+        .checkbox-container label {
+            font-size: 0.9rem;
+            font-weight: normal;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        input[type=radio] {
+            transform: scale(1.5);
+        }
+
+    </style>
+
+
+    <link href="{{ asset('assets2/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 @endsection
 
 
@@ -48,284 +106,35 @@
             </div>
             <!-- end page title -->
 
-            <div class="col-12">
-                <!-- Filter and Sort by section -->
-                <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
-                    <!-- Filter by section -->
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-search m-2"></i>
-                        <label for="filter" class="m-2">Filter by</label>
-                        <select id="filter" class="form-select form-select-sm" style="width: auto;">
-                            <option selected>All (19)</option>
-                            <option value="1">Active</option>
-                            <option value="2">Closed</option>
-                            <option value="3">Pending</option>
-                        </select>
-                    </div>
 
-                    <!-- Sort by section -->
-                    <div class="d-flex align-items-center">
-                        <label for="sort" class="me-2">Sort by</label>
-                        <select id="sort" class="form-select form-select-sm" style="width: auto;">
-                            <option selected>Latest published</option>
-                            <option value="1">Oldest published</option>
-                            <option value="2">A-Z</option>
-                            <option value="3">Z-A</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+
+           @livewire('management-office.filter-button')
+
 
 
             <!--[contents here]-->
             <div class="row">
-                <!-- Sidebar for candidates -->
+                <!-- Sidebar: List of candidates -->
                 <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <ul class="nav nav-tabs nav-line nav-color-secondary" id="line-tab" role="tablist">
-                                <li class="nav-item submenu" role="presentation">
-                                    <a class="nav-link active" id="" data-bs-toggle="pill"
-                                       href="" role="tab" aria-controls="pills-home"
-                                       aria-selected="true">Qualified</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content mt-3 mb-3" id="line-tabContent">
-                                <div class="tab-pane fade active show" id="" role="tabpanel"
-                                     aria-labelledby="line-home-tab">
-                                    <div class="list-group">
-
-                                        <!--[TODO: CHANGE INTO FOREACH]--->
-                                        @for($x = 0; $x <= 5; $x++)
-                                            <!-- item -->
-                                            <div
-                                                class="list-group-item list-group-item-action d-flex align-items-center mb-2">
-                                                <input class="form-check-input me-2" type="checkbox">
-                                                <img src="https://via.placeholder.com/60" alt="Jenny Wilson">
-                                                <div class="ms-3">
-                                                    <h6 class="mb-0">Jenny Wilson</h6>
-                                                    <small>Senior Design Lead at IDEO</small>
-                                                    <div class="tags mt-1">
-                                                        <span>media</span>
-                                                        <span>creative</span>
-                                                        <span>agency</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endfor
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
+                    @livewire('management-office.applicant-sidebar')
                 </div>
 
                 <!-- Main profile section -->
                 <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-body" style="height: 70vh; overflow-y: auto;">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h1>Applicant #69</h1>
-                                <div class="p-2">
-                                    <div class="btn btn-success mr-2"><i class="fa fa-check"></i> Qualified</div>
-                                    <div class="btn btn-danger"><i class="fa fa-ban"></i> Disqualified</div>
-                                </div>
-
-                            </div>
-                            <hr>
-                            <div class="d-flex align-items-center">
-                                <img src="https://picsum.photos/id/64/80" alt="Jenny Wilson">
-                                <div class="ms-3">
-                                    <h4 class="mb-0">Osama bin Laden</h4>
-                                    <p class="mb-0">Leader at Al-Qaeda</p>
-                                </div>
-                            </div>
-                            <hr>
-
-                            <h5>About</h5>
-                            <p>
-                                My work lies at the intersection of design thinking and social impact. I am driven
-                                by my desire to help communities lead healthy, fulfilling lives.
-                                I leverage design research to unearth best practices, reveal hidden patterns, and
-                                uncover untold stories.
-                            </p>
-                            <hr>
-
-
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5>Personal Data Sheet</h5>
-                            </div>
-
-
-                            <div class="timeline-item mt-3">
-                                <div class="d-flex align-items-center">
-                                    <div class="row">
-                                        <div class="mb-3">
-                                            <ul class="nav nav-tabs nav-line nav-color-secondary" id="line-tab"
-                                                role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" id="line-home-tab" data-bs-toggle="pill"
-                                                       href="#line-home" role="tab" aria-controls="pills-home"
-                                                       aria-selected="true">Personal</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="line-family-tab" data-bs-toggle="pill"
-                                                       href="#line-family" role="tab" aria-controls="pills-family"
-                                                       aria-selected="false">Family</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="line-education-tab" data-bs-toggle="pill"
-                                                       href="#line-education" role="tab" aria-controls="pills-education"
-                                                       aria-selected="false">Education</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="line-eligibility-tab" data-bs-toggle="pill"
-                                                       href="#line-eligibility" role="tab"
-                                                       aria-controls="pills-eligibility" aria-selected="false">Eligibility/Qualification</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="line-work-experience-tab"
-                                                       data-bs-toggle="pill" href="#line-work-experience" role="tab"
-                                                       aria-controls="pills-work-experience" aria-selected="false">Work
-                                                        Experience</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="line-volunteer-tab" data-bs-toggle="pill"
-                                                       href="#line-volunteer" role="tab" aria-controls="pills-volunteer"
-                                                       aria-selected="false">Volunteer</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="line-training-tab" data-bs-toggle="pill"
-                                                       href="#line-training" role="tab" aria-controls="pills-training"
-                                                       aria-selected="false">Training</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="line-others-tab" data-bs-toggle="pill"
-                                                       href="#line-others" role="tab" aria-controls="pills-others"
-                                                       aria-selected="false">Others</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="line-questions-tab" data-bs-toggle="pill"
-                                                       href="#line-questions" role="tab" aria-controls="pills-questions"
-                                                       aria-selected="false">Questions</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="line-reference-tab" data-bs-toggle="pill"
-                                                       href="#line-reference" role="tab" aria-controls="pills-reference"
-                                                       aria-selected="false">References</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="line-others2-tab" data-bs-toggle="pill"
-                                                       href="#line-declaration" role="tab"
-                                                       aria-controls="pills-declaration" aria-selected="false">Declaration</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-
-                                        <div class="col-7 col-md-8">
-                                            <div class="tab-content mt-3 mb-3" id="line-tabContent">
-                                                <div class="tab-pane fade show active" id="line-home" role="tabpanel"
-                                                     aria-labelledby="line-home-tab">
-
-                                                    <p>soon here</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="line-family" role="tabpanel"
-                                                     aria-labelledby="line-family-tab">
-
-                                                    <p>soon here</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="line-education" role="tabpanel"
-                                                     aria-labelledby="line-education-tab">
-
-                                                    <p>soon here</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="line-eligibility" role="tabpanel"
-                                                     aria-labelledby="line-eligibility-tab">
-
-                                                    <p>soon here</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="line-work-experience" role="tabpanel"
-                                                     aria-labelledby="line-work-experience-tab">
-
-                                                    <p>soon here</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="line-volunteer" role="tabpanel"
-                                                     aria-labelledby="line-volunteer-tab">
-
-                                                    <p>soon here</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="line-training" role="tabpanel"
-                                                     aria-labelledby="line-training-tab">
-
-                                                    <p>soon here</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="line-others" role="tabpanel"
-                                                     aria-labelledby="line-others-tab">
-
-                                                    <p>soon here</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="line-questions" role="tabpanel"
-                                                     aria-labelledby="line-questions-tab">
-
-                                                    <p>soon here</p>
-                                                </div>
-
-                                                <div class="tab-pane fade" id="line-reference" role="tabpanel"
-                                                     aria-labelledby="line-reference-tab">
-
-                                                    <p>soon here</p>
-                                                </div>
-
-                                                <div class="tab-pane fade" id="line-declaration" role="tabpanel"
-                                                     aria-labelledby="line-declaration-tab">
-
-                                                    <p>soon here</p>
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr>
-
-                            <div>
-                                <!-- TODO: ADD MORE ITEMS-->
-                                <h5>Uploaded Documents</h5>
-
-                                <p>work experience here</p>
-                                <hr>
-                            </div>
-
-
-                            <div>
-                                <!-- TODO: ADD MORE ITEMS-->
-                                <h5>Uploaded Documents</h5>
-
-                                @livewire('management-office.pdf-carousel')
-                            </div>
-
-                        </div>
-                    </div>
+                    @livewire('management-office.applicant-profile')
                 </div>
             </div>
+
+
+
         </div>
-
-
     </div>
-
-
-    </div>
-
 @endsection
 
 
 @section('js')
-
-
+    <!-- SweetAlert2 and CKEditor Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 @endsection
+

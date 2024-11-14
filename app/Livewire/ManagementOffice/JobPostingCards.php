@@ -2,8 +2,8 @@
 
 namespace App\Livewire\ManagementOffice;
 
-use App\Models\Manage\JobPosting;
-use Livewire\Attributes\On;
+use App\Models\HRMO\JobPosting;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -34,38 +34,18 @@ class JobPostingCards extends Component
     public $isEditing = false;
 
     public $education, $training, $experience, $eligibility;
-    public $position_title, $plantilla_number, $salary_grade, $monthly_salary, $number_of_vacancy;
+    public $position_title, $plantilla_number = [], $salary_grade, $monthly_salary, $number_of_vacancy;
     public $is_vacancy_shs, $subject, $track, $strand, $place_of_assignment, $job_summary;
 
 
-    protected $listeners = ['jobPostingUpdated' => 'refreshJobPostings'];
-
-    #[On('post-created')]
-    public function mount(JobPosting $jobPosting)
+    public function mount()
     {
+        $this->mountJobPostingComponents();
+    }
 
-        $this->jobPostings = JobPosting::all();
-
-        $this->selectedJob = $jobPosting;
-
-        // Populate form fields
-        $this->education = $jobPosting->education;
-        $this->training = $jobPosting->training;
-        $this->experience = $jobPosting->experience;
-        $this->eligibility = $jobPosting->eligibility;
-
-        // Populate additional fields
-        $this->position_title = $jobPosting->position_title;
-        $this->plantilla_number = json_decode($jobPosting->plantilla_number, true) ?? [];
-        $this->salary_grade = $jobPosting->salary_grade;
-        $this->monthly_salary = $jobPosting->monthly_salary;
-        $this->number_of_vacancy = $jobPosting->number_of_vacancy;
-        $this->is_vacancy_shs = $jobPosting->is_vacancy_shs;
-        $this->subject = json_decode($jobPosting->subject, true) ?? [];
-        $this->track = $jobPosting->track;
-        $this->strand = $jobPosting->strand;
-        $this->place_of_assignment = json_decode($jobPosting->place_of_assignment, true) ?? [];
-        $this->job_summary = $jobPosting->job_summary;
+    public function render()
+    {
+        return view('livewire.management-office.job-posting-cards');
     }
 
     public function showModal($jobId)
@@ -91,19 +71,13 @@ class JobPostingCards extends Component
         $this->job_summary = $this->selectedJob->job_summary;
 
         $this->isEditing = false;
+
     }
 
-    public function refreshJobPostings($jobId)
-    {
-        $this->jobPostings = JobPosting::all(); // Re-fetch all job postings
-
-        // If you want to keep the modal open after the update, re-select the updated job
-        $this->selectedJob = JobPosting::findOrFail($jobId);
-    }
 
     public function saveModal()
     {
-        $this->validate();
+        #$this->validate();
 
         // Update the job posting fields in the database, encoding array properties to JSON
         $this->selectedJob->update([
@@ -124,7 +98,6 @@ class JobPostingCards extends Component
             'job_summary' => $this->job_summary,
         ]);
 
-        $this->dispatch('post-created', $this->selectedJob->id);
 
         session()->flash('message', 'Job Posting Updated Successfully.');
 
@@ -142,9 +115,98 @@ class JobPostingCards extends Component
         $this->$property = array_values($this->$property); // Re-index the array
     }
 
-
-    public function render()
+    public function mountJobPostingComponents()
     {
-        return view('livewire.management-office.job-posting-cards');
+        $jobPostingModel = new JobPosting();
+
+        $userId = \Auth::user()->id;
+
+
+        #Query to display job vacancies
+        #if hrmo, all vacancies, if hrmpsb then limited job vacancies assigned
+        if (\Auth::user()->role === 'hrmpsb') {
+            $this->jobPostings = DB::table('vacancies')
+                ->join('selection_board', 'vacancies.id', '=', 'selection_board.vacancy_id')
+                ->where( 'selection_board.user_id', $userId)
+                ->where('vacancies.status', 'Active')
+                ->select(
+                    'vacancies.id',
+                    'vacancies.position_title',
+                    'vacancies.education',
+                    'vacancies.training',
+                    'vacancies.experience',
+                    'vacancies.eligibility',
+                    'vacancies.plantilla_number',
+                    'vacancies.salary_grade',
+                    'vacancies.monthly_salary',
+                    'vacancies.place_of_assignment'
+                )
+                ->get();
+        }
+        else if (\Auth::user()->role === 'hrmo'){
+            $this->jobPostings = $jobPostingModel::where('status', 'active')
+                ->get();
+        }
+
+
+
+        $this->selectedJob = $jobPostingModel;
+
+        // Populate form fields
+        $this->education = $jobPostingModel->education;
+        $this->training = $jobPostingModel->training;
+        $this->experience = $jobPostingModel->experience;
+        $this->eligibility = $jobPostingModel->eligibility;
+
+        // Populate additional fields
+        $this->position_title = $jobPostingModel->position_title;
+        $this->plantilla_number = json_decode($jobPostingModel->plantilla_number, true) ?? [];
+        $this->salary_grade = $jobPostingModel->salary_grade;
+        $this->monthly_salary = $jobPostingModel->monthly_salary;
+        $this->number_of_vacancy = $jobPostingModel->number_of_vacancy;
+        $this->is_vacancy_shs = $jobPostingModel->is_vacancy_shs;
+        $this->subject = json_decode($jobPostingModel->subject, true) ?? [];
+        $this->track = $jobPostingModel->track;
+        $this->strand = $jobPostingModel->strand;
+        $this->place_of_assignment = json_decode($jobPostingModel->place_of_assignment, true) ?? [];
+        $this->job_summary = $jobPostingModel->job_summary;
     }
+
+
+    public function showDetails($vacancy_code)
+    {
+        // Fetch the first applicant in FIFO order based on `created_at` or another relevant timestamp
+        $applicant = DB::table('applicants')
+            ->join('applicant_status', 'applicants.id', '=', 'applicant_status.applicant_id')
+            ->join('applicant_personal_information', 'applicants.id', '=', 'applicant_personal_information.applicant_id')
+            ->join('applicant_residential_address', 'applicants.id', '=', 'applicant_residential_address.applicant_id')
+            ->join('applicant_permanent_address', 'applicants.id', '=', 'applicant_permanent_address.applicant_id')
+            ->join('applicant_contact_information', 'applicants.id', '=', 'applicant_contact_information.applicant_id')
+            ->join('vacancies', 'applicant_status.vacancy_id', '=', 'vacancies.id')
+            ->where([
+                ['applicant_status.status', 'reviewed'],
+                ['applicant_status.vacancy_id', $vacancy_code],
+            ])
+            ->select('applicants.applicant_code', 'applicants.id')
+            ->orderBy('applicant_status.created_at', 'asc')
+            ->first();
+
+        // Check if an applicant was found
+        if ($applicant) {
+
+            $applicant_code = $applicant->applicant_code;
+
+            return redirect()->route('selection-board.applicant-information', [
+                'vacancy_code' => $vacancy_code,
+                'applicant_code' => $applicant_code
+            ]);
+
+        } else {
+
+            session()->flash('message', 'No applicant found for this job posting.');
+        }
+    }
+
+
+
 }

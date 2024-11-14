@@ -2,29 +2,23 @@
 
 <div class="vertical-menu">
 
-    <!-- LOGO -->
+            <!-- LOGO -->
     <div class="navbar-brand-box">
-
+        <a href="index.html" class="logo logo-light d-flex align-items-center justify-content-center">
         <span class="logo-sm">
-                            <img src="{{ secure_asset('assets/images/logo-sm.png') }}" alt="" height="22">
-                        </span>
-        <span class="logo-lg">
-                            <img src="{{ secure_asset('assets/images/logo-dark.png') }}" alt="" height="20">
-                        </span>
-
-        <a href="{{ route('home') }}" class="logo logo-light">
-                            <span class="logo-sm">
-                                <img src="{{ secure_asset('assets/images/logo-sm.png') }}" alt="" height="22">
-                            </span>
-            <span class="logo-lg">
-                                <img src="{{ secure_asset('assets/images/logo-light.png') }}" alt="" height="20">
-                            </span>
+            <img src="{{ asset('assets/images/3.png') }}" alt="Logo" class="img-fluid" style="height: 22px;">
+        </span>
+         <span class="logo">
+            <img src="" alt="navbar brand"
+                 class="navbar-brand w-75">
+        </span>
         </a>
     </div>
 
+
     <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn">
-        <i class="fa fa-fw fa-bars"></i>
-    </button>
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
 
     <div data-simplebar class="sidebar-menu-scroll">
 
@@ -35,7 +29,7 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="{{ route('hrmo.home') }}">
+                    <a href="{{ route('management-officer.home') }}">
                         <i class="mdi mdi-home-circle"></i><span
                             class="badge rounded-pill bg-primary float-end">01</span>
                         <span>Dashboard</span>
@@ -50,8 +44,11 @@
                         <span>Applications</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('review-application.index') }}">Review Candidates</a></li>
-                        <li><a href="{{ route('review-rank-status.index') }}">Review Candidate Status</a></li>
+                        <li><a href="{{ route('management-officer.review-application') }}">Review Candidates</a></li>
+                        <li><a href="{{ route('management-officer.review-rank-status') }}">Review Candidate Status</a>
+                        <li><a href="{{ route('management-officer.initial-evaluation') }}">Initial Evaluation
+                                Results</a>
+                        </li>
                     </ul>
                 </li>
 
@@ -61,7 +58,8 @@
                         <span>Vacancies</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('manage-application.index') }}">Manage Job Applications</a></li>
+                        <li><a href="{{ route('management-officer.manage-application') }}">Manage Vacancy Posting</a>
+                        </li>
                     </ul>
                 </li>
 
@@ -73,8 +71,24 @@
                         <span>Reports</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">Manage Reports</a></li>
+                        <li><a href="{{ route('management-officer.applicant-tracking') }}">Applicant Tracking</a></li>
                     </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('management-officer.comparative-assessment') }}">Comparative
+                                Assessment</a></li>
+                    </ul>
+
+
+                    <!--[Soon]-->
+                    {{--                    <ul class="sub-menu" aria-expanded="false">--}}
+                    {{--                        <li><a href="{{ route('management-officer.comparative-assessment') }}">Vacancy Report</a></li>--}}
+                    {{--                    </ul>--}}
+                    {{--                    <ul class="sub-menu" aria-expanded="false">--}}
+                    {{--                        <li><a href="{{ route('management-officer.comparative-assessment') }}">Recruitment Metrics</a>--}}
+                    {{--                        </li>--}}
+                    {{--                    </ul>--}}
+
+
                 </li>
 
             </ul>
