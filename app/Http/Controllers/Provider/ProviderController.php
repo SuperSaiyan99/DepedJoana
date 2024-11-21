@@ -29,12 +29,13 @@ class ProviderController extends Controller
             [
                 'name' => $SocialUser->name,
                 'email' => $SocialUser->email,
+                'avatar' => $SocialUser->avatar,
                 'provider_token' => $SocialUser->token,
                 'email_verified_at' => Carbon::now()->toDateTimeString(),
                 'provider_refresh_token' => $SocialUser->refreshToken,
             ]);
 
-        #dd($user->id);
+        #dd($SocialUser->avatar);
 
         # Find the applicant associated with the user
         $applicantId = \App\Services\Queries\QueryService::findApplicantByUserId($user->id);
@@ -45,7 +46,7 @@ class ProviderController extends Controller
 
             $applicantService = new \App\Services\Applicant\ApplicantService();
             $applicantService->createApplicantWithCode($user->id);
-            
+
         }
 
         $roleRoutes = [

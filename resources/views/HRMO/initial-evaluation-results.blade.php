@@ -3,14 +3,18 @@
 @section('title', 'Manage Users')
 
 @section('css')
-
+<script>
+    .toast {
+        z-index: 9999 !important; /* Ensure Toastr is on top */
+    }
+</script>
 @endsection
-
 
 @section('content')
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
+
     <div class="page-content">
         <div class="container-fluid">
 
@@ -66,7 +70,6 @@
 {{--            @livewire('management-office.job-posting-cards')--}}
             @livewire('management-office.initial-interview-cards')
 
-
         </div>
     </div>
 
@@ -74,5 +77,16 @@
 
 
 @section('js')
+    <script>
 
+        document.addEventListener("livewire:init", () => {
+
+            Livewire.on("toastr:success", (event) => {
+
+                toastr[event.notify](event.message);
+
+            });
+        });
+
+    </script>
 @endsection

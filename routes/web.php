@@ -27,8 +27,6 @@ Route::get('/auth/{provider}/callback', [\App\Http\Controllers\Provider\Provider
 
 
 
-
-
 #routes for applicants
 Route::group(['middleware' => ['auth', 'applicant'], 'prefix' => 'applicant'], function () {
 
@@ -128,6 +126,8 @@ Route::group(['middleware' => ['auth', 'hrmo'], 'prefix' => 'management-officer'
     Route::view('manage-application', 'HRMO.manage-application')->name('management-officer.manage-application');
     Route::view('review-application', 'HRMO.review-application')->name('management-officer.review-application');
     Route::view('review-rank-status', 'HRMO.review-rank-status')->name('management-officer.review-rank-status');
+    Route::view('vacancy-logs', 'HRMO.vacancy-logs')->name('management-officer.vacancy-logs');
+    Route::view('candidate-logs', 'HRMO.vacancy-logs')->name('management-officer.candidate-logs');
     Route::view('initial-evaluation-results', 'HRMO.initial-evaluation-results')->name('management-officer.initial-evaluation');
     Route::view('applicant-tracking-report', 'HRMO.applicant-tracking')->name('management-officer.applicant-tracking');
     Route::view('comparative-assessment-report', 'HRMO.comparative-assessment')->name('management-officer.comparative-assessment');

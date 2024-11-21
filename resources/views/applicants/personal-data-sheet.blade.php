@@ -81,6 +81,13 @@
 @endsection
 
 @section('contents')
+
+    @if(empty(session('applicantChosenVacancy')))
+        <script>
+            window.location.href = "{{ route('applicants.home') }}";
+        </script>
+    @endif
+    
     <div class="page-inner">
         <div class="col-12">
             <div class="card">
@@ -206,6 +213,11 @@
                         </div>
                     </div>
                 </div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success mt-3">
+                        {{ session('message') }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -257,7 +269,7 @@
 
     <!-- Include this script to handle notifications -->
     <script>
-        @if( session('message'))
+     @if( session('message'))
         var content = {
             message: 'Turning standard Bootstrap alerts into "notify" like notifications',
             title: "Bootstrap notify",
@@ -279,5 +291,4 @@
         });
         @endif
     </script>
-
 @endsection

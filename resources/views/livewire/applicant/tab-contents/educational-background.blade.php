@@ -1,6 +1,5 @@
 <div>
     <h4 class="mb-4 mt-4">Educational Background</h4>
-    <p class="text-danger"><i>Note: Leave Blank If None</i></p>
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
@@ -25,61 +24,23 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Elementary</td>
-                <td><input type="text" class="table-input" name="elementary_school"></td>
-                <td><input type="text" class="table-input" name="elementary_course"></td>
-                <td><input type="number" class="table-input" name="elementary_from"></td>
-                <td><input type="number" class="table-input" name="elementary_to"></td>
-                <td><input type="text" class="table-input" name="elementary_units"></td>
-                <td><input type="text" class="table-input" name="elementary_graduated"></td>
-                <td><input type="text" class="table-input" name="elementary_honors"></td>
-            </tr>
-            <tr>
-                <td>Secondary</td>
-                <td><input type="text" class="table-input" name="secondary_school"></td>
-                <td><input type="text" class="table-input" name="secondary_course"></td>
-                <td><input type="number" class="table-input" name="secondary_from"></td>
-                <td><input type="number" class="table-input" name="secondary_to"></td>
-                <td><input type="text" class="table-input" name="secondary_units"></td>
-                <td><input type="text" class="table-input" name="secondary_graduated"></td>
-                <td><input type="text" class="table-input" name="secondary_honors"></td>
-            </tr>
-            <tr>
-                <td>Vocational/ Trade Course</td>
-                <td><input type="text" class="table-input" name="vocational_school"></td>
-                <td><input type="text" class="table-input" name="vocational_course"></td>
-                <td><input type="number" class="table-input" name="vocational_from"></td>
-                <td><input type="number" class="table-input" name="vocational_to"></td>
-                <td><input type="text" class="table-input" name="vocational_units"></td>
-                <td><input type="text" class="table-input" name="vocational_graduated"></td>
-                <td><input type="text" class="table-input" name="vocational_honors"></td>
-            </tr>
-            <tr>
-                <td>College</td>
-                <td><input type="text" class="table-input" name="college_school"></td>
-                <td><input type="text" class="table-input" name="college_course"></td>
-                <td><input type="text" class="table-input" name="college_from"></td>
-                <td><input type="text" class="table-input" name="college_to"></td>
-                <td><input type="text" class="table-input" name="college_units"></td>
-                <td><input type="text" class="table-input" name="college_graduated"></td>
-                <td><input type="text" class="table-input" name="college_honors"></td>
-            </tr>
-            <tr>
-                <td>Graduate Studies</td>
-                <td><input type="text" class="table-input" name="graduate_school"></td>
-                <td><input type="text" class="table-input" name="graduate_course"></td>
-                <td><input type="number" class="table-input" name="graduate_from"></td>
-                <td><input type="number" class="table-input" name="graduate_to"></td>
-                <td><input type="text" class="table-input" name="graduate_units"></td>
-                <td><input type="text" class="table-input" name="graduate_graduated"></td>
-                <td><input type="text" class="table-input" name="graduate_honors"></td>
-            </tr>
+            @foreach(['elementary', 'secondary', 'vocational', 'college', 'graduate'] as $level)
+                <tr>
+                    <td>{{ ucfirst($level) }}</td>
+                    <td><input type="text" class="table-input" wire:model="education.{{ $level }}.school"></td>
+                    <td><input type="text" class="table-input" wire:model="education.{{ $level }}.course"></td>
+                    <td><input type="number" class="table-input" wire:model="education.{{ $level }}.from"></td>
+                    <td><input type="number" class="table-input" wire:model="education.{{ $level }}.to"></td>
+                    <td><input type="text" class="table-input" wire:model="education.{{ $level }}.units"></td>
+                    <td><input type="text" class="table-input" wire:model="education.{{ $level }}.graduated"></td>
+                    <td><input type="text" class="table-input" wire:model="education.{{ $level }}.honors"></td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
     <div class="mt-4 d-flex justify-content-between">
-        <button type="button" class="btn btn-secondary">Save and Edit Later</button>
-        <button type="submit" class="btn btn-primary">Save Education Data</button>
+        <button type="button" class="btn btn-secondary" wire:click.prevent="save">Save and Edit Later</button>
+        <button type="button" class="btn btn-primary" wire:click.prevent="save">Save Education Data</button>
     </div>
 </div>

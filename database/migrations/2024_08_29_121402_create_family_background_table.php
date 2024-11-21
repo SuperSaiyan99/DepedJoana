@@ -14,7 +14,8 @@ return new class extends Migration {
             $table->id();
 
             #foreign key for Applicants table
-            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
+            $table->foreignId('vacancy_id')->constrained('vacancies')->onDelete('cascade');
 
             # Spouse Information
             $table->string('spouse_surname')->nullable();
@@ -35,7 +36,6 @@ return new class extends Migration {
 
 
             # Mother's Information
-            $table->string('mother_maiden_name')->nullable();
             $table->string('mother_surname')->nullable();
             $table->string('mother_first_name')->nullable();
             $table->string('mother_middle_name')->nullable();
@@ -47,10 +47,11 @@ return new class extends Migration {
             $table->id();
 
             #foreign key for Applicants table
-            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
+            $table->foreignId('vacancy_id')->constrained('vacancies')->onDelete('cascade');
 
             # Children Information
-            $table->json('children')->nullable(); // Store children's names and birthdates as JSON
+            $table->json('children')->nullable();
             $table->timestamps();
         });
     }

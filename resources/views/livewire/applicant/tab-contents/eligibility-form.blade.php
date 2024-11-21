@@ -1,16 +1,15 @@
 <div>
     <h4 class="form-header">Civil Service </h4>
-    <form wire:submit.prevent="save">
+    <form>
         @foreach ($eligibilities as $index => $eligibility)
             <h5>Civil Service Eligibility #{{ $index + 1 }}</h5>
             <div class="row m-3 border rounder p-3" wire:key="eligibility-{{ $index }}">
                 <div class="col-lg-2 mt-3">
                     <label for="career_service_{{ $index }}" class="form-label">Eligibility</label>
                     <select class="form-select" id="career_service_{{ $index }}" wire:model="eligibilities.{{ $index }}.career_service">
-                        <option value="">Select</option>
-                        <option value="CES">Career Executive Service</option>
-                        <option value="Board">Board/Bar</option>
-                        <!-- Add other options as needed -->
+                        <option value="">None</option>
+                        <option value="ces">Career Executive Service</option>
+                        <option value="board">Board/Bar</option>
                     </select>
                 </div>
                 <div class="col-lg-2 mt-3">
@@ -33,9 +32,13 @@
                     <label for="date_of_validity_{{ $index }}" class="form-label">Date of Validity</label>
                     <input type="date" class="form-control" id="date_of_validity_{{ $index }}" wire:model="eligibilities.{{ $index }}.date_of_validity">
                 </div>
-                <div class="col-lg-2 align-self-center mt-3">
-                    <button type="button" class="btn btn-danger" wire:click="removeEligibility({{ $index }})">Delete</button>
-                </div>
+
+                @if($index > 0)
+                    <div class="col-lg-2 align-self-center mt-3">
+                        <button type="button" class="btn btn-danger" wire:click="removeEligibility({{ $index }})">Delete</button>
+                    </div>
+                @endif
+
             </div>
         @endforeach
     </form>
@@ -45,7 +48,7 @@
     </div>
 
     <div class="mt-4 d-flex justify-content-between">
-        <button type="button" class="btn btn-secondary">Save and Edit Later</button>
-        <button type="submit" class="btn btn-primary">Save Civil Service Data</button>
+        <button wire:click.prevent="save" class="btn btn-secondary">Save and Edit Later</button>
+        <button wire:click.prevent="save" class="btn btn-primary">Save Civil Service Data</button>
     </div>
 </div>

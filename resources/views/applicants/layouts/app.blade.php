@@ -55,7 +55,7 @@
 
     @yield('sidebar')
 
-    <div class="main-panel">
+    <div class="z-0 main-panel">
 
         <div class="main-header">
 

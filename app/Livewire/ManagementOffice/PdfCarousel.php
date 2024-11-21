@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Livewire\ManagementOffice;
 
 use Livewire\Component;
@@ -17,7 +16,7 @@ class PdfCarousel extends Component
     public function mount()
     {
         // TODO: ADD APPLICANTS ID FOR PDF STORAGE
-        $this->pdfFile = 'J:\laravel-projects\DepedJoana\public\storage\isko.pdf';  // example file path
+        $this->pdfFile = 'J:\laravel-projects\DepedJoana\public\storage\isko.pdf';
         $this->convertPdfToImages();
     }
 
@@ -41,7 +40,7 @@ class PdfCarousel extends Component
             $this->images[] = route('management-officer.image', ['filename' => $imageName]);
         }
     }
-    
+
     public function render()
     {
         return view('livewire.management-office.pdf-carousel', [

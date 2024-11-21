@@ -16,7 +16,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('vacancy_id')->references('id')->on('vacancies')->onDelete('cascade');
-            $table->foreignId('user_profile_id')->references('id')->on('user_profile')->onDelete('cascade');
             $table->enum('role_in_board', ['chairperson', 'member', 'sub_committee']);
             $table->timestamps();
 

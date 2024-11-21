@@ -11,9 +11,7 @@ class AddPositions extends Component
 {
     public $positions = [
         [
-            'office_level' => '',
-            'co_strands_region' => '',
-            'division_division_office' => '',
+            'school_district' => '',
             'position' => '',
         ]
     ];
@@ -24,9 +22,7 @@ class AddPositions extends Component
     public function addPosition()
     {
         $this->positions[] = [
-            'office_level' => '',
-            'co_strands_region' => '',
-            'division_division_office' => '',
+            'school_district' => '',
             'position' => '',
         ];
     }
@@ -57,9 +53,7 @@ class AddPositions extends Component
                 'applicant_id' => $applicantId,
                 'vacancy_id' => $this->applicantChosenVacancy
             ], [
-                'office_level' => json_encode($position['office_level']),
-                'co_strands_region' => json_encode($position['co_strands_region']),
-                'division_division_office' => json_encode($position['division_division_office']),
+                'school_district' => json_encode($position['school_district']),
                 'status' => 'visitor'
             ]);
         }

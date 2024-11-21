@@ -43,11 +43,11 @@ class ApplicantProfile extends Component
         $this->increment_values_workExperience = $this->getIncrementValues('experience');
     }
 
-    
+
     #=======[FUNCTIONS]================
     public function approveApplicant()
     {
-        $this->saveIncrements();
+        $this->saveIncrements('qualified');
 
         $this->UpdateApplicantStatusInitialQualified();
 
@@ -107,7 +107,7 @@ class ApplicantProfile extends Component
 
     }
 
-    public function saveIncrements()
+    public function saveIncrements($overall_status = 'qualified')
     {
         $this->ManagementOfficerId = auth()->user()->id;
 
@@ -130,6 +130,9 @@ class ApplicantProfile extends Component
                 'education_criteria_status' => $this->criteria['education']['status'],
                 'experience_criteria_status' => $this->criteria['experience']['status'],
 
+                //overall status
+                'overall_remarks_status' => $overall_status,
+
                 // Management officer
                 'management_officer_id' => $this->ManagementOfficerId,
 
@@ -146,6 +149,15 @@ class ApplicantProfile extends Component
             ->where('applicant_id', $this->applicantId)
             ->update([
                 'status' => 'initial_qualified'
+            ]);
+    }
+
+    public function UpdateApplicantStatusRejected()
+    {
+        return DB::table('applicant_status')
+            ->where('applicant_id', $this->applicantId)
+            ->update([
+                'status' => 'rejected'
             ]);
     }
 

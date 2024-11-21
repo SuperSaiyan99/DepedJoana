@@ -44,6 +44,7 @@ class ApplicantSideBar extends Component
     {
         $this->applicants = (new Applicant())->ShowReviewedApplicants()->toArray();
     }
+    
 
     public function SelectedApplicant($applicantId)
     {

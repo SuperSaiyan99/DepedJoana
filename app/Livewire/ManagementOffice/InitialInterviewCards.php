@@ -2,6 +2,7 @@
 
 namespace App\Livewire\ManagementOffice;
 
+use App\Livewire\SelectionBoard\CandidatesInitialQualifiedTab;
 use App\Models\HRMO\JobPosting;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Validate;
@@ -34,41 +35,30 @@ class InitialInterviewCards extends Component
     public JobPosting $selectedJob;
     public $isEditing = false;
 
-    public $education, $training, $experience, $eligibility;
-    public $position_title, $plantilla_number = [], $salary_grade, $monthly_salary, $number_of_vacancy;
-    public $is_vacancy_shs, $subject, $track, $strand, $place_of_assignment, $job_summary;
+    public  $education,
+            $training,
+            $experience,
+            $eligibility;
 
-    public $candidates = [],
-           $selection_boards;
+    public  $position_title,
+            $plantilla_number = [],
+            $salary_grade,
+            $monthly_salary,
+            $number_of_vacancy;
+
+    public  $is_vacancy_shs,
+            $subject,
+            $track,
+            $strand,
+            $place_of_assignment,
+            $job_summary,
+            $school_level;
+
+    public $selection_boards = [];
 
     public function mount(JobPosting $jobPosting)
     {
-        $this->jobPostings = JobPosting::where('status', 'active')->get();
-
-        $this->selectedJob = $jobPosting;
-
-        // Populate form fields
-        $this->education = $jobPosting->education;
-        $this->training = $jobPosting->training;
-        $this->experience = $jobPosting->experience;
-        $this->eligibility = $jobPosting->eligibility;
-
-        // Populate additional fields
-        $this->position_title = $jobPosting->position_title;
-        $this->plantilla_number = json_decode($jobPosting->plantilla_number, true) ?? [];
-        $this->salary_grade = $jobPosting->salary_grade;
-        $this->monthly_salary = $jobPosting->monthly_salary;
-        $this->number_of_vacancy = $jobPosting->number_of_vacancy;
-        $this->is_vacancy_shs = $jobPosting->is_vacancy_shs;
-        $this->subject = json_decode($jobPosting->subject, true) ?? [];
-        $this->track = $jobPosting->track;
-        $this->strand = $jobPosting->strand;
-        $this->place_of_assignment = json_decode($jobPosting->place_of_assignment, true) ?? [];
-        $this->job_summary = $jobPosting->job_summary;
-
-        #Modal
-        $this->candidates = $this->showCandidate();
-        $this->selection_boards = $this->showSelectionBoard();
+        $this->populateFormFields($jobPosting);
 
     }
 
@@ -81,22 +71,89 @@ class InitialInterviewCards extends Component
     {
         $this->selectedJob = JobPosting::findOrFail($jobId);
 
+        $this->dispatch('fetch-vacancy-id', ['vacancyId' => $this->selectedJob->id])->to(CandidatesInitialQualifiedTab::class);
     }
+
+    public function printPdf()
+    {
+
+        $data = $this->getApplicantData($this->selectedJob->id);
+        $dataCollection = collect($data);
+
+        $vacancyInformation = [
+            'position_title' => $dataCollection->first()->position_title,
+            'school_level' => $dataCollection->first()->school_level,
+            'education' => $dataCollection->first()->education,
+            'training' => $dataCollection->first()->training,
+            'experience' => $dataCollection->first()->experience,
+            'eligibility' => $dataCollection->first()->eligibility,
+            'salary_grade' => $dataCollection->first()->salary_grade,
+            'monthly_salary' => $dataCollection->first()->monthly_salary
+        ];
+
+        // Generate the PDF view
+        $pdfView = view('HRMO.layouts.print-initial-evaluation-results', ['data' => $data, 'vacancyInfo' => $vacancyInformation])->render();
+
+        // Generate the PDF using Browsershot
+        $pdf = \Spatie\Browsershot\Browsershot::html($pdfView)
+            ->format('A4')
+            ->landscape()
+            ->margins(10, 10, 10, 10)
+            ->showBackground()
+            ->setTemporaryDirectory(storage_path('app/temp'))
+            ->pdf();
+
+        // Return the PDF as a stream download
+        return response()->streamDownload(
+            fn () => print($pdf),
+            'Initial_Evaluation_Result.pdf'
+        );
+    }
+
+
+    public function getApplicantData($vacancyId)
+    {
+        return  DB::table('applicant_status')
+            ->join('applicants', 'applicants.id', '=', 'applicant_status.applicant_id')
+            ->join('vacancies', 'vacancies.id', '=', 'applicant_status.vacancy_id')
+            ->join('applicant_personal_information', 'applicant_personal_information.applicant_id', '=', 'applicants.id')
+            ->join('applicant_residential_address', 'applicant_residential_address.applicant_id', '=', 'applicants.id')
+            ->join('applicant_permanent_address', 'applicant_permanent_address.applicant_id', '=', 'applicants.id')
+            ->join('applicant_increments_score', 'applicant_increments_score.applicant_id', '=', 'applicants.id')
+            ->where('applicant_status.vacancy_id',  $vacancyId)
+            ->select(
+                'applicants.*',
+                'vacancies.*',
+                'applicant_personal_information.*',
+                'applicant_residential_address.*',
+                'applicant_permanent_address.*',
+                'applicant_increments_score.*'
+            )
+            ->get()
+            ->toArray();
+    }
+
 
 
     public function saveModal()
     {
-        #$this->validate();
+        // Dispatching event with selectedJob->id as a parameter
+        $this->dispatch('initial-evaluation-result-saveData', $this->selectedJob->id);
 
-        //TODO: Update the job posting fields in the database, encoding array properties to JSON
-//        $this->selectedJob->update([
-//
-//        ]);
-
+        $this->setVacancyStatusForInterview();
 
         session()->flash('message', 'Job Posting Updated Successfully.');
 
         $this->isEditing = false;
+    }
+
+    public function setVacancyStatusForInterview()
+    {
+        return DB::table('vacancies')
+            ->where('id', $this->selectedJob->id)
+            ->update([
+                'status' => 'For_interview'
+            ]);
     }
 
     public function addButton($property)
@@ -110,26 +167,33 @@ class InitialInterviewCards extends Component
         $this->$property = array_values($this->$property);
     }
 
-    public function showCandidate()
+    public function populateFormFields(JobPosting $jobPosting)
     {
-        return DB::table('applicant_interview_status')
-            ->join('applicants', 'applicants.id', '=', 'applicant_interview_status.applicant_id')
-            ->join('vacancies', 'vacancies.id', '=', 'applicant_interview_status.vacancy_id')
-            ->join('applicant_status', 'applicant_status.applicant_id', '=', 'applicant_interview_status.applicant_id')
-            ->where('applicant_status.status', 'initial_qualified')
-            ->get(['applicants.*', 'applicant_interview_status.*', 'vacancies.*', 'applicant_status.*'])
-            ->toArray();
+        $this->jobPostings = JobPosting::where('status', 'On_going')->get();
+        $this->selectedJob = $jobPosting;
+
+        // Populate form fields
+        $this->education = $jobPosting->education;
+        $this->training = $jobPosting->training;
+        $this->experience = $jobPosting->experience;
+        $this->eligibility = $jobPosting->eligibility;
+
+        // Populate additional fields
+        $this->position_title = $jobPosting->position_title;
+        $this->school_level = $jobPosting->school_level;
+        $this->plantilla_number = json_decode($jobPosting->plantilla_number, true) ?? [];
+        $this->salary_grade = $jobPosting->salary_grade;
+        $this->monthly_salary = $jobPosting->monthly_salary;
+        $this->number_of_vacancy = $jobPosting->number_of_vacancy;
+        $this->is_vacancy_shs = $jobPosting->is_vacancy_shs;
+        $this->subject = json_decode($jobPosting->subject, true) ?? [];
+        $this->track = $jobPosting->track;
+        $this->strand = $jobPosting->strand;
+        $this->place_of_assignment = json_decode($jobPosting->place_of_assignment, true) ?? [];
+        $this->job_summary = $jobPosting->job_summary;
     }
 
-    public function showSelectionBoard()
-    {
-        return DB::table('selection_board')
-            ->join('users', 'users.id', '=', 'selection_board.user_id')
-            ->join('vacancies', 'vacancies.id', '=', 'selection_board.vacancy_id')
-            ->join('user_profile', 'user_profile.id', '=', 'selection_board.user_profile_id')
-            ->where('users.role', 'hrmpsb')
-            ->get(['selection_board.*', 'vacancies.*', 'user_profile.*'])
-            ->toArray();
-    }
+
+
 
 }

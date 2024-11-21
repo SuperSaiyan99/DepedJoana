@@ -37,6 +37,7 @@
 @endsection
 
 @section('js')
-    <script src="assets2/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-    <script src="assets2/libs/@chenfengyuan/datepicker/datepicker.min.js"></script>
+    <script src="{{ asset('assets2/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets2/libs/@chenfengyuan/datepicker/datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets2/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
 @endsection

@@ -1,6 +1,5 @@
 @extends('guest.layouts.guest')
 
-
 @section('header')
     @include('guest.partials.header')
 @endsection

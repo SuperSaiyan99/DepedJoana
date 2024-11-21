@@ -45,7 +45,6 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('management-officer.review-application') }}">Review Candidates</a></li>
-                        <li><a href="{{ route('management-officer.review-rank-status') }}">Review Candidate Status</a>
                         <li><a href="{{ route('management-officer.initial-evaluation') }}">Initial Evaluation
                                 Results</a>
                         </li>
@@ -58,7 +57,21 @@
                         <span>Vacancies</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('management-officer.manage-application') }}">Manage Vacancy Posting</a>
+                        <li><a href="{{ route('management-officer.manage-application') }}">Active Vacancies</a>
+                        <li><a href="{{ route('management-officer.vacancy-logs') }}">Vacancy Logs</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-title">Candidates</li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-account-circle"></i>
+                        <span>Candidates</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('management-officer.candidate-logs') }}">Candidate Logs</a>
                         </li>
                     </ul>
                 </li>
@@ -72,11 +85,10 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('management-officer.applicant-tracking') }}">Applicant Tracking</a></li>
-                    </ul>
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('management-officer.comparative-assessment') }}">Comparative
                                 Assessment</a></li>
                     </ul>
+
 
 
                     <!--[Soon]-->

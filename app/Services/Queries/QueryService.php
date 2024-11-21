@@ -36,6 +36,8 @@ class QueryService
     }
 
 
+
+
     public static function findApplicantByUserId($userId)
     {
         return Applicant::where('user_id', $userId)->value('id');

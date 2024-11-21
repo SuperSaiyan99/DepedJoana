@@ -1,7 +1,7 @@
 <div>
     <h4 class="form-header">References</h4>
     <p class="form-note text-danger"><i>Person not related by consanguinity or affinity to applicant/appointee</i></p>
-    <form wire:submit.prevent="submit">
+    <form>
         @foreach($this->references as $index => $reference)
             <h5>Reference #{{ $index + 1  }}</h5>
             <div class="repeater-item mb-3 border round p-3">
@@ -38,7 +38,7 @@
             <button type="button" class="btn btn-success" wire:click="addReference">Add Reference</button>
         </div>
         <div class="mt-4 d-flex justify-content-end">
-            <button type="button" class="btn btn-secondary">Save and Edit Later</button>
+            <button wire:click.prevent="submit" class="btn btn-secondary">Save and Edit Later</button>
         </div>
     </form>
 </div>

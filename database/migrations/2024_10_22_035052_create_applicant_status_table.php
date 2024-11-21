@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
 
             #foreign key for Users table
-            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
             $table->foreignId('vacancy_id')->references('id')->on('vacancies')->onDelete('cascade');
 
 
@@ -25,17 +25,18 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        
+
         #for applicant interview
         Schema::create('applicant_interview_status', function (Blueprint $table) {
             $table->id();
 
             #foreign key for Users table
-            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
             $table->foreignId('vacancy_id')->references('id')->on('vacancies')->onDelete('cascade');
 
 
-            $table->dateTime('interview_date')->nullable();
+            $table->dateTime('co_interview_date')->nullable();
+            $table->dateTime('nco_interview_date')->nullable();
             $table->enum('status', ['scheduled', 'completed', 'canceled'])->default('scheduled');
             $table->timestamps();
 

@@ -33,9 +33,9 @@
                     <div class="alert alert-warning" role="alert">
                         <h6 class="alert-heading"><i class="fa fa-info-circle me-2"></i> Please Note:</h6>
                         <ul class="mb-0">
-                            <li>All uploaded documents must be in PDF format.</li>
+                            <li>Uploaded document must be in PDF format.</li>
                             <li>Make sure your documents are clear and legible.</li>
-                            <li>Ensure that the file size does not exceed 5MB.</li>
+                            <li>Ensure that the file size does not exceed 100MB.</li>
                             <li>Do not upload scanned images of documents; original digital documents are preferred.</li>
                         </ul>
                     </div>
@@ -67,10 +67,14 @@
                         </ul>
                     </div>
 
-                    <div>
+                    @livewire('applicant.tab-contents.document-upload-files')
 
-                        @livewire('applicant.tab-contents.document-upload-files')
+                </div>
 
+                <div class="card-footer">
+                    <div class="mt-4 d-flex justify-content-between">
+                        <a  href="{{ route('applicants.work-experience-sheet') }}" class="btn btn-secondary">Previous</a>
+                        <a  href="{{ route('applicants.applicant-status') }}" class="btn btn-primary">Next</a>
                     </div>
                 </div>
 

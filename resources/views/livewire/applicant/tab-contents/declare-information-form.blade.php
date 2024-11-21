@@ -1,6 +1,6 @@
 <div>
     <h4 class="form-header">Declaration</h4>
-    <form wire:submit.prevent="submit">
+    <form>
 
         @csrf
 
@@ -28,7 +28,7 @@
                 @error('dateAccomplished') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="col-md-6">
-                <label for="datePlaceIssued" class="form-label">Date/Place of Issuance</label>
+                <label for="datePlaceIssued" class="form-label">Place of Issuance</label>
                 <input type="text" class="form-control" id="datePlaceIssued" wire:model="datePlaceIssued"
                        placeholder="Enter Date and Place of Issuance">
                 @error('datePlaceIssued') <span class="text-danger">{{ $message }}</span> @enderror
@@ -41,7 +41,7 @@
                 <label for="photoUpload" class="form-label">ID Picture (4.5 cm x 3.5 cm)</label>
                 <input type="file" class="form-control" id="photoUpload" wire:model="photoUpload">
                 @error('photoUpload') <span class="text-danger">{{ $message }}</span> @enderror
-                <span class="note text-danger"><i>ID picture taken within the last 6 months. Computer-generated or photocopied picture is not acceptable.</i></span>
+                <span class="note text-info"><i>ID picture taken within the last 6 months. Computer-generated or photocopied picture is not acceptable.</i></span>
             </div>
 
             <div class="col-md-6">
@@ -68,14 +68,9 @@
         </div>
 
         <!-- Submit Button -->
-        <div class="d-grid">
-            <button type="submit" class="btn btn-secondary">Submit</button>
+        <div class="mt-4 d-flex justify-content-between">
+            <button wire:click.prevent="submit" class="btn btn-success">Submit Final PDS</button>
+            <a href="{{ route('applicants.work-experience-sheet') }}" class="btn btn-secondary">Proceed to Work Experience</a>
         </div>
     </form>
-
-    @if (session()->has('message'))
-        <div class="alert alert-success mt-3">
-            {{ session('message') }}
-        </div>
-    @endif
 </div>

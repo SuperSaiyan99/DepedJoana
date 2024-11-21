@@ -6,7 +6,9 @@ use Livewire\Component;
 
 class WorkExperienceSheetForm extends Component
 {
-    public $workExperiences = []; // Array to hold multiple work experience forms
+    public $workExperiences = [];
+    public $applicantId;
+    public $applicantChosenVacancy;
 
     protected $rules = [
         'workExperiences.*.start' => 'required|date',
@@ -21,16 +23,32 @@ class WorkExperienceSheetForm extends Component
 
     public function mount()
     {
-        // Initialize with one work experience by default
-        $this->workExperiences[] = [
-            'start' => '',
-            'end' => '',
-            'position' => '',
-            'officeUnit' => '',
-            'supervisor' => '',
-            'agency' => '',
-            'accomplishments' => '',
-            'duties' => '',
+        $this->applicantId = \App\Services\Queries\QueryService::findApplicantByUserId(\Auth::user()->id);
+        $this->applicantChosenVacancy = session('applicantChosenVacancy');
+
+        $this->loadWorkExperiences();
+    }
+
+    public function loadWorkExperiences()
+    {
+        $records = \DB::table('applicant_work_experience_sheet')
+            ->where('applicant_id', $this->applicantId)
+            ->where('vacancy_id', $this->applicantChosenVacancy)
+            ->get();
+
+        $this->workExperiences = $records->isNotEmpty() ? $records->map(function ($record) {
+            return [
+                'start' => $record->start,
+                'end' => $record->end,
+                'position' => $record->position,
+                'officeUnit' => $record->office_unit,
+                'supervisor' => $record->supervisor,
+                'agency' => $record->agency,
+                'accomplishments' => $record->accomplishments,
+                'duties' => $record->duties,
+            ];
+        })->toArray() : [
+            ['start' => '', 'end' => '', 'position' => '', 'officeUnit' => '', 'supervisor' => '', 'agency' => '', 'accomplishments' => '', 'duties' => '']
         ];
     }
 
@@ -58,16 +76,46 @@ class WorkExperienceSheetForm extends Component
 
     public function save()
     {
-        $this->validate();
+        $validatedData = $this->validate();
+        
+        if (! $validatedData)
+        {
+            flash()->error('There was an error in the data. Please check your inputs and try again.');
+        }
 
-        #TODO: Save all work experiences to the database
-//        foreach ($this->workExperiences as $experience) {
-//           Save each $experience to the database
-//        }
+        try {
+            \DB::beginTransaction();
 
-        dd($this->validate());
+            \DB::table('applicant_work_experience_sheet')
+                ->where('applicant_id', $this->applicantId)
+                ->where('vacancy_id', $this->applicantChosenVacancy)
+                ->delete();
 
-        session()->flash('message', 'Work experiences saved successfully.');
+            // Insert new work experiences
+            foreach ($this->workExperiences as $experience) {
+                \DB::table('applicant_work_experience_sheet')->insert([
+                    'applicant_id' => $this->applicantId,
+                    'vacancy_id' => $this->applicantChosenVacancy,
+                    'start' => $experience['start'],
+                    'end' => $experience['end'],
+                    'position' => $experience['position'],
+                    'office_unit' => $experience['officeUnit'],
+                    'supervisor' => $experience['supervisor'],
+                    'agency' => $experience['agency'],
+                    'accomplishments' => $experience['accomplishments'],
+                    'duties' => $experience['duties'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+
+            \DB::commit();
+            flash()->success('Work experiences saved successfully!');
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            flash()->error('error occured' . $e->getMessage());
+            \Log::error($e->getMessage());
+        }
     }
 
     public function render()

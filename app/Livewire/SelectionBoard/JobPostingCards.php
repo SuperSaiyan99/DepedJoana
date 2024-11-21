@@ -129,7 +129,7 @@ class JobPostingCards extends Component
             $this->jobPostings = DB::table('vacancies')
                 ->join('selection_board', 'vacancies.id', '=', 'selection_board.vacancy_id')
                 ->where( 'selection_board.user_id', $userId)
-                ->where('vacancies.status', 'on_going')
+                ->where('vacancies.status', 'For_interview')
                 ->select(
                     'vacancies.id',
                     'vacancies.position_title',
@@ -144,11 +144,6 @@ class JobPostingCards extends Component
                 )
                 ->get();
         }
-        else if (\Auth::user()->role === 'hrmo'){
-            $this->jobPostings = $jobPostingModel::where('status', 'active')
-                ->get();
-        }
-
 
 
         $this->selectedJob = $jobPostingModel;
@@ -187,7 +182,7 @@ class JobPostingCards extends Component
             ->where([
                 ['applicant_status.status', 'initial_qualified'],
                 ['applicant_status.vacancy_id', $vacancy_code],
-                ['vacancies.status', 'on_going'],
+                ['vacancies.status', 'For_interview'],
             ])
             ->select([
                 'applicants.*',

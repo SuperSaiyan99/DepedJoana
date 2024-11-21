@@ -6,7 +6,7 @@
                     <img src="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/images/kinder.png"
                          class="card-img-top" alt="{{ $job->position_title }}"/>
                     <div class="card-body">
-                        <h3>{{ $job->position_title }}</h3>
+                        <h3>{{ ucfirst($job->position_title) }} - {{ ucfirst($job->school_level) }}</h3>
                         <hr>
                         <div class="card-text">
                             <div class="mb-3">
@@ -35,6 +35,10 @@
                                 <i class="fas fa-check-circle me-2"></i> <b>Place of
                                     Assignment: </b> {{ str_replace('"', '', $job->place_of_assignment) }}
                             </div>
+
+                            <div class="mb-3">
+                                <i class="fas fa-people-carry me-2"></i> <b>Number of Vacancies: </b> {{$job->number_of_vacancy  }}
+                            </div>
                         </div>
 
                         <!-- Trigger Modal -->
@@ -52,5 +56,6 @@
         @endforelse
     </div>
 
-    @include('components.modals.Initial-InterviewCards', ['candidates' => $candidates])
+    @include('components.modals.Initial-InterviewCards')
 </div>
+

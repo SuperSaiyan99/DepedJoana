@@ -24,22 +24,6 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        #for applicant position applied
-        Schema::create('applicant_position_applied', function (Blueprint $table) {
-            $table->id();
-
-            #elements
-            $table->string('office_level');
-            $table->string('co_strands_region');
-            $table->string('division_division_office');
-            $table->enum('status', ['visitor', 'applied']);
-
-            #foreign key for Users table
-            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
-            $table->foreignId('vacancy_id')->constrained('vacancies')->onDelete('cascade');
-            $table->timestamps();
-        });
-
     }
 
     /**

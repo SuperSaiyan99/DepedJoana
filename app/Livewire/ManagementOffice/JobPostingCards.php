@@ -128,7 +128,7 @@ class JobPostingCards extends Component
             $this->jobPostings = DB::table('vacancies')
                 ->join('selection_board', 'vacancies.id', '=', 'selection_board.vacancy_id')
                 ->where( 'selection_board.user_id', $userId)
-                ->where('vacancies.status', 'Active')
+                ->where('vacancies.status', 'On_going')
                 ->select(
                     'vacancies.id',
                     'vacancies.position_title',

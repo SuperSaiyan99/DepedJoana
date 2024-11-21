@@ -107,9 +107,7 @@
             <!-- end page title -->
 
 
-
            @livewire('management-office.filter-button')
-
 
 
             <!--[contents here]-->

@@ -11,11 +11,16 @@ return new class extends Migration {
     public function up(): void
     {
 
-        Schema::create('applicants_pds', function (Blueprint $table) {
+        Schema::create('applicants_uploaded_document', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
-            $table->foreignId('vacancy_id')->references('id')->on('vacancies')->onDelete('cascade');
-            $table->boolean('isComplete')->default(false);
+
+            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
+            $table->foreignId('vacancy_id')->constrained('vacancies')->onDelete('cascade');
+
+            $table->text('file_path')->nullable();
+            $table->text('file_name')->nullable();
+            $table->text('file_type')->nullable();
+            $table->unsignedBigInteger('file_size');
             $table->timestamps();
         });
 
@@ -23,7 +28,8 @@ return new class extends Migration {
             $table->id();
 
             #foreign key for applicants table
-            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
+            $table->foreignId('vacancy_id')->constrained('vacancies')->onDelete('cascade');
 
             $table->string('surname');
             $table->string('first_name');
@@ -58,7 +64,8 @@ return new class extends Migration {
             $table->id();
 
             #foreign key for applicants table
-            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
+            $table->foreignId('vacancy_id')->constrained('vacancies')->onDelete('cascade');
 
 
             $table->string('house_number')->nullable();
@@ -75,7 +82,8 @@ return new class extends Migration {
             $table->id();
 
             #foreign key for applicants table
-            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
+            $table->foreignId('vacancy_id')->constrained('vacancies')->onDelete('cascade');
 
 
             $table->string('house_number')->nullable();
@@ -92,7 +100,8 @@ return new class extends Migration {
             $table->id();
 
             #foreign key for applicants table
-            $table->foreignId('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
+            $table->foreignId('vacancy_id')->constrained('vacancies')->onDelete('cascade');
 
 
             $table->string('telephone_no')->nullable();

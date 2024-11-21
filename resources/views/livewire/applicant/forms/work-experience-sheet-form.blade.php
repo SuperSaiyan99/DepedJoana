@@ -68,11 +68,12 @@
                     <div class="mb-4">
                         <label for="duties" class="form-label fw-bold">Summary of Actual Duties</label>
                         <div wire:ignore>
-                            <div wire:model="workExperiences.{{ $index }}.duties"
-                                 class="min-h-fit h-48 "
-                                 name="duties"
-                                 id="editor">
-                            </div>
+                        <textarea wire:model.lazy="workExperiences.{{ $index }}.duties"
+                                  class="form-control min-h-fit h-48"
+                                  name="duties"
+                                  rows="3"
+                                  id="editor--{{ $index }}">
+                            </textarea>
                         </div>
                         @error('workExperiences.' . $index . '.duties') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
@@ -84,35 +85,28 @@
 
             </div>
         @endforeach
+
     </div>
 
-    <div class="d-grid mt-4">
-        <button type="button" class="btn btn-success" wire:click.prevent="save">Save All Work Experiences</button>
+    <!-- Submit Button -->
+    <div class="mt-4 d-flex justify-content-between">
+        <button wire:click.prevent="save" class="btn btn-success">Save All Work Experiences</button>
+        <a href="{{ route('applicants.applicant-upload') }}" class="btn btn-secondary">Proceed to Upload of Documents</a>
     </div>
 </div>
 
 
 @script
-<script type="importmap">
-    {
-        "imports": {
-            "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.js",
-            "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.0.0/"
-        }
-    }
-</script>
-
-<script type="module">
-    import {Autoformat, Bold, ClassicEditor, Essentials, Font, Italic, Paragraph} from 'ckeditor5';
-
-    ClassicEditor
-        .create( document.querySelector( '#editor' ), {
-            plugins: [ Essentials, Bold, Italic, Font, Paragraph, Autoformat],
-            toolbar: [
-                'undo', 'redo', '|', 'bold', 'italic', '|',
-                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
-                'numberedList', 'bulletedList' // No need for the extra `items` property here
-            ]
-        } )
+<script>
+    document.addEventListener('livewire:load', function () {
+        @foreach ($workExperiences as $index => $workExperience)
+        ClassicEditor
+            .create(document.querySelector('#editor-{{ $index }}'))
+            .catch(error => {
+                console.error('Editor initialization error at index {{ $index }}:', error);
+            });
+        @endforeach
+    });
 </script>
 @endscript
+

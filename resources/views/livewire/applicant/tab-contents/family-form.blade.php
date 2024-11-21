@@ -1,4 +1,4 @@
-<form wire:submit.prevent="save">
+<form>
     <div class="row g-3">
         <div class="form-header">
             Spouse's Information
@@ -19,6 +19,7 @@
             <label for="spouseExtension" class="form-label">Name Extension</label>
             <select class="form-select" id="spouseExtension" wire:model="spouseExtension">
                 <option selected>Select</option>
+                <option value="">No Extension</option>
                 <option value="Jr">Jr</option>
                 <option value="Sr">Sr</option>
             </select>
@@ -61,6 +62,7 @@
             <label for="fatherExtension" class="form-label">Name Extension</label>
             <select class="form-select" id="fatherExtension" wire:model="fatherExtension">
                 <option selected>Select</option>
+                <option value="">No Extension</option>
                 <option value="Jr">Jr</option>
                 <option value="Sr">Sr</option>
             </select>
@@ -85,6 +87,7 @@
     <div class="form-header mt-5">
         Children's Information
     </div>
+
     @foreach($children as $index => $child)
         <div class="row g-3" wire:key="child-{{ $index }}">
             <div class="col-md-4">
@@ -114,7 +117,7 @@
     </div>
 
     <div class="mt-4 d-flex justify-content-between">
-        <button type="button" class="btn btn-secondary">Save and Edit Later</button>
-        <button type="submit" class="btn btn-primary">Save Family Data</button>
+        <button wire:click.prevent="save" class="btn btn-secondary">Save and Edit Later</button>
+        <button wire:click.prevent="save" class="btn btn-primary">Save Family Data</button>
     </div>
 </form>

@@ -29,7 +29,10 @@ class FilterButton extends Component
     public function loadFilterVacancies()
     {
         $query = DB::table("vacancies")
-            ->select('id', 'position_title', 'vacancy_type');
+            ->join('applicant_status', 'vacancies.id', '=', 'applicant_status.vacancy_id')
+            ->select('vacancies.id', 'position_title', 'vacancy_type', 'school_level')
+            ->where('vacancies.status', 'On_going');
+
 
         if ($this->sortType == 'teaching') {
 
@@ -39,6 +42,9 @@ class FilterButton extends Component
         else if ($this->sortType == 'non-teaching'){
             $query->where('vacancy_type', 'non-teaching');
         }
+
+        $query->groupBy('vacancies.id', 'vacancies.position_title', 'vacancies.vacancy_type', 'vacancies.school_level');
+        $query->havingRaw('COUNT(applicant_status.vacancy_id) > 0');
 
         $this->FilterVacancies = $query->get();
     }

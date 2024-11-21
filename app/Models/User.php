@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable {
 
-    
+
     use HasFactory, Notifiable;
 
     /**
@@ -28,7 +28,8 @@ class User extends Authenticatable {
         'username',
         'provider',
         'provider_id',
-        'provider_token'
+        'provider_token',
+        'avatar'
     ];
 
     /**

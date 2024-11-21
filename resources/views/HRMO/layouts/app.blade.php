@@ -23,24 +23,33 @@
     <link href="https://pub-b7f933bab52446139bce6c73fd9a9339.r2.dev/css/app.min.css" id="app-style" rel="stylesheet"
           type="text/css"/>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
 
-    @hasSection('css')
+
+
+
+@hasSection('css')
         @yield('css')
-    @endif
+@endif
+
 
 </head>
 <body data-sidebar="dark">
+<!-- Notification Area -->
 
 
 <!-- start of wrapper-->
 <div class="layout-wrapper">
 
-    @include('HRMO.partials.header')
 
     @include('HRMO.partials.left-sidebar')
 
+    @include('HRMO.partials.header')
+
+
 
     <div class="main-content">
+
         @yield('content')
     </div>
 
@@ -50,6 +59,7 @@
 
 <!-- JS -->
 <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
 <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
@@ -68,5 +78,6 @@
 @hasSection('js')
     @yield('js')
 @endif
+
 </body>
 </html>

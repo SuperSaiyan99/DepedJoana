@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
+            $table->text('vacancy_code');
             $table->enum('vacancy_type', ['teaching', 'non-teaching']);
             $table->enum('school_level', ['kindergarten', 'elementary', 'junior_high_school', 'senior_high_school']);
             $table->string('position_title');
@@ -29,7 +30,7 @@ return new class extends Migration {
             $table->string('strand');
             $table->json('place_of_assignment');
             $table->longText('job_summary');
-            $table->enum('status', ['Active', 'Inactive'])->default('active');
+            $table->enum('status', ['Active', 'On_going', 'Inactive', 'For_interview'])->default('Active');
             $table->dateTime('close_date')->nullable();
             $table->timestamps();
         });
@@ -42,7 +43,23 @@ return new class extends Migration {
             $table->enum('increments_type', ['education', 'training', 'experience']);
             $table->timestamps();
         });
+
+        #for applicant position applied
+        Schema::create('applicant_position_applied', function (Blueprint $table) {
+            $table->id();
+
+            #elements
+            $table->string('school_district');
+            $table->enum('status', ['visitor', 'applied']);
+
+            #foreign key for Users table
+            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
+            $table->foreignId('vacancy_id')->constrained('vacancies')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
+
+
 
     /**
      * Reverse the migrations.
@@ -51,6 +68,6 @@ return new class extends Migration {
     {
         Schema::dropIfExists('vacancies');
         Schema::dropIfExists('increments_table');
-
+        Schema::dropIfExists('applicant_position_applied');
     }
 };

@@ -1,13 +1,8 @@
-@props([
-    'candidates' => [],
-    'selection_boards' => [],
-    ])
-
 <div wire:ignore.self class="modal fade" id="jobModal" tabindex="-1" aria-labelledby="jobModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="jobModalLabel">{{ $selectedJob ? $selectedJob->position_title : '' }}</h5>
+                <h5 class="modal-title" id="jobModalLabel">{{ $selectedJob ? ucwords($selectedJob->position_title) . ' - ' . ucwords($selectedJob->school_level) : '' }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -25,90 +20,26 @@
                 <div class="tab-content pt-5" id="tab-content">
                     <div class="tab-pane active" id="simple-candidate-lists" role="tabpanel" aria-labelledby="simple-tab-0">
 
-                        <div class="table-responsive">
-                            <table class="table table-hover table-borderless">
-                                <thead>
-                                <tr>
-                                    <th>Applicant Code</th>
-                                    <th>Applying For</th>
-                                    <th>Status</th>
-                                </tr>
-                                </thead>
-                                <tbody class="table-group-divider">
-                            @forelse($candidates as $candidate)
-                                    @if($candidate->position_title === $selectedJob->position_title)
-                                        <tr>
-                                            <td>
-                                                <span class="avatar"><i class="fas fa-user"></i></span>
-                                                <a href="#">{{ $candidate->applicant_code }}</a>
-                                            </td>
-                                            <td>{{ $candidate->position_title }}</td>
-                                            <td>{{ ucwords(str_replace('_', ' ', $candidate->status)) }}</td>
-                                        </tr>
-                                    @endif
-                                @empty
-                                <tr colspan="3">
-                                    <td>missing</td>
-                                </tr>
-                            @endforelse
-                                </tbody>
-                            </table>
-                        </div>
+                        @livewire('selection-board.candidates-initial-qualified-tab')
 
                     </div>
                     <div class="tab-pane" id="simple-selection-board" role="tabpanel" aria-labelledby="simple-tab-1">
 
-                        <div class="table-responsive">
-                            <table class="table table-hover table-borderless">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Role</th>
-                                    <th>Assign</th>
-                                </tr>
-                                </thead>
-                                <tbody class="table-group-divider">
-                              @forelse($selection_boards as $selection_board)
-                                      <tr>
-                                          <td>
-                                              <span class="avatar"><i class="fas fa-user"></i> </span>
-                                              <a href="#">{{ $selection_board->first_name . ' ' . $selection_board->middle_name . ' ' . $selection_board->last_name }}</a>
-                                          </td>
-                                          <td>{{ $selection_board->role_in_board }}</td>
-                                          <td>{{ $selection_board->assigned_department }}</td>
-                                      </tr>
-                                  @empty
-
-                                  <tr>
-                                      <td>wala</td>
-                                  </tr>
-
-                              @endforelse
-                                </tbody>
-                            </table>
-                        </div>
+                        @livewire('selection-board.selection-board-search')
 
                     </div>
                     <div class="tab-pane" id="simple-date-schedule" role="tabpanel" aria-labelledby="simple-tab-2">
 
-                        <div class="row">
-                            <!-- Start Date -->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="start-date" class="form-label"><b>Vacancy Deadline</b></label>
-                                    <input type="datetime-local" class="form-control" id="close-vacancy-date" placeholder="Select Publish Date">
-                                </div>
-                            </div>
-                        </div>
+                        @livewire('selection-board.interview-date-schedule-tab')
                     </div>
                 </div>
 
             </div>
 
             <div class="modal-footer d-flex justify-content-between">
-                @if((\Auth::user()->role === 'hrmo') and true)
+                @if((\Auth::user()->role === 'hrmo'))
                     <div>
-                        <button type="button" class="btn btn-success"><i class="mdi mdi-printer"></i> Print</button>
+                        <button wire:click="printPdf" type="button" class="btn btn-success"><i class="mdi mdi-printer"></i> Print IES</button>
                     </div>
 
                     <div>

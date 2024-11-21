@@ -18,7 +18,7 @@
                     <img src="https://picsum.photos/id/64/80" alt="Applicant Photo">
                     <div class="ms-3">
                         <h4 class="mb-0">{{  $applicant->first_name . ' ' . $applicant->middle_name[0] . '. ' . $applicant->surname . ', ' . $applicant->name_extension }}</h4>
-                        <p class="mb-0">Applying for: <strong>{{ $applicant->position_title }}</strong></p>
+                        <p class="mb-0">Applying for: <strong>{{ ucwords($applicant->position_title) }} - {{ ucwords($applicant->school_level) }}</strong></p>
                     </div>
                 </div>
                 <hr>

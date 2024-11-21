@@ -34,6 +34,7 @@ return new class extends Migration
             $table->integer('experience_increment_level');
             $table->enum('experience_criteria_status', ['qualified', 'disqualified'])->nullable();
 
+            $table->enum('overall_remarks_status', ['qualified', 'disqualified'])->nullable();
 
             $table->foreignId('management_officer_id')->constrained('users')->onDelete('cascade');
 
@@ -75,7 +76,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        
+
     }
 
     /**

@@ -8,7 +8,7 @@
             <label for="filter-vacancies" class="m-2">Vacancies: </label>
             <select wire:model="vacancyId" wire:change="updateFilterVacancies" id="filter-vacancies" class="form-select form-select-sm" style="width: auto;">
                 @forelse($FilterVacancies as $FilterVacancy)
-                    <option value="{{ $FilterVacancy->id }}">{{ $FilterVacancy->position_title }}</option>
+                    <option value="{{ $FilterVacancy->id }}">{{ $FilterVacancy->position_title }} - {{ $FilterVacancy->school_level }}</option>
                 @empty
                     <option disabled selected>No Vacancies Available</option>
                 @endforelse

@@ -22,7 +22,6 @@
                                 <img src="https://picsum.photos/id/64/80" alt="Applicant Photo">
                                 <div class="ms-3 text-dark">
                                     <h6 class="mb-0">{{ $applicant->first_name }} {{ $applicant->middle_name }}</h6>
-                                    <small class="text-dark">Applying for {{ __('work here') }}</small>
                                     <div class="tags mt-1 text-dark">
                                         <i class="fa fa-location-arrow text-dark"></i><span> Location: {{ $applicant->place_of_birth }}</span>
                                     </div>
