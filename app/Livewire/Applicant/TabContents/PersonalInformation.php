@@ -59,9 +59,12 @@ class PersonalInformation extends Component
         'email_address' => '',
     ];
 
+    private $applicantChosenVacancy;
+
     public function mount()
     {
         $applicantId = \App\Services\Queries\QueryService::findApplicantByUserId(\Auth::user()->id);
+        $this->applicantChosenVacancy = session('applicantChosenVacancy');
 
         $this->mountAllData($applicantId);
     }
@@ -87,8 +90,10 @@ class PersonalInformation extends Component
 
         #PersonalInfo Create/Update
         \App\Services\Queries\QueryService::updateOrCreate(
-            'applicant_personal_information',
-            ['applicant_id' => $applicantId],
+            'applicant_personal_information',[
+            'applicant_id' => $applicantId,
+            'vacancy_id' =>$this->applicantChosenVacancy
+            ],
             $this->personalInformation
         );
 
